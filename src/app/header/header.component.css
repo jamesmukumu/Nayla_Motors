@@ -30,3 +30,9 @@ cursor: pointer;
 mat-card{
 text-align: right;
 }
+@media(max-width:799px){
+.divVertical{
+display: flex;
+flex-direction: column;
+}
+}

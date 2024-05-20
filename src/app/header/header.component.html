@@ -2,7 +2,7 @@
     <div>
       <img mat-card-image src="https://www.kaiandkaro.com/logo-light-mode.svg" (click) = "navigateDash()" >
       
-      <div [ngClass]="{'divVertical':mobile,'divHorizontal':!mobile}">
+      <div class="divVertical">
         <mat-card-subtitle style="padding-right: 20px;" [routerLink]="['/import/car']">Import Cars</mat-card-subtitle>
         <mat-card-subtitle >Sell Your Car</mat-card-subtitle>
         <mat-card-subtitle>Trade in your Car</mat-card-subtitle>
