@@ -1,0 +1,32 @@
+mat-form-field{
+width: 50%;
+text-align: center;
+}
+
+mat-form-field input{
+width: 70%;
+}
+.main{
+text-align: center;
+}
+.btn-container{
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: row;
+text-align: center;
+}
+.btn-container button{
+margin-left: 20px;
+}
+.prices max-min mat-form-field input{
+padding-left: 20px;
+}
+/* 
+@media(max-width:800px){
+.btn-container{
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
+}
+} */

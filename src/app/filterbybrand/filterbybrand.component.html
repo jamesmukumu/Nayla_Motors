@@ -1,0 +1,9 @@
+<mat-card>
+    <div *ngFor="let brand of Brands">
+      <mat-card class="item" [matTooltip]="brand.Brandname">
+        <img src="{{brand.Brandimage}}" alt="">
+        <mat-card-subtitle *ngIf="showBrand">{{brand.Brandname}}</mat-card-subtitle>
+      </mat-card>
+    </div>
+  </mat-card>
+  

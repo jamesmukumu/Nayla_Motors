@@ -1,0 +1,17 @@
+
+.container-button button{
+margin-left: 20px;
+}
+.container{
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: row;
+}
+
+@media(max-width:800px){
+.container{
+flex-wrap: wrap;
+flex-direction: column;
+}
+}

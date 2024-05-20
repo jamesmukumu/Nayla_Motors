@@ -1,0 +1,72 @@
+<mat-card class="main">
+<form class="example-form">
+<mat-form-field>
+<mat-label>Search Car</mat-label>
+<input  required matInput  placeholder="Search Desired Car" type="text" />
+</mat-form-field>
+
+<button mat-flat-button color="primary">Find</button>
+</form>
+<mat-card-title>Filter By Budget</mat-card-title>
+<div class="btn-container">
+<button  mat-stroked-button>
+0-500K
+</button>
+<button  mat-stroked-button>
+500K-1M
+</button>
+<button mat-stroked-button>
+1M-5M
+</button>
+<button  mat-stroked-button>
+5M-Above 10M
+</button>
+
+</div>
+
+
+<!-- Advanced search i will do it here -->
+<div>
+<mat-form-field>
+<mat-label>Choose a Car</mat-label>
+<select matNativeControl required >
+<option *ngFor="let car of Vehichlebrands" [value]="car">{{car}}</option>
+</select>
+    </mat-form-field>
+</div>
+
+
+<div class="prices max-min">
+    <mat-card-title>Price And Currency</mat-card-title>
+    <mat-form-field>
+        <mat-label>Enter Minimum Price</mat-label>
+        <input matInput  placeholder="Enter Your Minimum Price" type="number"/>
+        
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Enter Maximum Price</mat-label>
+            <input matInput  placeholder="Enter Your Maximum Price" type="number"/>
+            
+            </mat-form-field>
+
+</div>
+
+<div class="prices max-min">
+   
+    <mat-form-field>
+        <mat-label>Choose Currency</mat-label>
+        <select matNativeControl required>
+         <option *ngFor="let currency of Currencies">
+         {{currency}}
+         </option>
+
+        </select>
+            </mat-form-field>
+
+</div>
+
+<button mat-flat-button color="primary">
+Search
+</button>
+</mat-card>

@@ -1,0 +1,16 @@
+
+.orient-hor img{
+width: 400px;
+height: 400px;
+}
+.green-color{
+background-color: green;
+}
+.container{
+text-align: center;
+}
+
+mat-card{
+text-align: center;
+}
+
