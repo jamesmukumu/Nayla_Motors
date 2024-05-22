@@ -47,9 +47,10 @@ if(this.myroute.snapshot.queryParams["filterBy"] == "advanced search"){
   console.log(this.data)
   if (this.data === "Results not found"){
   this.Resultsnotfound = true
+  this.fetched = true
   return
   }
-  this.fetched = true
+  
   console.log(this.Resultsnotfound)
   return
 }else if(this.myroute.snapshot.queryParams["filterBy"] == "pricewise"){
@@ -58,9 +59,10 @@ this.maxPrice = this.myroute.snapshot.queryParams["maximumPrice"]
 this.data = await  carFetch.Fetchcarbasedonprices(this.minPrice,this.maxPrice)
 if (this.data === "Results not found"){
   this.Resultsnotfound = true
+  this.fetched = true
   return
   }
-  this.fetched = true
+ 
   console.log(this.Resultsnotfound)
 return
 
@@ -68,15 +70,29 @@ return
   this.queryParam = this.myroute.snapshot.queryParams["carQuery"]
   var someData = await  carFetch.Fetchcarbasedonkeyword(this.queryParam)
   this.data = someData.data
-  if (this.data === "Results not found"){
+  if (someData === "Results not found"){
     this.Resultsnotfound = true
+    this.fetched = true
     return
     }
     this.fetched = true
     console.log(this.Resultsnotfound)
   return
   
-  }
+  }else if(this.myroute.snapshot.queryParams["filterBy"] == "brandSearch"){
+    this.queryParam = this.myroute.snapshot.queryParams["carBrand"]
+    var someData = await  carFetch.Fetchaccoundbrandwise(this.queryParam)
+    this.data = someData.data
+    if (someData === "Results not found"){
+      this.Resultsnotfound = true
+      this.fetched = true
+      return
+      }
+      this.fetched = true
+      console.log(this.Resultsnotfound)
+    return
+    
+    }
 }
 
 

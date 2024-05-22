@@ -26,7 +26,7 @@ Brandname:"BMW",
 Brandimage:"https://www.kaiandkaro.com/images/brands/bmw.svg"
 },
 {
-  Brandname:"Mercedes Benz",
+  Brandname:"Mercedes",
   Brandimage:"https://www.kaiandkaro.com/images/brands/mercedes.svg"
 },
 {
@@ -42,7 +42,7 @@ Brandimage:"https://www.kaiandkaro.com/images/brands/bmw.svg"
   Brandimage:"https://www.kaiandkaro.com/images/brands/toyota.svg"
 },
 {
-  Brandname:"LandRover",
+  Brandname:"Land rover",
   Brandimage:"https://www.kaiandkaro.com/images/brands/land_rover.svg"
 },
 {
@@ -52,7 +52,12 @@ Brandimage:"https://www.kaiandkaro.com/images/brands/bmw.svg"
 {
   Brandname:"Volkswagen",
   Brandimage:"https://www.kaiandkaro.com/images/brands/VW.svg"
+},
+{
+  Brandname:"Honda",
+  Brandimage:"https://www.kaiandkaro.com/images/brands/honda.svg"
 }
+
 
 
 ]
@@ -68,7 +73,7 @@ fetchcardBrand(brand:string){
 this.route.navigate(["filtered/cars"],{
 queryParams:{
 "carBrand":brand,
-"filterBy":"manualSearch"
+"filterBy":"brandSearch"
 }
 })
 

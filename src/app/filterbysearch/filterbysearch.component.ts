@@ -62,6 +62,7 @@ this.router.navigate(["filtered/cars"],{
 queryParams:{
 'minimumPrice':0,
 'maximumPrice':500000,
+"filterBy":"pricewise"
 }
 })
 }
