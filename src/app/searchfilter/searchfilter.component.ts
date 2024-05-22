@@ -47,9 +47,10 @@ if(this.myroute.snapshot.queryParams["filterBy"] == "advanced search"){
   console.log(this.data)
   if (this.data === "Results not found"){
   this.Resultsnotfound = true
-  this.fetched = true
+  
   return
   }
+  this.fetched = true
   
   console.log(this.Resultsnotfound)
   return
@@ -59,10 +60,10 @@ this.maxPrice = this.myroute.snapshot.queryParams["maximumPrice"]
 this.data = await  carFetch.Fetchcarbasedonprices(this.minPrice,this.maxPrice)
 if (this.data === "Results not found"){
   this.Resultsnotfound = true
-  this.fetched = true
+ 
   return
   }
- 
+  this.fetched = true
   console.log(this.Resultsnotfound)
 return
 
@@ -72,9 +73,10 @@ return
   this.data = someData.data
   if (someData === "Results not found"){
     this.Resultsnotfound = true
-    this.fetched = true
+   
     return
     }
+    
     this.fetched = true
     console.log(this.Resultsnotfound)
   return
@@ -85,7 +87,7 @@ return
     this.data = someData.data
     if (someData === "Results not found"){
       this.Resultsnotfound = true
-      this.fetched = true
+     
       return
       }
       this.fetched = true
