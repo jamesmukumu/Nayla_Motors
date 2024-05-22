@@ -8,7 +8,12 @@ align-items: center;
 justify-content: center;
 flex-direction: row;
 }
-
+.container-sample{
+    display: flex;
+    
+    flex-direction: row;
+    
+}
 @media(max-width:800px){
 .container{
 flex-wrap: wrap;

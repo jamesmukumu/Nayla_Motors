@@ -21,4 +21,8 @@ display: flex;
 flex-wrap: wrap;
 flex-direction: column;
 }
+.item{
+width: 100%;
+margin-left: 0;
+}
 }

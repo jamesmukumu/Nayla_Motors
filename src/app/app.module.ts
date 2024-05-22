@@ -26,6 +26,8 @@ import {DividerModule} from'primeng/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { GalleriaModule } from 'primeng/galleria';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { SearchfilterComponent } from './searchfilter/searchfilter.component';
+import { MessagesModule } from 'primeng/messages';
 
 
 @NgModule({
@@ -38,6 +40,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
     FilterbybrandComponent,
     AllcarsComponent,
     CarSpecificComponent,
+    SearchfilterComponent,
     
   ],
   imports: [
@@ -48,8 +51,10 @@ import { ProgressBarModule } from 'primeng/progressbar';
     MatDividerModule,   
     MatCardImage,
     MatButton,
+    MessagesModule,
     TableModule,
     MatIconModule,
+    FormsModule,
     ProgressBarModule,
     GalleriaModule,
     DividerModule,
@@ -61,7 +66,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
     RouterModule.forRoot([
     {path:"",component:LandingComponent},
     {path:"car/:searchvector",component:CarSpecificComponent},
- 
+    {path:"filtered/cars",component:SearchfilterComponent},
     ])    
   ],
   providers: [

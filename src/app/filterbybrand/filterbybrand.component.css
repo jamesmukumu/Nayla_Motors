@@ -1,21 +1,37 @@
+*{
+margin: 0;
+padding: 0;
+}
 .container{
 display: flex;
+align-items: center;
+justify-content: center;
+flex-direction:row;
+flex-wrap: wrap;
+width: 100%;
 
-flex-direction: column;
 }
 .item{
-width:100px;
-height: 100px;
-}
-.container img{
-width: 100%;
+
+width: 200px;
 height: 200px;
-cursor: pointer;
+margin-left: 20px;
 margin-top: 20px;
 }
+.item img{
+width: 100%;
+height: 100%;
+}
 mat-form-field{
-    width: 50%;
-    text-align: center;
-    }
-
+width: 50%;
+text-align: center;
+}
+@media(max-width:899px){
+.item{
+width: 100px;
+height:fit-content;
+margin-left: 3px;
+margin-top: 5px;
+}
+}
    

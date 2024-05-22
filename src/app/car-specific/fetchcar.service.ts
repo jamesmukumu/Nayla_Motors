@@ -1,17 +1,15 @@
-import axios from 'axios'
+import axios from 'axios';
 
-export class  CarService{
+export class CarService {
+  async fetchCarbasedonvector(searchvector: any) {
+    var resp = await axios.get(
+      'https://carshop-1.onrender.com/fetch/specific/car',
+      {
+        params: { searchVector: searchvector },
+      }
+    );
+    console.log(resp.data);
 
-async fetchCarbasedonvector(searchvector:any){
-
-
-var resp = await axios.get("https://carshop-hyqx.onrender.com/fetch/specific/car",{
-params:{"searchVector":searchvector}
-})
-console.log(resp.data)
-
-return resp.data
-
-}
-
+    return resp.data;
+  }
 }

@@ -36,6 +36,24 @@ Brandimage:"https://www.kaiandkaro.com/images/brands/bmw.svg"
   Brandname:"Nissan",
   Brandimage:"https://www.kaiandkaro.com/images/brands/nissan.svg"
 },
+{
+  Brandname:"Toyota",
+  Brandimage:"https://www.kaiandkaro.com/images/brands/toyota.svg"
+},
+{
+  Brandname:"LandRover",
+  Brandimage:"https://www.kaiandkaro.com/images/brands/land_rover.svg"
+},
+{
+  Brandname:"Lexus",
+  Brandimage:"https://www.kaiandkaro.com/images/brands/lexus.svg"
+},
+{
+  Brandname:"Volkswagen",
+  Brandimage:"https://www.kaiandkaro.com/images/brands/VW.svg"
+}
+
+
 ]
 brandName:string = ''
 showBrand:boolean = false
