@@ -14,6 +14,7 @@ export class FilterbysearchComponent {
   Maxprice:number = 0
   choosenCar:string =''
   currency:string = ""
+  typeQuery:string = ""
   seeButton:boolean = false
 Vehichlebrands:string[]= [
   "Toyota",
@@ -51,23 +52,25 @@ this.router.navigate(["filtered/cars"],{queryParams:{
 'maximumPrice':this.Maxprice,
 'minimumPrice':this.Minimumprice,
 "carBrand":this.choosenCar,
-"currency":this.currency
+"currency":this.currency,
+"filterBy":"advanced search"
 }})
 }
 
 filterby500K(){
 this.router.navigate(["filtered/cars"],{
 queryParams:{
-'maximumPrice':0,
-'minimumPrice':500000,
+'minimumPrice':0,
+'maximumPrice':500000,
 }
 })
 }
 filterby1milli(){
   this.router.navigate(["filtered/cars"],{
   queryParams:{
-  'maximumPrice':0,
-  'minimumPrice':1000000,
+  'minimumPrice':500000,
+  'maximumPrice':1000000,
+  "filterBy":"pricewise"
   }
   })
   }
@@ -75,8 +78,9 @@ filterby1milli(){
   filterby5M(){
     this.router.navigate(["filtered/cars"],{
     queryParams:{
-    'maximumPrice':0,
-    'minimumPrice':5000000,
+    'minimumPrice':100000,
+    'maximumPrice':5000000,
+    "filterBy":"pricewise"
     }
     })
     }
@@ -84,17 +88,19 @@ filterby1milli(){
     filterby10M(){
       this.router.navigate(["filtered/cars"],{
       queryParams:{
-      'maximumPrice':0,
-      'minimumPrice':1000000,
+      'minimumPrice':5000000,
+      'maximumPrice':10000000,
+      "filterBy":"pricewise"
       }
       })
       }
 
       filterBysearch(){
-        console.log("the choose car is",this.choosenCar)
+        console.log("the choose car is",this.typeQuery)
       this.router.navigate(["filtered/cars"],{
       queryParams:{
-      "carQuery":this.choosenCar
+      "carQuery":this.typeQuery,
+      "filterBy":"manualSearch"
       }
       })
 

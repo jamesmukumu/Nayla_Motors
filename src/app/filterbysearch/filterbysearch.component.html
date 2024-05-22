@@ -1,12 +1,12 @@
 <mat-card class="main">
-<form class="example-form">
+<div class="example-form" >
 <mat-form-field>
 <mat-label>Search Car</mat-label>
-<input  required matInput  placeholder="Search Desired Car" type="text" [(ngModel)] = "choosenCar" />
+<input   matInput  [(ngModel)]="typeQuery" required   placeholder="Search Desired Car" type="text" />
 </mat-form-field>
 
-<button mat-flat-button color="primary" (click)="filterBysearch()">Find</button>
-</form>
+<button mat-flat-button color="primary" type = "submit" (click)="filterBysearch()">Find</button>
+</div>
 <mat-card-title>Filter By Budget</mat-card-title>
 <div class="btn-container">
 <button  mat-stroked-button (click)="filterby500K()">

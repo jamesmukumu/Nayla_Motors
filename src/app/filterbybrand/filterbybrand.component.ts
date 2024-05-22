@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
  interface Brand{
   Brandname:string
   Brandimage:string
@@ -60,6 +61,17 @@ showBrand:boolean = false
 showBrandname(name:string){
 this.brandName =  name
 this.showBrand = true
+}
+
+constructor(private route:Router){}
+fetchcardBrand(brand:string){
+this.route.navigate(["filtered/cars"],{
+queryParams:{
+"carBrand":brand,
+"filterBy":"manualSearch"
+}
+})
+
 }
 
 

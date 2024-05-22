@@ -2,7 +2,11 @@ mat-form-field{
 width: 50%;
 text-align: center;
 }
-
+.example-form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
 mat-form-field input{
 width: 70%;
 }
@@ -22,11 +26,9 @@ margin-left: 20px;
 .prices max-min mat-form-field input{
 padding-left: 20px;
 }
-/* 
+
 @media(max-width:800px){
-.btn-container{
-display: flex;
-flex-wrap: wrap;
-flex-direction: column;
+mat-form-field input{
+width: 86%;
 }
-} */
+}
