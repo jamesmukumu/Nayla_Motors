@@ -2,6 +2,15 @@ import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import { FiltercarsService } from './search.sevice';
 
+interface PageEvent{
+  length:number
+  pageIndex:number
+  pageSize:number
+  previousPageIndex?: number
+  }
+  
+
+
 
 @Component({
   selector: 'searchfilter',
@@ -22,6 +31,9 @@ Resultsnotfound:boolean = false
 fetched:boolean = false
 length:number =0
 pagesize:number = 8
+first:number = 0
+last:number = 0
+paginatedData:any[] = []
 
 msg:any = [{
 "severity":"warn",
@@ -39,6 +51,20 @@ this.brand = this.myroute.snapshot.queryParams["carBrand"]
 this.currency = this.myroute.snapshot.queryParams["currency"]
 
 }
+
+
+changePage(event: PageEvent){
+console.log("pre data",this.data)
+  this.first = event.pageIndex * event.pageSize + 1;
+  this.last = Math.min(this.first + event.pageSize - 1, event.length);
+  console.log(`First item index: ${this.first}`);
+  console.log(`Last item index: ${this.last}`);
+   this.paginatedData = this.showCarspagewise(this.first,this.last,this.data)
+   console.log("updated data is",this.paginatedData)
+}
+
+
+
 
 
 
@@ -59,7 +85,9 @@ if(this.myroute.snapshot.queryParams["filterBy"] == "advanced search"){
 }else if(this.myroute.snapshot.queryParams["filterBy"] == "pricewise"){
 this.minPrice = this.myroute.snapshot.queryParams["minimumPrice"]
 this.maxPrice = this.myroute.snapshot.queryParams["maximumPrice"]
-this.data = await  carFetch.Fetchcarbasedonprices(this.minPrice,this.maxPrice)
+var someData = await  carFetch.Fetchcarbasedonprices(this.minPrice,this.maxPrice)
+this.data = someData.data
+this.length = someData.count
 if (this.data === "Results not found"){
   this.Resultsnotfound = true
  
@@ -73,6 +101,7 @@ return
   this.queryParam = this.myroute.snapshot.queryParams["carQuery"]
   var someData = await  carFetch.Fetchcarbasedonkeyword(this.queryParam)
   this.data = someData.data
+  this.length = someData.count
   if (someData === "Results not found"){
     this.Resultsnotfound = true
    
@@ -115,6 +144,11 @@ validateButton(btnAvailability:string){
   return priceStringform
   }
 
+
+  showCarspagewise(startTrunc:number,endTrunc:number,dataTotrunc:any[]):any[]{
+    var newdata = dataTotrunc.slice(startTrunc,endTrunc)
+   return newdata
+   }
 
 
   navigateTospecificcar(vectorSearch:string){

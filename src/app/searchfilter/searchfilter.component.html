@@ -7,14 +7,14 @@
   [closable]="true"
   />
 </div>
-<mat-paginator [length]="length" pageSize="pagesize">
+<mat-paginator [length]="length" [pageSize]="pagesize" (page)="changePage($event)">
 
 </mat-paginator>
 
 
 <ng-container *ngIf="fetched">
 
-  <mat-card *ngFor="let cardata of data" >
+  <mat-card *ngFor="let cardata of paginatedData" >
 
       <div class="orient-hor">
       <img src={{cardata.thumbnail}} alt=""  (click)="navigateTospecificcar(cardata.slug)">
@@ -64,6 +64,9 @@
 </div>
 
 
+
+<mat-paginator [length]="length" [pageSize]="pagesize" (page)="changePage($event)">
+</mat-paginator>
 
 
 <footer></footer>
