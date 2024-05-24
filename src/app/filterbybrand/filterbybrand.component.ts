@@ -22,7 +22,7 @@ Brandname:"Audi",
 Brandimage:"https://www.kaiandkaro.com/images/brands/audi.svg"
 },
 {
-Brandname:"BMW",
+Brandname:"Bmw",
 Brandimage:"https://www.kaiandkaro.com/images/brands/bmw.svg"
 },
 {
@@ -46,7 +46,7 @@ Brandimage:"https://www.kaiandkaro.com/images/brands/bmw.svg"
   Brandimage:"https://www.kaiandkaro.com/images/brands/land_rover.svg"
 },
 {
-  Brandname:"Lexus",
+  Brandname:"lexus",
   Brandimage:"https://www.kaiandkaro.com/images/brands/lexus.svg"
 },
 {
