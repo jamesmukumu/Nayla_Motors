@@ -78,7 +78,7 @@ import { AllfetchedcarsComponent } from './allfetchedcars/allfetchedcars.compone
     ])    
   ],
   providers: [
-    provideClientHydration(),   
+    provideClientHydration(),
     provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]

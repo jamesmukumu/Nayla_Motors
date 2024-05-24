@@ -46,7 +46,7 @@ Brandimage:"https://www.kaiandkaro.com/images/brands/bmw.svg"
   Brandimage:"https://www.kaiandkaro.com/images/brands/land_rover.svg"
 },
 {
-  Brandname:"lexus",
+  Brandname:"Lexus",
   Brandimage:"https://www.kaiandkaro.com/images/brands/lexus.svg"
 },
 {

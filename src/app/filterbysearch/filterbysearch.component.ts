@@ -95,6 +95,15 @@ filterby1milli(){
       }
       })
       }
+      filterby100M(){
+        this.router.navigate(["filtered/cars"],{
+        queryParams:{
+        'minimumPrice':10000000,
+        'maximumPrice':1000000000,
+        "filterBy":"pricewise"
+        }
+        })
+        }
 
       filterBysearch(){
         console.log("the choose car is",this.typeQuery)

@@ -10,15 +10,15 @@
 <div class="container">
 <div class="item">
 <img src={{carData.thumbnail}} alt="">
-<mat-card-title>
+<mat-card-subtitle>
 Total Landing Costs {{formatPrice(carData.price)}} All taxes included
 
-</mat-card-title>
+</mat-card-subtitle>
 </div>
 
 <div class="item">
 <mat-card-title>{{carData.name}}</mat-card-title>
-<mat-card-title>{{carData.description}}</mat-card-title>
+<mat-card-subtitle>{{carData.description}}</mat-card-subtitle>
 <button matTooltip="See More car Descriptions"  mat-raised-button (click)="sidebarVisible =true" style="background-color: rgb(59,130,246);">Car Specification</button>
 <button matTooltip="See More Safety Specs"  mat-raised-button (click)="sidebarSafety =true" style="background-color: rgb(59,130,246); margin-left: 20px;">Car Safety</button>
 </div>
@@ -47,7 +47,7 @@ Total Landing Costs {{formatPrice(carData.price)}} All taxes included
 <p-divider layout="vertical"></p-divider>
   <mat-card-subtitle>{{carData.year_of_manufacture}}</mat-card-subtitle>
 
-  </mat-card>
+  </mat-card>   
 <mat-divider></mat-divider>
  
 
@@ -221,7 +221,8 @@ Total Landing Costs {{formatPrice(carData.price)}} All taxes included
    </div>
    
  </p-sidebar>
-  
+ 
 </div>
 
 <footer></footer>
+

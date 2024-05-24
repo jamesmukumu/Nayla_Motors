@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { CarService } from './fetchcar.service';
 import { MenuItem } from 'primeng/api';
 
@@ -55,8 +55,10 @@ responsiveOptions: any[] = [
 
 
 
-constructor(route:ActivatedRoute){
+constructor(route:ActivatedRoute,private router:Router){
 var carserve = new CarService()
+console.log("http://localhost:4200"+this.router.url)
+
 
 route.paramMap.subscribe(async(rt)=>{
 var routeName = rt.get("searchvector")
