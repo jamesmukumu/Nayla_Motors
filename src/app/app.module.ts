@@ -29,6 +29,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { SearchfilterComponent } from './searchfilter/searchfilter.component';
 import { MessagesModule } from 'primeng/messages';
 import {BreadcrumbModule} from 'primeng/breadcrumb'
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { AllfetchedcarsComponent } from './allfetchedcars/allfetchedcars.component'
 
 
 
@@ -43,6 +45,7 @@ import {BreadcrumbModule} from 'primeng/breadcrumb'
     AllcarsComponent,
     CarSpecificComponent,
     SearchfilterComponent,
+    AllfetchedcarsComponent,
     
   ],
   imports: [
@@ -55,6 +58,7 @@ import {BreadcrumbModule} from 'primeng/breadcrumb'
     MatButton,
     MessagesModule,
     TableModule,
+    MatPaginatorModule,
     MatIconModule,
     FormsModule,
     BreadcrumbModule,
@@ -70,10 +74,11 @@ import {BreadcrumbModule} from 'primeng/breadcrumb'
     {path:"",component:LandingComponent},
     {path:"car/:searchvector",component:CarSpecificComponent},
     {path:"filtered/cars",component:SearchfilterComponent},
+   {path:"all",component:AllfetchedcarsComponent}
     ])    
   ],
   providers: [
-    provideClientHydration(),
+    provideClientHydration(),   
     provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
