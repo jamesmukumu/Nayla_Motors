@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class FilterbysearchComponent {
   Minimumprice:number | any
-  Maxprice:number = 0
+  Maxprice:number | any
   choosenCar:string =''
   currency:string = ""
   typeQuery:string = ""

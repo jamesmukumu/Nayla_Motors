@@ -28,6 +28,8 @@ import { GalleriaModule } from 'primeng/galleria';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { SearchfilterComponent } from './searchfilter/searchfilter.component';
 import { MessagesModule } from 'primeng/messages';
+import {BreadcrumbModule} from 'primeng/breadcrumb'
+
 
 
 @NgModule({
@@ -55,6 +57,7 @@ import { MessagesModule } from 'primeng/messages';
     TableModule,
     MatIconModule,
     FormsModule,
+    BreadcrumbModule,
     ProgressBarModule,
     GalleriaModule,
     DividerModule,

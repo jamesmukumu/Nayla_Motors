@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CarService } from './fetchcar.service';
-
+import { MenuItem } from 'primeng/api';
 
 
 interface Image {
-	thumbNail: string;
-	img: string;
+	image:string
+  id:number
+  created_at:string
+  updated_at:string
   }
 
 
@@ -21,7 +23,7 @@ export class CarSpecificComponent {
 sidebarVisible: boolean = false;
 sidebarSafety = false
 carData:any
-
+carName:any = ""
 images: Image[] = [];
 interiorFeatures:any[] =[]
 interiorResults:any[] = []
@@ -29,8 +31,8 @@ interiorResults:any[] = []
 safetyFeatures:any[] =[]
 safetyResults:any[] = []
 
-
-
+items:MenuItem[]|undefined
+home:MenuItem | undefined
 responsiveOptions: any[] = [
     {
       breakpoint: '1500px',
@@ -58,9 +60,12 @@ var carserve = new CarService()
 
 route.paramMap.subscribe(async(rt)=>{
 var routeName = rt.get("searchvector")
+this.carName = routeName
 console.log(routeName)
 this.carData = await carserve.fetchCarbasedonvector(routeName)
-this.generateImagefromthumbnail(this.carData.thumbnail)
+var someData = await carserve.Fetchcarimagesfromkairo(routeName)
+console.log("the car images are as follow",someData.pageProps.vehicle.vehicle_images)
+this.images =   someData.pageProps.vehicle.vehicle_images
 console.log("the Keys of the Car",Object.keys(this.carData.interior_features))
 this.interiorFeatures = Object.keys(this.carData.interior_features)
 console.log("the values of the Car",Object.values(this.carData.interior_features))
@@ -73,29 +78,21 @@ this.safetyResults = Object.values(this.carData.safety_features)
 
 
 })
+this.items = [
+  {
+  label:"vehichle",
+  },
+  {
+    label:this.carName
+  }
+  ]
+  this.home = {icon:"pi pi-home",routerLink:"/",tooltip:"Back to home"}
+
 }
 
 
 
-generateImagefromthumbnail(thumbnailimg: string) {
-    var modifiedThumbnailimage = thumbnailimg.replace(/(\d)(?=\.\w+$)/, "");
-    modifiedThumbnailimage = modifiedThumbnailimage.replace("thumbnails", "images");
 
-    for (var i = 0; i <= 9; i++) {
-      var newUrl: string = modifiedThumbnailimage.replace(/(\.\w+)$/, i + "$1");
-      
-      const image: Image = {
-        img: newUrl,
-        thumbNail: modifiedThumbnailimage
-      };
-
-      console.log(image);
-      this.images.push(image);
-    }
-    console.log("here is the image work", this.images);
-   
-
-  }
 
 
 

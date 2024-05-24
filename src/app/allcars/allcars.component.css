@@ -7,7 +7,9 @@ html{
 margin: 0;
 padding: 0;
 }
-
+.orient-hor{
+margin-top: 10px;
+}
 
 .orient-hor img{
 width: 400px;

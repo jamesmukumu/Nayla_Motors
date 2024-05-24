@@ -37,11 +37,14 @@ export class FiltercarsService {
 
   async Fetchcarbasedonkeyword(keyword: string) {
     try {
-      var resp = await axios.get('https://carshop-1.onrender.com/filter/cars/namewise', {
-        params: {
-          carfilter: keyword,
-        },
-      });
+      var resp = await axios.get(
+        'https://carshop-1.onrender.com/filter/cars/namewise',
+        {
+          params: {
+            carfilter: keyword,
+          },
+        }
+      );
 
       return resp.data;
     } catch (err) {
@@ -49,18 +52,19 @@ export class FiltercarsService {
     }
   }
 
-
-  async Fetchaccoundbrandwise(brand:string){
-  try{
-  var resp = await axios.get("https://carshop-1.onrender.com/fetch/car/brand",{
-  params:{
-  "carName":brand,
-  }
-  })
-   return resp.data
-  }catch(err){
-console.log(err)
-  }
-
+  async Fetchaccoundbrandwise(brand: string) {
+    try {
+      var resp = await axios.get(
+        'https://carshop-1.onrender.com/fetch/car/brand',
+        {
+          params: {
+            carName: brand,
+          },
+        }
+      );
+      return resp.data;
+    } catch (err) {
+      console.log(err);
+    }
   }
 }
