@@ -20,6 +20,8 @@ possibleButtons:string = 'available'
 data:any   
 Resultsnotfound:boolean = false
 fetched:boolean = false
+length:number =0
+pagesize:number = 8
 
 msg:any = [{
 "severity":"warn",
@@ -85,6 +87,7 @@ return
     this.queryParam = this.myroute.snapshot.queryParams["carBrand"]
     var someData = await  carFetch.Fetchaccoundbrandwise(this.queryParam)
     this.data = someData.data
+    this.length = someData.count
     if (someData === "Results not found"){
       this.Resultsnotfound = true
      
