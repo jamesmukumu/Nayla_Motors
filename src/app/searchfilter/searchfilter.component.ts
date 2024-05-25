@@ -34,7 +34,8 @@ pagesize:number = 8
 first:number = 0
 last:number = 0
 paginatedData:any[] = []
-
+visible:boolean = false
+Addcard:string ='save this car to your favourites'
 msg:any = [{
 "severity":"warn",
 "detail":"Result not found"

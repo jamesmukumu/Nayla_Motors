@@ -23,6 +23,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import {DividerModule} from'primeng/divider';
+import { DialogModule } from 'primeng/dialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { GalleriaModule } from 'primeng/galleria';
 import { ProgressBarModule } from 'primeng/progressbar';
@@ -67,6 +68,7 @@ import { AllfetchedcarsComponent } from './allfetchedcars/allfetchedcars.compone
     DividerModule,
     SidebarModule,
     ButtonModule,
+    DialogModule,
     MatFormFieldModule,
     MatTooltipModule,
     MatInputModule,
