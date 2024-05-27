@@ -31,7 +31,8 @@ import { SearchfilterComponent } from './searchfilter/searchfilter.component';
 import { MessagesModule } from 'primeng/messages';
 import {BreadcrumbModule} from 'primeng/breadcrumb'
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { AllfetchedcarsComponent } from './allfetchedcars/allfetchedcars.component'
+import { AllfetchedcarsComponent } from './allfetchedcars/allfetchedcars.component';
+import { MyfavcarsComponent } from './myfavcars/myfavcars.component'
 
 
 
@@ -47,6 +48,7 @@ import { AllfetchedcarsComponent } from './allfetchedcars/allfetchedcars.compone
     CarSpecificComponent,
     SearchfilterComponent,
     AllfetchedcarsComponent,
+    MyfavcarsComponent,
     
   ],
   imports: [
@@ -76,7 +78,8 @@ import { AllfetchedcarsComponent } from './allfetchedcars/allfetchedcars.compone
     {path:"",component:LandingComponent},
     {path:"car/:searchvector",component:CarSpecificComponent},
     {path:"filtered/cars",component:SearchfilterComponent},
-   {path:"all",component:AllfetchedcarsComponent}
+   {path:"all",component:AllfetchedcarsComponent},
+   {path:"myliked/cars",component:MyfavcarsComponent}
     ])    
   ],
   providers: [

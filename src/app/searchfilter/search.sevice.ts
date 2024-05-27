@@ -67,4 +67,20 @@ export class FiltercarsService {
       console.log(err);
     }
   }
+
+  async Savecartofavs(identify: string, carVector: string) {
+    try {
+      var payload = {
+        identifier: identify,
+        carvector: carVector,
+      };
+      var resp = await axios.post(
+        'https://carshop-1.onrender.com/save/car',
+        payload
+      );
+      return resp.data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }

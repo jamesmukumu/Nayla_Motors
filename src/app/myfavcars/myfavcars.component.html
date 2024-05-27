@@ -1,0 +1,70 @@
+<mat-card>
+<header></header>
+<p-button (click)="ShowDialogue()" label="See all liked Cars" />
+<p-dialog header="See Favourites cars" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+   
+    <mat-form-field class="flex align-items-center gap-3 mb-5">
+        <label  for="email" class="font-semibold w-6rem">Enter your phoneNumber</label>
+        <input matInput id="email" class="flex-auto" autocomplete="off" [(ngModel)] ="phone"/>
+    </mat-form-field>
+    <div class="flex justify-content-end gap-2">
+        <p-button label="Cancel" severity="secondary" (click)="visible = false" />
+        <p-button label="See" (click)="Fetchcars()" />
+    </div>
+</p-dialog>   
+
+
+
+<ng-container *ngIf="fetched">
+
+    <mat-card *ngFor="let cardata of data" >
+
+        <div class="orient-hor">
+        <img src={{cardata.thumbnail}} alt=""  (click)="navigateTospecificcar(cardata.slug)">
+        
+        
+        
+            <mat-card-title>{{cardata.name}}</mat-card-title>
+           <mat-card style="display: flex; flex-direction: row; text-align: center; margin-top: 20px; ">
+            <button  mat-raised-button>{{cardata.year_of_manufacture}}</button>
+            <!-- button rendering am doin here -->
+            <mat-card   [ngSwitch]="validateButton(cardata.availability)">
+            <button mat-raised-button *ngSwitchCase=true style="background-color: rgb(104,211,145);">available</button>
+            <button mat-raised-button *ngSwitchCase=false style="background-color: rgb(252,129,129);">{{cardata.availability}}</button>
+            </mat-card>
+         
+           </mat-card>
+          
+        <mat-divider></mat-divider>
+            <mat-card-subtitle>
+                {{cardata.description}}
+            </mat-card-subtitle>
+           <mat-divider></mat-divider>
+        
+            <mat-card-subtitle>
+                KSH:{{formatPrice(cardata.price)}}
+             </mat-card-subtitle>
+             
+             <button mat-raised-button style="background-color: rgb(104,211,145) ;">Car in Show Room</button>
+        
+        <mat-divider></mat-divider>
+        </div>
+        
+        
+        
+           
+        </mat-card>
+
+
+</ng-container>
+
+
+
+<div class="card" *ngIf="!fetched">
+    <p-progressBar mode="indeterminate" [style]="{'height': '6px'}" />
+</div>
+
+
+
+<footer></footer>
+</mat-card>

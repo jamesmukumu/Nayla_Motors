@@ -15,11 +15,13 @@ interface PageEvent{
 @Component({
   selector: 'searchfilter',
   templateUrl: './searchfilter.component.html',
-  styleUrl: './searchfilter.component.css'
+  styleUrl: './searchfilter.component.css',
+  providers:[FiltercarsService]
 })
 
 
 export class SearchfilterComponent implements OnInit {
+phoneNo:string = ""
 maxPrice:string= ""
 minPrice:string = ""
 brand:string = ''
@@ -41,9 +43,19 @@ msg:any = [{
 "detail":"Result not found"
 }
 ]
+Savesuccess:boolean = false
+Errorsave:boolean = false
+successmsg:any =[{
+"severity":"success",
+"detail":"Car has been saved successfully to favourites"
+}]
+errormsg:any =[{
+  "severity":"error",
+  "detail":"Car has already been saved to favourites"
+  }]
    //
 
-constructor(private myroute:ActivatedRoute,public Route:Router){
+constructor(private myroute:ActivatedRoute,public Route:Router,private carFetch:FiltercarsService){
   
 console.log(this.myroute.snapshot.queryParams)
 this.maxPrice = this.myroute.snapshot.queryParams["maximumPrice"]
@@ -64,15 +76,27 @@ console.log("pre data",this.data)
    console.log("updated data is",this.paginatedData)
 }
 
+async implementSave(carCevtor:string){
+var someData =  await this.carFetch.Savecartofavs(this.phoneNo,carCevtor)
+this.visible = false
+if(someData.msg === "saved"){
+this.Savesuccess = true
+return
+}else if(someData.msg == "car has already been saved"){
+this.Errorsave = true
+}
+}
+
+
 
 
 
 
 
 async ngOnInit(){
-var carFetch = new FiltercarsService()
+
 if(this.myroute.snapshot.queryParams["filterBy"] == "advanced search"){
-  this.data = await carFetch.Fetchcars(this.minPrice,this.maxPrice,this.brand,this.currency)
+  this.data = await this.carFetch.Fetchcars(this.minPrice,this.maxPrice,this.brand,this.currency)
   console.log(this.data)
   if (this.data === "Results not found"){
   this.Resultsnotfound = true
@@ -86,7 +110,7 @@ if(this.myroute.snapshot.queryParams["filterBy"] == "advanced search"){
 }else if(this.myroute.snapshot.queryParams["filterBy"] == "pricewise"){
 this.minPrice = this.myroute.snapshot.queryParams["minimumPrice"]
 this.maxPrice = this.myroute.snapshot.queryParams["maximumPrice"]
-var someData = await  carFetch.Fetchcarbasedonprices(this.minPrice,this.maxPrice)
+var someData = await  this.carFetch.Fetchcarbasedonprices(this.minPrice,this.maxPrice)
 this.data = someData.data
 this.length = someData.count
 if (this.data === "Results not found"){
@@ -100,7 +124,7 @@ return
 
 }else if(this.myroute.snapshot.queryParams["filterBy"] == "manualSearch"){
   this.queryParam = this.myroute.snapshot.queryParams["carQuery"]
-  var someData = await  carFetch.Fetchcarbasedonkeyword(this.queryParam)
+  var someData = await  this.carFetch.Fetchcarbasedonkeyword(this.queryParam)
   this.data = someData.data
   this.length = someData.count
   if (someData === "Results not found"){
@@ -115,7 +139,7 @@ return
   
   }else if(this.myroute.snapshot.queryParams["filterBy"] == "brandSearch"){
     this.queryParam = this.myroute.snapshot.queryParams["carBrand"]
-    var someData = await  carFetch.Fetchaccoundbrandwise(this.queryParam)
+    var someData = await  this.carFetch.Fetchaccoundbrandwise(this.queryParam)
     this.data = someData.data
     this.length = someData.count
     if (someData === "Results not found"){
