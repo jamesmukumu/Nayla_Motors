@@ -14,6 +14,7 @@ visible:boolean = false
 phone:string = ""
 fetched:boolean = false
 data:any[] = []
+loading:boolean = false
 possibleButtons:string = 'available'
 
 ShowDialogue(){
@@ -30,7 +31,7 @@ formatPrice(price:number){
 constructor(private fav:FetchfavsService,private router:Router){}
 
 async Fetchcars(){
-
+this.loading = true
 var someData =await  this.fav.gatherFavcars(this.phone)
 this.data = someData.data
 if(someData.msg == 'all cars for user have been fetched'){

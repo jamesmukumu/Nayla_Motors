@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import {RouterModule} from '@angular/router';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 import {MatCardModule,MatCardImage} from '@angular/material/card';
 import { FooterComponent } from './footer/footer.component';
@@ -67,6 +68,7 @@ import { MyfavcarsComponent } from './myfavcars/myfavcars.component'
     BreadcrumbModule,
     ProgressBarModule,
     GalleriaModule,
+    MatProgressSpinnerModule,
     DividerModule,
     SidebarModule,
     ButtonModule,
