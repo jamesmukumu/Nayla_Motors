@@ -7,7 +7,7 @@ export class FiltercarsService {
     Brand: string,
     Currency: string
   ) {
-    var resp = await axios.get('http://localhost:7800/filter/cars', {
+    var resp = await axios.get('https://carshop-1.onrender.com/filter/cars', {
       params: {
         min: minimumPrice,
         max: Maxprice,
@@ -21,7 +21,7 @@ export class FiltercarsService {
   async Fetchcarbasedonprices(minPrice: string, maxPrice: string) {
     try {
       var resp = await axios.get(
-        'http://localhost:7800/filter/cars/pricewise',
+        'https://carshop-1.onrender.com/filter/cars/pricewise',
         {
           params: {
             min: minPrice,
@@ -37,11 +37,14 @@ export class FiltercarsService {
 
   async Fetchcarbasedonkeyword(keyword: string) {
     try {
-      var resp = await axios.get('http://localhost:7800/filter/cars/namewise', {
-        params: {
-          carfilter: keyword,
-        },
-      });
+      var resp = await axios.get(
+        'https://carshop-1.onrender.com/filter/cars/namewise',
+        {
+          params: {
+            carfilter: keyword,
+          },
+        }
+      );
 
       return resp.data;
     } catch (err) {
@@ -51,11 +54,14 @@ export class FiltercarsService {
 
   async Fetchaccoundbrandwise(brand: string) {
     try {
-      var resp = await axios.get('http://localhost:7800/fetch/car/brand', {
-        params: {
-          carName: brand,
-        },
-      });
+      var resp = await axios.get(
+        'https://carshop-1.onrender.com/fetch/car/brand',
+        {
+          params: {
+            carName: brand,
+          },
+        }
+      );
       return resp.data;
     } catch (err) {
       console.log(err);
@@ -68,7 +74,10 @@ export class FiltercarsService {
         identifier: identify,
         carvector: carVector,
       };
-      var resp = await axios.post('http://localhost:7800/save/car', payload);
+      var resp = await axios.post(
+        'https://carshop-1.onrender.com/save/car',
+        payload
+      );
       return resp.data;
     } catch (err) {
       console.log(err);
