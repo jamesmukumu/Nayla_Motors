@@ -22,16 +22,17 @@
         We Help You Find The Car Which Fits Your Personality 
         </mat-card-subtitle>
 <allcars></allcars>
-        <mat-card class="container">
-      <mat-card style="width: 100%;">
-        <mat-card-title style="padding-right: 20px;cursor: pointer;">Search By Name</mat-card-title>
-        <filterbysearch></filterbysearch>
-      </mat-card>
-       <mat-card style="width: 100%;">
-        <mat-card-title style="cursor: pointer; padding-right: 20px;">Filter by Brand</mat-card-title>
-        <filterbybrand></filterbybrand>
-       </mat-card>
-        </mat-card>
+      
+
+<mat-tab-group>
+<mat-tab label="Filter Brandwise">
+<filterbybrand></filterbybrand>
+</mat-tab>
+<mat-tab label="Filter By Search">
+<filterbysearch></filterbysearch>
+</mat-tab>
+
+</mat-tab-group>  
         
 
 

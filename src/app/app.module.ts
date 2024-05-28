@@ -34,8 +34,8 @@ import {BreadcrumbModule} from 'primeng/breadcrumb'
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { AllfetchedcarsComponent } from './allfetchedcars/allfetchedcars.component';
 import { MyfavcarsComponent } from './myfavcars/myfavcars.component'
-
-
+import {MatTabsModule} from '@angular/material/tabs'
+import {MatTreeModule} from '@angular/material/tree';
 
 @NgModule({
   declarations:[
@@ -59,6 +59,7 @@ import { MyfavcarsComponent } from './myfavcars/myfavcars.component'
     MatCardModule, 
     MatDividerModule,   
     MatCardImage,
+    MatTabsModule,
     MatButton,
     MessagesModule,
     TableModule,
@@ -68,6 +69,7 @@ import { MyfavcarsComponent } from './myfavcars/myfavcars.component'
     BreadcrumbModule,
     ProgressBarModule,
     GalleriaModule,
+    MatTreeModule,
     MatProgressSpinnerModule,
     DividerModule,
     SidebarModule,
