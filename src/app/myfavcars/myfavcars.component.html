@@ -47,7 +47,8 @@
              </mat-card-subtitle>
              
              <button mat-raised-button style="background-color: rgb(104,211,145) ;">Car in Show Room</button>
-        
+             <p-button icon="pi pi-times" severity="danger" matTooltip="Remove car from favourites" (onClick)="fav.deleteCarfromfavs(cardata.slug,phone)" />
+
         <mat-divider></mat-divider>
         </div>
         
@@ -56,7 +57,7 @@
            
         </mat-card>
 
-
+    
 </ng-container>
 
 

@@ -16,6 +16,7 @@ fetched:boolean = false
 data:any[] = []
 loading:boolean = false
 possibleButtons:string = 'available'
+deletemessage:string = ""
 
 ShowDialogue(){
 this.visible = true
@@ -28,7 +29,7 @@ formatPrice(price:number){
   }
 
 
-constructor(private fav:FetchfavsService,private router:Router){}
+constructor(public fav:FetchfavsService,private router:Router){}
 
 async Fetchcars(){
 this.loading = true
@@ -47,6 +48,9 @@ validateButton(btnAvailability:string){
   return false
   }
   }
+
+
+
 
 
 navigateTospecificcar(vectorSearch:string){

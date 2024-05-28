@@ -4,7 +4,7 @@ export class AllcarsService {
   car: any[] = [];
 
   async fetchCardata(): Promise<any[]> {
-    var resp = await axios.get('https://carshop-1.onrender.com/fetch/all/Cars');
+    var resp = await axios.get('http://localhost:7800/fetch/all/Cars');
     var randNo: number = Math.random() * 300;
     randNo = Math.floor(randNo);
     var addedNumber: number = randNo + 6;
