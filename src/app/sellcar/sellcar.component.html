@@ -1,0 +1,236 @@
+<mat-card>
+<header></header>
+<div class="card">
+    <p-stepper orientation="vertical">
+        <p-stepperPanel header="Basic Car Details">
+            <ng-template pTemplate="content"  let-nextCallback="nextCallback" let-prevCallback ="prevCallback" let-index="index">
+                <div class="flex flex-column h-12rem">
+                    
+                       <form class="example-form">
+                        <p>
+                        <mat-form-field>
+                        <mat-label>Reg Number</mat-label>
+                        <input matInput type="text" required placeholder="Registration Number" >
+    
+                        </mat-form-field>
+                        </p>
+                      <p>
+                        <mat-form-field>
+                            <mat-label>Model</mat-label>
+                         <input matInput type="text" style="width: 100%;" required placeholder="Model" >
+
+                        </mat-form-field>
+                      </p>
+
+                        <p>
+                        <mat-form-field class="example-full-width">
+                        <mat-label>Make</mat-label>
+                        <input matInput type="text" required placeholder="Make" >
+                        </mat-form-field>
+                        </p>
+      
+                        <p>
+                            <mat-form-field class="example-full-width">
+                            <mat-label>Color</mat-label>
+                            <input matInput type="text" required placeholder="Color" >
+                            </mat-form-field>
+                            </p>
+
+
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Mileage</mat-label>
+                                <input matInput type="number" required placeholder="mileage" >
+                                </mat-form-field>
+
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Choose Mileage Unit</mat-label>
+                                    <select matNativeControl required>
+                                        <option value="KM">KM</option>
+                                        <option value="Miles">Miles</option>
+                                    </select>
+                                    
+                                    </mat-form-field>
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Has Accident History</mat-label>
+                                        <select matNativeControl required>
+                                            <option value="yes">Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                        
+                                        </mat-form-field>
+
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>Asking Price</mat-label>
+                                            <input matInput type="number" required placeholder="asking Price" >
+                                            </mat-form-field>
+    
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Location</mat-label>
+                                                <input matInput type="number" required placeholder="location" >
+                                                </mat-form-field>
+        
+
+                       </form>
+                    </div>
+               
+                <div class="flex py-4">
+                    
+                    <p-button label="Next" (onClick)="nextCallback.emit()" />
+                </div>
+            </ng-template>
+        </p-stepperPanel>
+        <p-stepperPanel header="Personal Contact Info">
+            <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback" let-index="index">
+                <div class="flex flex-column h-12rem">
+                    
+                       <form class="example-form">
+                        <p>
+                        <mat-form-field>
+                        <mat-label>First Name</mat-label>
+                        <input matInput type="text" required placeholder="First name" >
+    
+                        </mat-form-field>
+                        </p>
+                      <p>
+                        <mat-form-field>
+                            <mat-label>Last Name</mat-label>
+                         <input matInput type="text" style="width: 100%;" required placeholder="Last name" >
+
+                        </mat-form-field>
+                      </p>
+
+                        <p>
+                        <mat-form-field class="example-full-width">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" required placeholder="Email" >
+                        </mat-form-field>
+                        </p>
+      
+                        <p>
+                            <mat-form-field class="example-full-width">
+                            <mat-label>Phone Number</mat-label>
+                            <input matInput type="text" required placeholder="phone number" >
+                            </mat-form-field>
+                            </p>
+
+
+                            <mat-form-field class="example-full-width">
+                                <mat-label>ID Number</mat-label>
+                                <input matInput type="number" required placeholder="id number" >
+                                </mat-form-field>
+<mat-card>
+    <mat-card-title>Preferred Contact Method</mat-card-title>
+  <mat-checkbox>Email</mat-checkbox>  
+  <mat-checkbox>Whatsapp</mat-checkbox>  
+</mat-card>
+
+ <mat-form-field class="example-full-width">
+                                                <mat-label>Location</mat-label>
+                                                <input matInput type="number" required placeholder="location" >
+                                                </mat-form-field>
+        
+
+                       </form>
+                    </div>
+               
+                <div class="flex py-4">
+                    <p-button label="Back" (onClick)="prevCallback.emit()" />
+                    <p-button label="Next" (onClick)="nextCallback.emit()" />
+                </div>
+            </ng-template>
+        </p-stepperPanel>
+     
+
+
+<p-stepperPanel header="Images">
+    <ng-template pTemplate="content" let-prevCallback="prevCallback" let-index="index">
+        
+        <div class="card flex justify-content-center">
+  
+            <p-fileUpload 
+                mode="advanced" 
+                chooseLabel="Upload ID Front" 
+                chooseIcon="pi pi-upload"     
+                name="demo[]" 
+                url="https://www.primefaces.org/cdn/api/upload.php" 
+                accept="image/*" 
+                maxFileSize="1000000" 
+                 />
+        </div>
+
+        <div class="card flex justify-content-center">
+  
+            <p-fileUpload 
+                mode="advanced" 
+                chooseLabel="Upload ID Back" 
+                chooseIcon="pi pi-upload"     
+                name="demo[]" 
+                url="https://www.primefaces.org/cdn/api/upload.php" 
+                accept="image/*" 
+                maxFileSize="1000000" 
+                 />
+        </div>
+    
+
+        <div class="card flex justify-content-center">
+  
+            <p-fileUpload 
+                mode="advanced" 
+                chooseLabel="Car Image One" 
+                chooseIcon="pi pi-upload"     
+                name="demo[]" 
+                url="https://www.primefaces.org/cdn/api/upload.php" 
+                accept="image/*" 
+                maxFileSize="1000000000000" 
+                 />
+        </div>
+
+
+
+        
+        <div class="card flex justify-content-center">
+  
+            <p-fileUpload 
+                mode="advanced" 
+                chooseLabel="Car Image Two" 
+                chooseIcon="pi pi-upload"     
+                name="demo[]" 
+                url="https://www.primefaces.org/cdn/api/upload.php" 
+                accept="image/*" 
+                maxFileSize="1000000000000" 
+                 />
+        </div>
+        
+       
+
+        
+        <div class="card flex justify-content-center">
+  
+            <p-fileUpload 
+                mode="advanced" 
+                chooseLabel="Car Image Three" 
+                chooseIcon="pi pi-upload"     
+                name="demo[]" 
+                url="https://www.primefaces.org/cdn/api/upload.php" 
+                accept="image/*" 
+                maxFileSize="1000000000000" 
+                 />
+        </div>
+        <div class="flex py-4">
+            <p-button label="Back" icon="pi pi-arrow-left" (onClick)="prevCallback.emit()" />
+            <p-button label="Complete" />
+        </div>
+    </ng-template>
+
+</p-stepperPanel>
+
+
+    </p-stepper>
+</div>
+
+
+
+
+
+<footer></footer>
+</mat-card>

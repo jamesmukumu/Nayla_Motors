@@ -15,6 +15,7 @@ import { FilterbysearchComponent } from './filterbysearch/filterbysearch.compone
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatInputModule} from '@angular/material/input';
+import { FileUploadModule } from 'primeng/fileupload';
 import { FilterbybrandComponent } from './filterbybrand/filterbybrand.component';
 import { AllcarsComponent } from './allcars/allcars.component';
 import {MatDividerModule} from '@angular/material/divider'
@@ -36,6 +37,13 @@ import { AllfetchedcarsComponent } from './allfetchedcars/allfetchedcars.compone
 import { MyfavcarsComponent } from './myfavcars/myfavcars.component'
 import {MatTabsModule} from '@angular/material/tabs'
 import {MatTreeModule} from '@angular/material/tree';
+import { SellcarComponent } from './sellcar/sellcar.component';
+import {MatStepperModule} from '@angular/material/stepper'
+import { StepperModule } from 'primeng/stepper';
+import {MatCheckboxModule} from '@angular/material/checkbox'
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 @NgModule({
   declarations:[
@@ -50,6 +58,7 @@ import {MatTreeModule} from '@angular/material/tree';
     SearchfilterComponent,
     AllfetchedcarsComponent,
     MyfavcarsComponent,
+    SellcarComponent,
     
   ],
   imports: [
@@ -59,12 +68,17 @@ import {MatTreeModule} from '@angular/material/tree';
     MatCardModule, 
     MatDividerModule,   
     MatCardImage,
+    MatStepperModule,
     MatTabsModule,
+   StepperModule,
     MatButton,
+    HttpClientModule,
+    FileUploadModule,
     MessagesModule,
     TableModule,
     MatPaginatorModule,
     MatIconModule,
+    MatCheckboxModule,
     FormsModule,
     BreadcrumbModule,
     ProgressBarModule,
@@ -83,7 +97,8 @@ import {MatTreeModule} from '@angular/material/tree';
     {path:"car/:searchvector",component:CarSpecificComponent},
     {path:"filtered/cars",component:SearchfilterComponent},
    {path:"all",component:AllfetchedcarsComponent},
-   {path:"myliked/cars",component:MyfavcarsComponent}
+   {path:"myliked/cars",component:MyfavcarsComponent},
+   {path:"sell/car",component:SellcarComponent}
     ])    
   ],
   providers: [
