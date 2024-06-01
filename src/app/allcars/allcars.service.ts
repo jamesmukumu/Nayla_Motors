@@ -11,4 +11,3 @@ export class AllcarsService {
     return resp.data.data.slice(randNo, addedNumber);
   }
 }
-   

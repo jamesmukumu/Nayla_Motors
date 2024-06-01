@@ -1,23 +1,23 @@
 <mat-card>
 <header></header>
-<div class="card">
+<div class="card" *ngIf="!Savedsale">
     <p-stepper orientation="vertical">
         <p-stepperPanel header="Basic Car Details">
             <ng-template pTemplate="content"  let-nextCallback="nextCallback" let-prevCallback ="prevCallback" let-index="index">
                 <div class="flex flex-column h-12rem">
                     
-                       <form class="example-form">
+                       <mat-card>
                         <p>
                         <mat-form-field>
                         <mat-label>Reg Number</mat-label>
-                        <input matInput type="text" required placeholder="Registration Number" >
-    
+                        <input matInput [(ngModel)]="carPlate" type="text" required placeholder="Registration Number" />
+                                
                         </mat-form-field>
                         </p>
                       <p>
                         <mat-form-field>
                             <mat-label>Model</mat-label>
-                         <input matInput type="text" style="width: 100%;" required placeholder="Model" >
+                         <input matInput type="text" style="width: 100%;" required placeholder="Model" [(ngModel)]='model'>
 
                         </mat-form-field>
                       </p>
@@ -25,26 +25,26 @@
                         <p>
                         <mat-form-field class="example-full-width">
                         <mat-label>Make</mat-label>
-                        <input matInput type="text" required placeholder="Make" >
+                        <input matInput type="text" required placeholder="Make" [(ngModel)]='make'>
                         </mat-form-field>
                         </p>
       
                         <p>
                             <mat-form-field class="example-full-width">
                             <mat-label>Color</mat-label>
-                            <input matInput type="text" required placeholder="Color" >
+                            <input matInput type="text" required placeholder="Color" [(ngModel)]='color'>
                             </mat-form-field>
                             </p>
 
 
                             <mat-form-field class="example-full-width">
                                 <mat-label>Mileage</mat-label>
-                                <input matInput type="number" required placeholder="mileage" >
+                                <input matInput type="number" required placeholder="mileage" [(ngModel)]="mileage">
                                 </mat-form-field>
 
                                 <mat-form-field class="example-full-width">
                                     <mat-label>Choose Mileage Unit</mat-label>
-                                    <select matNativeControl required>
+                                    <select matNativeControl required [(ngModel)]='mileageUnit'>
                                         <option value="KM">KM</option>
                                         <option value="Miles">Miles</option>
                                     </select>
@@ -52,25 +52,25 @@
                                     </mat-form-field>
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Has Accident History</mat-label>
-                                        <select matNativeControl required>
-                                            <option value="yes">Yes</option>
-                                            <option value="no">No</option>
+                                        <select matNativeControl required [(ngModel)]='AccidentHistory'>
+                                            <option value="true">Yes</option>
+                                            <option value="false">No</option>
                                         </select>
                                         
                                         </mat-form-field>
 
                                         <mat-form-field class="example-full-width">
                                             <mat-label>Asking Price</mat-label>
-                                            <input matInput type="number" required placeholder="asking Price" >
+                                            <input matInput type="number" required placeholder="asking Price" [(ngModel)]='Price'>
                                             </mat-form-field>
     
                                             <mat-form-field class="example-full-width">
                                                 <mat-label>Location</mat-label>
-                                                <input matInput type="number" required placeholder="location" >
+                                                <input matInput type="text" required placeholder="location" [(ngModel)]="Location">
                                                 </mat-form-field>
         
 
-                       </form>
+                       </mat-card>
                     </div>
                
                 <div class="flex py-4">
@@ -83,18 +83,18 @@
             <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback" let-index="index">
                 <div class="flex flex-column h-12rem">
                     
-                       <form class="example-form">
+                       <mat-card>
                         <p>
                         <mat-form-field>
                         <mat-label>First Name</mat-label>
-                        <input matInput type="text" required placeholder="First name" >
+                        <input matInput type="text" required placeholder="First name" [(ngModel)]='First_name'>
     
                         </mat-form-field>
                         </p>
                       <p>
                         <mat-form-field>
                             <mat-label>Last Name</mat-label>
-                         <input matInput type="text" style="width: 100%;" required placeholder="Last name" >
+                         <input matInput type="text" style="width: 100%;" required placeholder="Last name" [(ngModel)]='Last_name'>
 
                         </mat-form-field>
                       </p>
@@ -102,35 +102,32 @@
                         <p>
                         <mat-form-field class="example-full-width">
                         <mat-label>Email</mat-label>
-                        <input matInput type="email" required placeholder="Email" >
+                        <input matInput type="email" required placeholder="Email" [(ngModel)]='Email' >
                         </mat-form-field>
                         </p>
       
                         <p>
                             <mat-form-field class="example-full-width">
                             <mat-label>Phone Number</mat-label>
-                            <input matInput type="text" required placeholder="phone number" >
+                            <input matInput type="text" required placeholder="phone number" [(ngModel)]='Phonenumber'>
                             </mat-form-field>
                             </p>
 
 
                             <mat-form-field class="example-full-width">
                                 <mat-label>ID Number</mat-label>
-                                <input matInput type="number" required placeholder="id number" >
+                                <input matInput type="number" required placeholder="id number" [(ngModel)]='idnumber'>
                                 </mat-form-field>
 <mat-card>
     <mat-card-title>Preferred Contact Method</mat-card-title>
-  <mat-checkbox>Email</mat-checkbox>  
-  <mat-checkbox>Whatsapp</mat-checkbox>  
+  <mat-checkbox value="Email" (change)="resultCheck($event)">Email</mat-checkbox>  
+  <mat-checkbox value="Phone Call" (change)="resultCheck($event)">Call</mat-checkbox>  
+  <mat-checkbox value="Whatsapp" (change)="resultCheck($event)">Whatsapp</mat-checkbox>  
 </mat-card>
 
- <mat-form-field class="example-full-width">
-                                                <mat-label>Location</mat-label>
-                                                <input matInput type="number" required placeholder="location" >
-                                                </mat-form-field>
         
 
-                       </form>
+                       </mat-card>
                     </div>
                
                 <div class="flex py-4">
@@ -155,10 +152,11 @@
                 url="https://www.primefaces.org/cdn/api/upload.php" 
                 accept="image/*" 
                 maxFileSize="1000000" 
+                (onSelect)="HandleUploadfrontid($event)"
                  />
         </div>
 
-        <div class="card flex justify-content-center">
+        <div class="card flex justify-content-center">  
   
             <p-fileUpload 
                 mode="advanced" 
@@ -168,6 +166,7 @@
                 url="https://www.primefaces.org/cdn/api/upload.php" 
                 accept="image/*" 
                 maxFileSize="1000000" 
+                (onSelect)="HandleUploadbackid($event)"
                  />
         </div>
     
@@ -179,11 +178,12 @@
                 chooseLabel="Car Image One" 
                 chooseIcon="pi pi-upload"     
                 name="demo[]" 
-                url="https://www.primefaces.org/cdn/api/upload.php" 
+                 
                 accept="image/*" 
                 maxFileSize="1000000000000" 
+                (onSelect)="HandleUpload($event)"
                  />
-        </div>
+        </div>   
 
 
 
@@ -198,6 +198,7 @@
                 url="https://www.primefaces.org/cdn/api/upload.php" 
                 accept="image/*" 
                 maxFileSize="1000000000000" 
+                (onSelect)="HandleUploadCartwo($event)"
                  />
         </div>
         
@@ -214,21 +215,33 @@
                 url="https://www.primefaces.org/cdn/api/upload.php" 
                 accept="image/*" 
                 maxFileSize="1000000000000" 
+                (onSelect)="HandleUploadCarthree($event)"
                  />
         </div>
         <div class="flex py-4">
             <p-button label="Back" icon="pi pi-arrow-left" (onClick)="prevCallback.emit()" />
-            <p-button label="Complete" />
+            <p-button label="Complete"(onClick)="Handleactualsale()" />
         </div>
     </ng-template>
 
-</p-stepperPanel>
+</p-stepperPanel>  
 
 
     </p-stepper>
 </div>
 
 
+<div class="card" *ngIf="Savedsale">
+<p-progressBar mode="indeterminate" [style]="{'height': '6px'}" />
+  </div>
+
+<mat-card *ngIf="Errormsg">
+<p-messages
+[value]="Msgs"
+[closable]="true"
+/>
+
+</mat-card>
 
 
 

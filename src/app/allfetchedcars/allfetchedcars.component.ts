@@ -57,7 +57,7 @@ return newdata
 possibleButtons:string = 'available'
 fetched:boolean = false 
 Savecartofavs:string = "Save Car to favourites"
-
+//
 
 validateButton(btnAvailability:string){
 if(btnAvailability == this.possibleButtons){
