@@ -5,11 +5,11 @@
       <img mat-card-image src="https://res.cloudinary.com/dasrniwpk/image/upload/v1717157566/WhatsApp_Image_2024-05-31_at_2.59.52_PM_g5l1z8.jpg" (click) = "navigateDash()" >
       
       <div class="divVertical">
-        <mat-card-subtitle style="padding-right: 20px;" [routerLink]="['/import/car']">Import Cars</mat-card-subtitle>
-        <mat-card-subtitle routerLink="/sell/car">Sell Your Car</mat-card-subtitle>
-        <mat-card-subtitle>Trade in your Car</mat-card-subtitle>
-        <mat-card-subtitle>Contact Us</mat-card-subtitle>
-        <mat-card-subtitle routerLink="/myliked/cars">My Favourite cars</mat-card-subtitle>
+        <p style="padding-right: 20px;" (click)="importsNavigate()">Import Cars</p>
+        <p routerLink="/sell/car">Sell Your Car</p>
+        <p>Trade in your Car</p>
+        <p>Contact Us</p>
+        <p routerLink="/myliked/cars">My Favourite cars</p>
       </div>  
     </div>
     

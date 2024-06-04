@@ -42,6 +42,7 @@ import {MatStepperModule} from '@angular/material/stepper'
 import { StepperModule } from 'primeng/stepper';
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import { HttpClientModule } from '@angular/common/http';
+import { ScrollTopModule } from 'primeng/scrolltop';
 
 
 
@@ -68,9 +69,12 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule, 
     MatDividerModule,   
     MatCardImage,
+    ScrollTopModule,
     MatStepperModule,
     MatTabsModule,
+    
    StepperModule,
+   
     MatButton,
     HttpClientModule,
     FileUploadModule,

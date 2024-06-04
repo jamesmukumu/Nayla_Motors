@@ -97,8 +97,12 @@ this.items = [
 
 
 
-
-
+callUs(){
+window.location.href = 'tel:0759857032'
+}
+whatsups(){
+window.location.href = 'https://wa.me/0759857032'
+}
 
 
 formatPrice(price:number){

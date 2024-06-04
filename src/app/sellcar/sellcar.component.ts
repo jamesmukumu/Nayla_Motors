@@ -37,6 +37,13 @@ Msgs:any[]= [{
 "severity":"warn",
 "detail":"Car Plate has beeen already registered"
 }]
+MsgProspectsave:any[]= [
+{
+'severity':'success',
+"detail":"Your Car Sale is being processed"
+}
+]
+Savedsuccess:boolean = false
 
 
 
@@ -93,8 +100,13 @@ Carimagethree:this.Carimagethree
 
 var somedata = await this.Salecar.Sendsellinfo(PersonalizedInfo,Carinfo,Carimages)
 console.log(somedata)
-if(somedata.msg === 'Reg Number already in use')this.Errormsg=true
-
+if(somedata.msg === 'Reg Number already in use'){
+this.Errormsg=true
+return
+}else if(somedata.msg  === 'prospect sale saved'){
+this.Savedsuccess = true
+return
+}
 
 }catch(err){
 console.log(err)

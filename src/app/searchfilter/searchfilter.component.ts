@@ -117,6 +117,12 @@ export class SearchfilterComponent implements OnInit {
       }
       this.fetched = true;
       this.paginatedData = this.showCarspagewise(0, this.pagesize, this.data);
+    }else if(this.myroute.snapshot.queryParams["importedcars"] === "true"){
+    var someData = await this.carFetch.Fetchimportedcars()
+    this.data = someData.data
+    this.length = someData.count
+    this.fetched = true;
+    this.paginatedData = this.showCarspagewise(0, this.pagesize, this.data);
     }
   }
 

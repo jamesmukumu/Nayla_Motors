@@ -16,4 +16,10 @@ navigateDash(){
   this.router.navigate([""])
 }
 
+importsNavigate(){
+this.router.navigate(["/filtered/cars"],{
+queryParams:{"importedcars":true}
+})
+}
+
 }

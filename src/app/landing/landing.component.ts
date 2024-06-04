@@ -17,5 +17,10 @@ constructor(private route:Router){}
 clickGo(){
 this.route.navigate(["/all"])
 }
+imports(){
+this.route.navigate(["/filtered/cars"],{
+queryParams:{"importedcars":true}
+})
+}
 
 }

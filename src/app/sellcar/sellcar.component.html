@@ -243,7 +243,12 @@
 
 </mat-card>
 
-
+<mat-card *ngIf="Savedsuccess">
+<p-messages
+[value]="MsgProspectsave"    
+[closable]="true"
+/>
+</mat-card>
 
 <footer></footer>
 </mat-card>

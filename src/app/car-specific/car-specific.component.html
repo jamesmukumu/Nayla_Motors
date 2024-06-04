@@ -152,6 +152,8 @@ Total Landing Costs {{formatPrice(carData.price)}} All taxes included
   <mat-card-subtitle>{{carData.engine_specifications.acceleration}}seconds</mat-card-subtitle>
 
   </mat-card>
+
+  <p-scrollTop/>
 <mat-divider></mat-divider>
 
 
@@ -218,10 +220,13 @@ Total Landing Costs {{formatPrice(carData.price)}} All taxes included
        </mat-card>
    
    
-   </div>
+   </div>  
    
  </p-sidebar>
+
+  <i class="pi pi-phone" matTooltip="Call Us"(click)="callUs()"></i>
  
+ <i class="pi pi-whatsapp" style="margin-left: 20px; color: forestgreen;" (click)="whatsups()" matTooltip="Whatsapp us"></i>
 </div>
 
 <footer></footer>

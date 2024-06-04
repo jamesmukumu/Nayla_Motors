@@ -83,4 +83,15 @@ export class FiltercarsService {
       console.log(err);
     }
   }
+
+  async Fetchimportedcars() {
+    try {
+      var resp = await axios.get(
+        'https://carshop-1.onrender.com/all/imported/cars'
+      );
+      return resp.data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }
