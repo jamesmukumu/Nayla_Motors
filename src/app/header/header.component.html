@@ -1,16 +1,19 @@
 <mat-card>
 
 
-    <div>   
+    <div style="position: relative;">   
       <img mat-card-image src="https://res.cloudinary.com/dasrniwpk/image/upload/v1717157566/WhatsApp_Image_2024-05-31_at_2.59.52_PM_g5l1z8.jpg" (click) = "navigateDash()" >
-      
-      <div class="divVertical">
-        <p style="padding-right: 20px;" (click)="importsNavigate()">Import Cars</p>
-        <p routerLink="/sell/car">Sell Your Car</p>
-        <p>Trade in your Car</p>
-        <p>Contact Us</p>
-        <p routerLink="/myliked/cars">My Favourite cars</p>
-      </div>  
-    </div>
+      <i class="pi pi-bars" (click)="sidebarVisible=true"></i>
+   <p-sidebar [(visible)]="sidebarVisible"  position="left">
+    <div class="divVertical">
+      <p style="padding-right: 20px;" (click)="importsNavigate()">Import Cars</p>
+      <p routerLink="/sell/car">Sell Your Car</p>
+      <p>Trade in your Car</p>
+      <p>Contact Us</p>
+      <p routerLink="/myliked/cars">My Favourite cars</p>
+    </div> 
+
+   </p-sidebar>           
+    </div>   
     
     

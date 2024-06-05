@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
+sidebarVisible:boolean = false
 mobile = false
 constructor(private router:Router){}   
 
