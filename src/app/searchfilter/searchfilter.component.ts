@@ -17,6 +17,7 @@ interface PageEvent {
 })
 
 export class SearchfilterComponent implements OnInit {
+  defaultImage:string = "https://res.cloudinary.com/dasrniwpk/image/upload/v1717157566/WhatsApp_Image_2024-05-31_at_2.59.52_PM_g5l1z8.jpg"
   phoneNo: string = "";
   maxPrice: string = "";
   minPrice: string = "";
@@ -38,6 +39,7 @@ export class SearchfilterComponent implements OnInit {
     "severity": "warn",
     "detail": "Result not found"
   }];
+  //
   Savesuccess: boolean = false;
   Errorsave: boolean = false;
   successmsg: any = [{

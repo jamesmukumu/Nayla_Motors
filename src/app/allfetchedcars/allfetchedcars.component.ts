@@ -14,7 +14,8 @@ previousPageIndex?: number
 @Component({
   selector: 'allfetchedcars',
   templateUrl: './allfetchedcars.component.html',
-  styleUrl: './allfetchedcars.component.css'
+  styleUrl: './allfetchedcars.component.css',
+  providers:[FindService]
 })
 export class AllfetchedcarsComponent {
 first: number = 0;
@@ -24,15 +25,15 @@ last:number = 0
 data:any[] = []
 paginatedData:any[] =[] 
 firstFetchedalready:boolean = false
-
+defaultImage:string = "https://res.cloudinary.com/dasrniwpk/image/upload/v1717157566/WhatsApp_Image_2024-05-31_at_2.59.52_PM_g5l1z8.jpg"
 changePage(event: PageEvent){
   this.firstFetchedalready = false
   console.log("pre data",this.data)
-  this.first = event.pageIndex * event.pageSize + 1;
-  this.last = Math.min(this.first + event.pageSize - 1, event.length);
+  this.first = event.pageIndex * event.pageSize 
+  this.last = Math.min(this.first + event.pageSize, event.length)
   console.log(`First item index: ${this.first}`);
   console.log(`Last item index: ${this.last}`);
-   this.paginatedData = this.showCarspagewise(this.first,this.last,this.data)
+   this.paginatedData = this.showCarspagewise(this.first ,this.last,this.data)
    console.log("updated data is",this.paginatedData)
 }
 
@@ -40,11 +41,11 @@ changePage(event: PageEvent){
 
 
 async ngOnInit(){
-var fetch = new FindService()
-var someData = await fetch.fetchAllcars()
+
+var someData = await this.Finder.fetchAllcars()
 this.carsCount = someData.count
 this.data = someData.data
-
+this.paginatedData= this.showCarspagewise(0,this.rows,this.data)
 console.log("here is the data",this.data)
 this.fetched = true
 }
@@ -73,7 +74,7 @@ console.log("the car price",priceStringform)
 return priceStringform
 }
 
-constructor(private router:Router){}
+constructor(private router:Router,private Finder:FindService){}
 
 
 
