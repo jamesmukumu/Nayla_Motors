@@ -43,7 +43,8 @@ import { StepperModule } from 'primeng/stepper';
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import { HttpClientModule } from '@angular/common/http';
 import { ScrollTopModule } from 'primeng/scrolltop';
-
+import { RelatedcarComponent } from './relatedcar/relatedcar.component';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { ScrollTopModule } from 'primeng/scrolltop';
     AllfetchedcarsComponent,
     MyfavcarsComponent,
     SellcarComponent,
+    RelatedcarComponent,
     
   ],
   imports: [
@@ -72,7 +74,7 @@ import { ScrollTopModule } from 'primeng/scrolltop';
     ScrollTopModule,
     MatStepperModule,
     MatTabsModule,
-    
+    LazyLoadImageModule,
    StepperModule,
    
     MatButton,
@@ -99,6 +101,7 @@ import { ScrollTopModule } from 'primeng/scrolltop';
     RouterModule.forRoot([
     {path:"",component:LandingComponent},
     {path:"car/:searchvector",component:CarSpecificComponent},
+    {path:"relatedcar/:carSlug",component:RelatedcarComponent},
     {path:"filtered/cars",component:SearchfilterComponent},
    {path:"all",component:AllfetchedcarsComponent},
    {path:"myliked/cars",component:MyfavcarsComponent},

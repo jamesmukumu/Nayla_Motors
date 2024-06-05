@@ -3,7 +3,7 @@
     <mat-card *ngFor="let cardata of data" >
 
         <div class="orient-hor">
-        <img src={{cardata.thumbnail}} alt=""  (click)="navigateTospecificcar(cardata.slug)">
+        <img [defaultImage]="defaultImage" lazyLoad={{cardata.thumbnail}} alt=""  (click)="navigateTospecificcar(cardata.slug)">
         
         
         

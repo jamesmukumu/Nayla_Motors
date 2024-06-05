@@ -228,6 +228,57 @@ Total Landing Costs {{formatPrice(carData.price)}} All taxes included
  
  <i class="pi pi-whatsapp" style="margin-left: 20px; color: forestgreen;" (click)="whatsups()" matTooltip="Whatsapp us"></i>
 </div>
+<mat-card-title>Similar Cars</mat-card-title>
+<ng-container *ngIf="fetched">
+
+  <mat-card *ngFor="let cardata of relatedCars" >
+
+      <div class="orient-hor">
+      <img src={{cardata.thumbnail}} alt=""  (click)="navigateRelatedcar(cardata.slug)">
+      
+      
+      
+          <mat-card-title>{{cardata.name}}</mat-card-title>
+         <mat-card style="display: flex; flex-direction: row; text-align: center; margin-top: 20px; ">
+          <button  mat-raised-button>{{cardata.year_of_manufacture}}</button>
+          <!-- button rendering am doin here -->
+          <mat-card   [ngSwitch]="validateButton(cardata.availability)">
+          <button mat-raised-button *ngSwitchCase=true style="background-color: rgb(104,211,145);">available</button>
+          <button mat-raised-button *ngSwitchCase=false style="background-color: rgb(252,129,129);">{{cardata.availability}}</button>
+          </mat-card>
+       
+         </mat-card>
+        
+      <mat-divider></mat-divider>
+          <mat-card-subtitle>
+              {{cardata.description}}
+          </mat-card-subtitle>
+         <mat-divider></mat-divider>
+      
+          <mat-card-subtitle>
+              KSH:{{formatPrice(cardata.price)}}
+           </mat-card-subtitle>
+           
+           <button mat-raised-button style="background-color: rgb(104,211,145) ;">Car in Show Room</button>
+      <mat-icon style="cursor: pointer;" [matTooltip]="Savecartofavs">
+          bookmark
+      </mat-icon>
+      <mat-divider></mat-divider>
+      </div>
+      
+      
+      
+         
+      </mat-card>
+
+
+</ng-container>
+
+
+
+<div class="card" *ngIf="!fetched">
+  <p-progressBar mode="indeterminate" [style]="{'height': '6px'}" />
+</div>
 
 <footer></footer>
 

@@ -25,6 +25,38 @@ height: 500px;
 }
 
 
+*{
+    margin: 0;
+    padding: 0;
+    }
+    html{
+    margin: 0;
+    padding: 0;
+    }
+    .orient-hor{
+    margin-top: 10px;
+    }
+    
+    .orient-hor img{
+    width: 400px;
+    height: 400px;
+    }
+    .green-color{
+    background-color: green;
+    }
+    .container{
+    text-align: center;
+    }
+    
+    mat-card{
+    text-align: center;
+    }
+    
+    @media(max-width:801px){
+    .orient-hor img{
+    width: 100%;
+    }
+    }
 
 @media(max-width:800px){
 .container{

@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { Router } from '@angular/router';
 
-export class CarService {
+export class RelatedcarService {
   async fetchCarbasedonvector(searchvector: any) {
     var resp = await axios.get(
       'https://carshop-1.onrender.com/fetch/specific/car',
