@@ -1,3 +1,5 @@
+<p-toast/>
+
 <ng-container *ngIf="fetched">
 
     <mat-card *ngFor="let cardata of data" >
@@ -32,6 +34,7 @@
         <mat-icon style="cursor: pointer;" [matTooltip]="Savecartofavs">
             bookmark
         </mat-icon>
+        <i class="pi pi-arrow-right-arrow-left" matTooltip="Add car to compare list" (click)="addCarslugtolist(cardata.slug)"></i>
         <mat-divider></mat-divider>
         </div>
         
@@ -48,3 +51,4 @@
 <div class="card" *ngIf="!fetched">
     <p-progressBar mode="indeterminate" [style]="{'height': '6px'}" />
 </div>
+  

@@ -45,6 +45,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { RelatedcarComponent } from './relatedcar/relatedcar.component';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { StoreModule } from '@ngrx/store';
+import { saveCarReducer } from './redux/reducer.savecar';
+import {ToastModule} from 'primeng/toast'
+
+
 
 
 @NgModule({
@@ -72,6 +77,7 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
     MatDividerModule,   
     MatCardImage,
     ScrollTopModule,
+    ToastModule,
     MatStepperModule,
     MatTabsModule,
     LazyLoadImageModule,
@@ -106,7 +112,9 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
    {path:"all",component:AllfetchedcarsComponent},
    {path:"myliked/cars",component:MyfavcarsComponent},
    {path:"sell/car",component:SellcarComponent}
-    ])    
+    ]),
+    StoreModule.forRoot({"comparisions":saveCarReducer}, {}),
+  
   ],
   providers: [
     provideClientHydration(),
