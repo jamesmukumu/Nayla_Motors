@@ -19,35 +19,35 @@ export class FilterbybrandComponent {
 Brands:Brand[] = [
 {
 Brandname:"Audi",
-Brandimage:"https://www.kaiandkaro.com/images/brands/audi.svg"
+Brandimage:"https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/icons/carBrands/audi.svg"
 },
 {
 Brandname:"Bmw",
-Brandimage:"https://www.kaiandkaro.com/images/brands/bmw.svg"
+Brandimage:"https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/icons/carBrands/bmw.svg"
 },
 {
   Brandname:"Mercedes",
-  Brandimage:"https://www.kaiandkaro.com/images/brands/mercedes.svg"
+  Brandimage:"https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/icons/carBrands/mercedes.svg"
 },
 {
   Brandname:"Subaru",
-  Brandimage:"https://www.kaiandkaro.com/images/brands/subaru.svg"
+  Brandimage:"https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/icons/carBrands/subaru.svg"
 },
 {
   Brandname:"Nissan",
-  Brandimage:"https://www.kaiandkaro.com/images/brands/nissan.svg"
+  Brandimage:"https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/icons/carBrands/nissan.svg"
 },
 {
   Brandname:"Toyota",
-  Brandimage:"https://www.kaiandkaro.com/images/brands/toyota.svg"
+  Brandimage:"https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/icons/carBrands/toyota.svg"
 },
 {
   Brandname:"Land rover",
-  Brandimage:"https://www.kaiandkaro.com/images/brands/land_rover.svg"
+  Brandimage:"https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/icons/carBrands/land_rover.svg"
 },
 {
   Brandname:"Lexus",
-  Brandimage:"https://www.kaiandkaro.com/images/brands/lexus.svg"
+  Brandimage:"https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/icons/carBrands/lexus.svg"
 },
 {
   Brandname:"Suzuki",
@@ -55,11 +55,11 @@ Brandimage:"https://www.kaiandkaro.com/images/brands/bmw.svg"
 },
 {
   Brandname:"Volkswagen",
-  Brandimage:"https://www.kaiandkaro.com/images/brands/VW.svg"
+  Brandimage:"https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/icons/carBrands/VW.svg"
 },
 {
   Brandname:"Honda",
-  Brandimage:"https://www.kaiandkaro.com/images/brands/honda.svg"
+  Brandimage:"https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/icons/carBrands/honda.svg"
 },
 {
   Brandname:"Mitsubishi",

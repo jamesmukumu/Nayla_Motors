@@ -5,13 +5,13 @@ import { SaleService,Sell_info,Sell_car_images,Sell_car_info } from './sell.serv
 
 @Component({
   selector: 'app-sellcar',
-  templateUrl: './sellcar.component.html',
+  templateUrl: './sellcar.component.html',   
   styleUrl: './sellcar.component.css',
   providers:[SaleService]
 })
 export class SellcarComponent {
 carPlate:string = ''
-model:string = ''
+model:string = ''   
 make:string = ''
 color:string = ''
 mileage:string = ''

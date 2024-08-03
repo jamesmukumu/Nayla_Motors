@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,isDevMode } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -46,13 +46,14 @@ import { ScrollTopModule } from 'primeng/scrolltop';
 import { RelatedcarComponent } from './relatedcar/relatedcar.component';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { saveCarReducer } from './redux/reducer.savecar';
 import {ToastModule} from 'primeng/toast'
 
 
 
 
-@NgModule({
+@NgModule({   
   declarations:[
     AppComponent,
     HeaderComponent,
@@ -114,11 +115,18 @@ import {ToastModule} from 'primeng/toast'
    {path:"sell/car",component:SellcarComponent}
     ]),
     StoreModule.forRoot({"comparisions":saveCarReducer}, {}),
-  
+    StoreDevtoolsModule.instrument({
+    maxAge:25,
+    logOnly:!isDevMode(),
+    traceLimit:25,
+    connectInZone:true,
+    autoPause:true
+    })
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideAnimationsAsync('noop')
   ],
   bootstrap: [AppComponent]
 })
