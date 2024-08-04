@@ -73,6 +73,8 @@ this.carName = routeName
 console.log(routeName)
 var data = await carserve.fetchCarbasedonvector(routeName)
 this.carData = data.data
+console.log("cra info",this.carData)
+console.log("original data",data)
 this.relatedCars = data.relatedcars
 this.fetched = true
 var someData = await carserve.Fetchcarimagesfromkairo(routeName)
