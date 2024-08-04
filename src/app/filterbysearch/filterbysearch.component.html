@@ -1,6 +1,6 @@
 <mat-card class="main">
-text button
-<button mat-flat-button color="primary"></button>
+
+
 <div class="example-form" >
 <mat-form-field class="prices max-min">
 <mat-label>Search Car</mat-label>
@@ -29,48 +29,54 @@ text button
 
 </div>
 
-<mat-card-title>Advanced Car Search</mat-card-title>
-<div>
-<mat-form-field>
-<mat-label>Choose a Car</mat-label>
-<select matNativeControl required [(ngModel)] = "choosenCar" >
-<option *ngFor="let car of Vehichlebrands" >{{car}}</option>
-</select>
-    </mat-form-field>
-</div>
 
+<p-accordion [activeIndex]="0">
+<p-accordionTab header="Advanced Search">
 
-<div class="prices max-min">
-    <mat-card-title>Price And Currency</mat-card-title>
-    <mat-form-field>
-        <mat-label>Enter Minimum Price</mat-label>
-        <input matInput [(ngModel)] = "Minimumprice"  placeholder="Enter Your Minimum Price" type="number" />
-         
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>Enter Maximum Price</mat-label>
-            <input matInput [(ngModel)] = "Maxprice"  placeholder="Enter Your Maximum Price" type="number" />
-            
-            </mat-form-field>
-
-</div>
-
-<div class="prices max-min">
    
+    <div>
     <mat-form-field>
-        <mat-label>Choose Currency</mat-label>
-        <select matNativeControl required [(ngModel)] = "currency">
-         <option *ngFor="let currency of Currencies">
-         {{currency}}
-         </option>
-
-        </select>
+    <mat-label>Choose a Car</mat-label>
+    <select matNativeControl required [(ngModel)] = "choosenCar" >
+    <option *ngFor="let car of Vehichlebrands" >{{car}}</option>
+    </select>
+        </mat-form-field>
+    </div>
+    
+    
+    <div class="prices max-min">
+        <mat-card-title>Price And Currency</mat-card-title>
+        <mat-form-field>
+            <mat-label>Enter Minimum Price</mat-label>
+            <input matInput [(ngModel)] = "Minimumprice"  placeholder="Enter Your Minimum Price" type="number" />
+             
             </mat-form-field>
-
-</div>
-
-<button mat-flat-button color="primary" (click)="testSearch()">
-Search
-</button>
+    
+            <mat-form-field>
+                <mat-label>Enter Maximum Price</mat-label>
+                <input matInput [(ngModel)] = "Maxprice"  placeholder="Enter Your Maximum Price" type="number" />
+                
+                </mat-form-field>
+    
+    </div>
+    
+    <div class="prices max-min">
+       
+        <mat-form-field>
+            <mat-label>Choose Currency</mat-label>
+            <select matNativeControl required [(ngModel)] = "currency">
+             <option *ngFor="let currency of Currencies">
+             {{currency}}
+             </option>
+    
+            </select>
+                </mat-form-field>
+    
+    </div>
+    
+    <button mat-flat-button color="primary" (click)="testSearch()">
+    Search
+    </button>
+</p-accordionTab>
+</p-accordion>
 </mat-card>

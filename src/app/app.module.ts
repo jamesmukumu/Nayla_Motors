@@ -15,6 +15,7 @@ import { FilterbysearchComponent } from './filterbysearch/filterbysearch.compone
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatInputModule} from '@angular/material/input';
+import { AccordionModule } from 'primeng/accordion';
 import { FileUploadModule } from 'primeng/fileupload';
 import { FilterbybrandComponent } from './filterbybrand/filterbybrand.component';
 import { AllcarsComponent } from './allcars/allcars.component';
@@ -83,7 +84,7 @@ import {ToastModule} from 'primeng/toast'
     MatTabsModule,
     LazyLoadImageModule,
    StepperModule,
-   
+   AccordionModule,
     MatButton,
     HttpClientModule,
     FileUploadModule,
