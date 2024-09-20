@@ -7,21 +7,24 @@ export class FiltercarsService {
     Brand: string,
     Currency: string
   ) {
-    var resp = await axios.get('https://carshop-1.onrender.com/filter/cars', {
-      params: {
-        min: minimumPrice,
-        max: Maxprice,
-        brand: Brand,
-        currency: Currency,
-      },
-    });
+    var resp = await axios.get(
+      'https://carshop-production.up.railway.app/filter/cars',
+      {
+        params: {
+          min: minimumPrice,
+          max: Maxprice,
+          brand: Brand,
+          currency: Currency,
+        },
+      }
+    );
     return resp.data;
   }
 
   async Fetchcarbasedonprices(minPrice: string, maxPrice: string) {
     try {
       var resp = await axios.get(
-        'https://carshop-1.onrender.com/filter/cars/pricewise',
+        'https://carshop-production.up.railway.app/filter/cars/pricewise',
         {
           params: {
             min: minPrice,
@@ -38,7 +41,7 @@ export class FiltercarsService {
   async Fetchcarbasedonkeyword(keyword: string) {
     try {
       var resp = await axios.get(
-        'https://carshop-1.onrender.com/filter/cars/namewise',
+        'https://carshop-production.up.railway.app/filter/cars/namewise',
         {
           params: {
             carfilter: keyword,
@@ -55,7 +58,7 @@ export class FiltercarsService {
   async Fetchaccoundbrandwise(brand: string) {
     try {
       var resp = await axios.get(
-        'https://carshop-1.onrender.com/fetch/car/brand',
+        'https://carshop-production.up.railway.app/fetch/car/brand',
         {
           params: {
             carName: brand,
@@ -75,7 +78,7 @@ export class FiltercarsService {
         carvector: carVector,
       };
       var resp = await axios.post(
-        'https://carshop-1.onrender.com/save/car',
+        'https://carshop-production.up.railway.app/save/car',
         payload
       );
       return resp.data;
@@ -87,7 +90,7 @@ export class FiltercarsService {
   async Fetchimportedcars() {
     try {
       var resp = await axios.get(
-        'https://carshop-1.onrender.com/all/imported/cars'
+        'https://carshop-production.up.railway.app/all/imported/cars'
       );
       return resp.data;
     } catch (err) {

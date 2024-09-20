@@ -73,7 +73,7 @@ export class SaleService {
       formData.append('accident', Accident_History);
 
       var resp = await axios.post(
-        'https://carshop-1.onrender.com/handle/sell/car',
+        'https://carshop-production.up.railway.app/handle/sell/car',
         formData,
         {
           headers: {

@@ -4,7 +4,7 @@ export class FindService {
   async fetchAllcars() {
     try {
       var resp = await axios.get(
-        'https://carshop-1.onrender.com/fetch/all/Cars'
+        'https://carshop-production.up.railway.app/fetch/all/Cars'
       );
 
       return resp.data;
