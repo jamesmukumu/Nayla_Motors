@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 export class CarService {
   async fetchCarbasedonvector(searchvector: any) {
     var resp = await axios.get(
-      'https://carshop-production.up.railway.app/fetch/specific/car',
+      'https://carshop-production-cdf2.up.railway.app/fetch/specific/car',
       {
         params: { searchVector: searchvector },
       }
@@ -16,7 +16,7 @@ export class CarService {
   async Fetchcarimagesfromkairo(carSlug: string | null) {
     try {
       var resp = await axios.get(
-        'https://carshop-production.up.railway.app/fetch/car/images',
+        'https://carshop-production-cdf2.up.railway.app/fetch/car/images',
         {
           params: {
             slug: carSlug,

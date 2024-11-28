@@ -5,7 +5,7 @@ export class AllcarsService {
 
   async fetchCardata(): Promise<any[]> {
     var resp = await axios.get(
-      'https://carshop-production.up.railway.app/fetch/all/Cars'
+      'https://carshop-production-cdf2.up.railway.app/fetch/all/Cars'
     );
     var randNo: number = Math.random() * 2900;
     randNo = Math.floor(randNo);

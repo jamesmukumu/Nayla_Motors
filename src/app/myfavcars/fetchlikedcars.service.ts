@@ -4,7 +4,7 @@ export class FetchfavsService {
   async gatherFavcars(phone: string) {
     try {
       var resp = await axios.get(
-        'https://carshop-production.up.railway.app/fetch/users/liked/car',
+        'https://carshop-production-cdf2.up.railway.app/fetch/users/liked/car',
         {
           params: {
             phoneNumber: phone,
@@ -20,7 +20,7 @@ export class FetchfavsService {
   async deleteCarfromfavs(carvactor: string, no: string) {
     try {
       var resp = await axios.delete(
-        'https://carshop-production.up.railway.app/delete/car',
+        'https://carshop-production-cdf2.up.railway.app/delete/car',
         {
           params: {
             carVector: carvactor,

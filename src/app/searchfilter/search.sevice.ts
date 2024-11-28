@@ -8,7 +8,7 @@ export class FiltercarsService {
     Currency: string
   ) {
     var resp = await axios.get(
-      'https://carshop-production.up.railway.app/filter/cars',
+      'https://carshop-production-cdf2.up.railway.app/filter/cars',
       {
         params: {
           min: minimumPrice,
@@ -24,7 +24,7 @@ export class FiltercarsService {
   async Fetchcarbasedonprices(minPrice: string, maxPrice: string) {
     try {
       var resp = await axios.get(
-        'https://carshop-production.up.railway.app/filter/cars/pricewise',
+        'https://carshop-production-cdf2.up.railway.app/filter/cars/pricewise',
         {
           params: {
             min: minPrice,
@@ -41,7 +41,7 @@ export class FiltercarsService {
   async Fetchcarbasedonkeyword(keyword: string) {
     try {
       var resp = await axios.get(
-        'https://carshop-production.up.railway.app/filter/cars/namewise',
+        'https://carshop-production-cdf2.up.railway.app/filter/cars/namewise',
         {
           params: {
             carfilter: keyword,
@@ -58,7 +58,7 @@ export class FiltercarsService {
   async Fetchaccoundbrandwise(brand: string) {
     try {
       var resp = await axios.get(
-        'https://carshop-production.up.railway.app/fetch/car/brand',
+        'https://carshop-production-cdf2.up.railway.app/fetch/car/brand',
         {
           params: {
             carName: brand,
@@ -78,7 +78,7 @@ export class FiltercarsService {
         carvector: carVector,
       };
       var resp = await axios.post(
-        'https://carshop-production.up.railway.app/save/car',
+        'https://carshop-production-cdf2.up.railway.app/save/car',
         payload
       );
       return resp.data;
@@ -90,7 +90,7 @@ export class FiltercarsService {
   async Fetchimportedcars() {
     try {
       var resp = await axios.get(
-        'https://carshop-production.up.railway.app/all/imported/cars'
+        'https://carshop-production-cdf2.up.railway.app/all/imported/cars'
       );
       return resp.data;
     } catch (err) {
