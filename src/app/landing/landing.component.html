@@ -1,44 +1,19 @@
-<mat-card>
-<header></header>
-<div class="card">
-<p-messages [(value)]="info"  />
-</div>
 
+<mat-card>
+<header-laptops></header-laptops>
 
 <div style="text-align: center;">
 <mat-card-title>
-        The Easiest and Safest Way To Sell And Buy Cars in Kenya And around the world
-        </mat-card-title>
-      
-
-        <div class="container-button">
-        <button  mat-flat-button color="primary" (click)="clickGo()">Cars In Kenya</button>
-        <button  mat-flat-button color="primary" (click)="imports()">International Stock</button>
-        <button  mat-flat-button color="primary">Sell Your Car</button>
-        </div>
-
-        <mat-card-title>
-        Find Which Car Fits You Most.
-        </mat-card-title>
-        <mat-card-subtitle>
-        We Help You Find The Car Which Fits Your Personality 
-        </mat-card-subtitle>
+The Easiest and Safest Way To Sell And Buy Cars in Kenya And around the world
+</mat-card-title>
+<mat-card-title>
+Find Which Car Fits You Most.
+</mat-card-title>
+<mat-card-subtitle>
+We Help You Find The Car Which Fits Your Personality 
+</mat-card-subtitle>
 <allcars></allcars>
-      
-
-<mat-tab-group>
-<mat-tab label="Filter Brandwise">
-<filterbybrand></filterbybrand>
-</mat-tab>
-<mat-tab label="Filter By Search">
-<filterbysearch></filterbysearch>
-</mat-tab>
-
-</mat-tab-group>  
-        
-
-
-    <p-scrollTop/>
+<p-scrollTop/>
 </div>
 <footer></footer>
 </mat-card>

@@ -1,0 +1,16 @@
+mat-card mat-card-content{
+display: grid;
+grid-template-columns:repeat(2,1fr) ;
+grid-template-columns:repeat(3,1fr) ;
+gap: 10px;
+height: 100%;
+}
+.outline-field{
+width: 100%;   
+}
+mat-accordion,mat-card-actions{
+width: 100%;
+}
+form mat-form-field{
+margin: 5.5px;
+}

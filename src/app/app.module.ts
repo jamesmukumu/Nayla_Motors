@@ -49,10 +49,12 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { saveCarReducer } from './redux/reducer.savecar';
-import {ToastModule} from 'primeng/toast'
-
-
-
+import {ToastModule} from 'primeng/toast';
+import { HeaderLaptopsComponent } from './components/header-laptops/header-laptops.component'
+import {MatListModule} from "@angular/material/list";
+import { SideBarComponent } from './components/side-bar/side-bar.component'
+import {MatExpansionModule} from '@angular/material/expansion'
+import {MatBadgeModule} from "@angular/material/badge"
 
 @NgModule({   
   declarations:[
@@ -69,6 +71,8 @@ import {ToastModule} from 'primeng/toast'
     MyfavcarsComponent,
     SellcarComponent,
     RelatedcarComponent,
+    HeaderLaptopsComponent,
+    SideBarComponent,
     
   ],
   imports: [
@@ -78,9 +82,12 @@ import {ToastModule} from 'primeng/toast'
     MatCardModule, 
     MatDividerModule,   
     MatCardImage,
+    MatBadgeModule,
     ScrollTopModule,
     ToastModule,
+    MatExpansionModule,
     MatStepperModule,
+    MatListModule,
     MatTabsModule,
     LazyLoadImageModule,
    StepperModule,

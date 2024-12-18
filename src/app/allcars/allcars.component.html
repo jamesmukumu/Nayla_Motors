@@ -1,54 +1,36 @@
 <p-toast/>
 
-<ng-container *ngIf="fetched">
+<div class="menu">
+<div>
+<side-bar></side-bar>
+</div>
 
-    <mat-card *ngFor="let cardata of data" >
+<div *ngIf="fetched" class="cars-display">
+<mat-card *ngFor="let cardata of data" >
+<div class="orient-hor">
+<img [defaultImage]="defaultImage" lazyLoad={{cardata.thumbnail}} alt=""  (click)="navigateTospecificcar(cardata.slug)">
+<mat-card-title>{{cardata.name}} {{cardata.year_of_manufacture}}</mat-card-title>
 
-        <div class="orient-hor">
-        <img [defaultImage]="defaultImage" lazyLoad={{cardata.thumbnail}} alt=""  (click)="navigateTospecificcar(cardata.slug)">
-        
-        
-        
-            <mat-card-title>{{cardata.name}}</mat-card-title>
-           <mat-card style="display: flex; flex-direction: row; text-align: center; margin-top: 20px; ">
-            <button  mat-raised-button>{{cardata.year_of_manufacture}}</button>
-            <!-- button rendering am doin here -->
-            <mat-card   [ngSwitch]="validateButton(cardata.availability)">
-            <button mat-raised-button *ngSwitchCase=true style="background-color: rgb(104,211,145);">available</button>
-            <button mat-raised-button *ngSwitchCase=false style="background-color: rgb(252,129,129);">{{cardata.availability}}</button>
-            </mat-card>
-         
-           </mat-card>
-          
-        <mat-divider></mat-divider>
-            <mat-card-subtitle>
-                {{cardata.description}}
-            </mat-card-subtitle>
-           <mat-divider></mat-divider>
-        
-            <mat-card-subtitle>
-                KSH:{{formatPrice(cardata.price)}}
-             </mat-card-subtitle>
-             
-             <button mat-raised-button style="background-color: rgb(104,211,145) ;">Car in Show Room</button>
-        <mat-icon style="cursor: pointer;" [matTooltip]="Savecartofavs">
-            bookmark
-        </mat-icon>
-        <i class="pi pi-arrow-right-arrow-left" matTooltip="Add car to compare list" (click)="addCarslugtolist(cardata.slug)"></i>
-        <mat-divider></mat-divider>
-        </div>
-        
-        
-        
-           
-        </mat-card>
+<mat-card-subtitle>
+{{cardata.description}}
+</mat-card-subtitle>
+<mat-card-subtitle>
+KSH:{{formatPrice(cardata.price)}}
+</mat-card-subtitle>
 
-
-</ng-container>
-
-
+<button mat-raised-button class="btn-grad">
+Add Car to wishlist
+</button>
+</div>
+</mat-card>
+</div>
 
 <div class="card" *ngIf="!fetched">
     <p-progressBar mode="indeterminate" [style]="{'height': '6px'}" />
 </div>
+</div>
+
+
+
+
   

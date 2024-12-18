@@ -1,0 +1,74 @@
+<mat-card>
+<mat-card-header>
+<mat-form-field appearance="outline" class="outline-field">
+<mat-icon matIconSuffix>search</mat-icon>
+<mat-label>Search for any car</mat-label>
+<input type="text" matInput>
+<mat-hint>Example Mazda CX 5</mat-hint>
+</mat-form-field>
+</mat-card-header>
+<mat-card-content>
+<button mat-stroked-button>0-500K</button>
+<button mat-stroked-button>500K-1M</button>
+<button mat-stroked-button>1M-2M</button>
+<button mat-stroked-button>2M-3M</button>
+<button mat-stroked-button>3M-5M</button>
+<button mat-stroked-button>5M-10M</button>
+<button mat-stroked-button>Above 10M</button>
+</mat-card-content>
+<mat-card-actions>
+<mat-accordion>
+<mat-expansion-panel>
+<mat-expansion-panel-header>
+<mat-panel-title>Car brands</mat-panel-title>
+</mat-expansion-panel-header>
+<mat-panel-description>
+<mat-list >
+<mat-list-item>
+<span>Audi</span>
+<img style="height: 35px;width: 35px;" src="https://kai-and-karo.ams3.cdn.digitaloceanspaces.com/media/icons/carBrands/audi.svg" alt="">
+</mat-list-item>
+<mat-list-item>
+<strong></strong>
+</mat-list-item>
+</mat-list>
+</mat-panel-description>
+
+</mat-expansion-panel>
+</mat-accordion>
+
+
+</mat-card-actions>
+<mat-card-footer>
+<strong>Year of Manufacture</strong>
+<form>
+<mat-form-field appearance="outline">
+<mat-label>Min YOM</mat-label>
+<input type="number" matInput name="min">
+<mat-hint>Example 2000</mat-hint>
+</mat-form-field>
+<mat-form-field appearance="outline">
+<mat-label>Max YOM</mat-label>
+<input type="number" matInput name="max">
+<mat-hint>Example 2030</mat-hint>
+</mat-form-field>
+</form>
+</mat-card-footer>
+<mat-card-footer>
+    <strong>Price and Currency</strong>
+    <form>
+    <mat-form-field appearance="outline">
+    <mat-label>Min Price</mat-label>
+    <input type="number" matInput name="min">
+    <mat-hint>Example 500,000</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+    <mat-label>Max Price</mat-label>
+    <input type="number" matInput name="max">
+    <mat-hint>Example 5,000,000</mat-hint>
+    </mat-form-field>
+    </form>
+    </mat-card-footer>
+
+
+</mat-card>
