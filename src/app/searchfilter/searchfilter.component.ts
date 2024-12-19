@@ -17,7 +17,7 @@ interface PageEvent {
 })
 
 export class SearchfilterComponent implements OnInit {
-  defaultImage:string = "https://res.cloudinary.com/dasrniwpk/image/upload/v1717157566/WhatsApp_Image_2024-05-31_at_2.59.52_PM_g5l1z8.jpg"
+  defaultImage:string = "../../assets/naylamotors.webp"
   phoneNo: string = "";
   maxPrice: string = "";
   minPrice: string = "";
@@ -97,7 +97,27 @@ export class SearchfilterComponent implements OnInit {
       }
       this.fetched = true;
       this.paginatedData = this.showCarspagewise(0, this.pagesize, this.data);
-    } else if (this.myroute.snapshot.queryParams["filterBy"] == "manualSearch") {
+    }else if (this.myroute.snapshot.queryParams["filterBy"] == "yearwise") {
+   var someData = await this.carFetch.FetchcarYearly(this.myroute.snapshot.queryParams["startYear"],this.myroute.snapshot.queryParams["endYear"]);
+      this.data = someData.data;
+      this.length = someData.count;
+      if (this.data === "Results not found") {
+        this.Resultsnotfound = true;
+        return;
+      }
+      this.fetched = true;
+      this.paginatedData = this.showCarspagewise(0, this.pagesize, this.data);
+    } else if (this.myroute.snapshot.queryParams["filterBy"] == "mileage") {
+      var someData = await this.carFetch.FetchMileage(this.myroute.snapshot.queryParams["startMileage"],this.myroute.snapshot.queryParams["endMileage"]);
+         this.data = someData.data;
+         this.length = someData.count;
+         if (this.data === "Results not found") {
+           this.Resultsnotfound = true;
+           return;
+         }
+         this.fetched = true;
+         this.paginatedData = this.showCarspagewise(0, this.pagesize, this.data);
+       }  else if (this.myroute.snapshot.queryParams["filterBy"] == "manualSearch") {
       this.queryParam = this.myroute.snapshot.queryParams["carQuery"];
       var someData = await this.carFetch.Fetchcarbasedonkeyword(this.queryParam);
       this.data = someData.data;

@@ -55,6 +55,8 @@ import {MatListModule} from "@angular/material/list";
 import { SideBarComponent } from './components/side-bar/side-bar.component'
 import {MatExpansionModule} from '@angular/material/expansion'
 import {MatBadgeModule} from "@angular/material/badge"
+import { MatTableModule } from '@angular/material/table';
+
 
 @NgModule({   
   declarations:[
@@ -86,6 +88,7 @@ import {MatBadgeModule} from "@angular/material/badge"
     ScrollTopModule,
     ToastModule,
     MatExpansionModule,
+    MatTableModule,
     MatStepperModule,
     MatListModule,
     MatTabsModule,
@@ -118,7 +121,6 @@ import {MatBadgeModule} from "@angular/material/badge"
     {path:"car/:searchvector",component:CarSpecificComponent},
     {path:"relatedcar/:carSlug",component:RelatedcarComponent},
     {path:"filtered/cars",component:SearchfilterComponent},
-   {path:"all",component:AllfetchedcarsComponent},
    {path:"myliked/cars",component:MyfavcarsComponent},
    {path:"sell/car",component:SellcarComponent}
     ]),

@@ -11,7 +11,7 @@ import { MessageService } from 'primeng/api';
   selector: 'allcars',
   templateUrl: './allcars.component.html',
   styleUrl: './allcars.component.css',
-  providers:[MessageService]
+  providers:[MessageService,AllcarsService]
 })
 export class AllcarsComponent implements OnInit {
 data:any[] = []
@@ -21,7 +21,7 @@ Savecartofavs:string = "Save Car to favourites"
 carSave$:Observable<any>
 
 
-defaultImage:string = "https://res.cloudinary.com/dasrniwpk/image/upload/v1717157566/WhatsApp_Image_2024-05-31_at_2.59.52_PM_g5l1z8.jpg"
+defaultImage:string = "../../assets/naylamotors.webp"
 validateButton(btnAvailability:string){
 if(btnAvailability == this.possibleButtons){
 return true
@@ -32,25 +32,28 @@ return false
 formatPrice(price:number){
 var priceStringform:string = price.toString()
 priceStringform = priceStringform.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-console.log("the car price",priceStringform)
+
 return priceStringform
 }
 
-constructor(private router:Router,private store:Store<{"comparisions":any}>,private msg:MessageService){
+constructor(private cars:AllcarsService,private router:Router,private store:Store<{"comparisions":any}>,private msg:MessageService){
 this.carSave$ = this.store.select("comparisions")
 
 }
 
 
-async ngOnInit(){
-var serve = new AllcarsService()
-this.data = await serve.fetchCardata()
+async fetchCars (){
+this.data = await this.cars.fetchCardata()
+console.log(this.data)
+if(this.data.length > 0){
+  this.fetched = true
+}
+}
+   
+ngOnInit(){
+this.fetchCars()
 
-console.log("The Data is",this.data)
-this.fetched = true
-this.carSave$.subscribe((data)=>{
-console.log(data)
-})
+
 }
 
 addCarslugtolist(slug:string){

@@ -1,16 +1,90 @@
 mat-card mat-card-content{
+height: 100%;
 display: grid;
 grid-template-columns:repeat(2,1fr) ;
 grid-template-columns:repeat(3,1fr) ;
 gap: 10px;
-height: 100%;
+
 }
+mat-panel-description{
+display: flex;
+flex-direction: column;
+flex-wrap: nowrap;
+}
+mat-list img{
+height: 30px;
+width: 30px;
+}
+.btn-gradd {background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%)}
+.btn-gradd {
+
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+ }
+ mat-card-footer{
+  width: 100%;
+}
+mat-card-footer button{
+margin-left: 30%;
+}
+
+ .btn-gradd:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
 .outline-field{
 width: 100%;   
+}
+mat-list{
+width: 100%;
+}
+
+.btn-grad {background-image: linear-gradient(to right, #52c234 0%, #061700  51%, #52c234  100%)}
+.btn-grad {
+  
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+ }
+
+ .btn-grad:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+
+
+mat-card{
+min-height: 100lvh;
+max-height: 100%;
 }
 mat-accordion,mat-card-actions{
 width: 100%;
 }
 form mat-form-field{
 margin: 5.5px;
+}
+
+
+
+@media(max-width:901px){
+form,mat-form-field{
+width: 100%;
+margin: 0;
+}
+mat-card-footer button{
+  margin-left: 0%;
+  }
 }

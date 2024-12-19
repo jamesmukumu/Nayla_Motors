@@ -11,10 +11,16 @@ padding: 0;
 margin-top: 10px;
 }
 .menu{
+  height: 100%;
 display: grid;
 grid-template-columns: repeat(2,1fr);
 grid-template-rows: repeat(1,1fr);
 }
+.menu-side{
+min-height: 100vh;
+max-height: 100%;
+}
+
 .cars-display{
 width: fit-content;
 height: fit-content;
@@ -29,7 +35,9 @@ margin: 15.0px;
 width: 300px;
 height: 300px;
 }
-
+.menu-side{
+height: 100%;
+}
 .btn-grad {background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%)}
 .btn-grad {
    margin: 10px;
@@ -73,8 +81,34 @@ mat-card{
 text-align: center;
 }
 
-@media(max-width:800px){
+@media(max-width:901px){
+
+  .btn-grad{
+    width: 200px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; 
+  }
 .orient-hor img{
 width: 100%;
 }
+.menu{
+height: 100%;
+display: grid;
+grid-template-columns: repeat(1,1fr);
+grid-template-rows: repeat(1,1fr);
+}
+.cars-display mat-card{
+margin: 0px;
+}
+.cars-display{
+  width: fit-content;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-template-rows: repeat(1,1fr);
+  }
 }

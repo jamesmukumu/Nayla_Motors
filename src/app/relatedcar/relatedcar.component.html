@@ -1,7 +1,10 @@
-<mat-card>
- 
-    <header></header>
-    <div class="card flex justify-content-center">
+<header-laptops></header-laptops>
+
+<div class="card" *ngIf="!fetched">
+  <p-progressBar mode="indeterminate" [style]="{'height': '6px'}" />
+  </div>
+<mat-card *ngIf="fetched">
+<div class="card flex justify-content-center">
       <p-breadcrumb 
           class="max-w-full" 
           [model]="items" 
@@ -10,10 +13,12 @@
     <div class="container">
     <div class="item">
     <img src={{carData.thumbnail}} alt="">
+    <mat-card-title>
+    Total Landing Costs {{formatPrice(carData.price)}} (All taxes included)
+    </mat-card-title>
     <mat-card-subtitle>
-    Total Landing Costs {{formatPrice(carData.price)}} All taxes included
-    
-    </mat-card-subtitle>
+      Annual Insuarance Fees {{formatPrice(carData.annual_insurance)}}
+      </mat-card-subtitle>
     </div>
     
     <div class="item">
@@ -241,7 +246,7 @@
               <mat-card-title>{{cardata.name}}</mat-card-title>
              <mat-card style="display: flex; flex-direction: row; text-align: center; margin-top: 20px; ">
               <button  mat-raised-button>{{cardata.year_of_manufacture}}</button>
-              <!-- button rendering am doin here -->
+            
               <mat-card   [ngSwitch]="validateButton(cardata.availability)">
               <button mat-raised-button *ngSwitchCase=true style="background-color: rgb(104,211,145);">available</button>
               <button mat-raised-button *ngSwitchCase=false style="background-color: rgb(252,129,129);">{{cardata.availability}}</button>
@@ -260,9 +265,7 @@
                </mat-card-subtitle>
                
                <button mat-raised-button style="background-color: rgb(104,211,145) ;">Car in Show Room</button>
-          <mat-icon style="cursor: pointer;" [matTooltip]="Savecartofavs">
-              bookmark
-          </mat-icon>
+        
           <mat-divider></mat-divider>
           </div>
           

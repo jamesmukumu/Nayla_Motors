@@ -38,24 +38,16 @@ safetyResults:any[] = []
 
 items:MenuItem[]|undefined
 home:MenuItem | undefined
-responsiveOptions: any[] = [
-    {
-      breakpoint: '1500px',
-      numVisible: 5
-    },
-    {
-      breakpoint: '1024px',
-      numVisible: 3
-    },
-    {
-      breakpoint: '768px',
-      numVisible: 2
-    },
-    {
-      breakpoint: '560px',
+responsiveOptions: any[] =  [
+  {
+      breakpoint: '1300px',
+      numVisible: 4
+  },
+  {
+      breakpoint: '575px',
       numVisible: 1
-    }
-  ];
+  }
+];
 
 
 navigateRelatedcar(carslug:string):void{

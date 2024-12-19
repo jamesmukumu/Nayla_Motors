@@ -1,95 +1,50 @@
-<mat-card>
-<header></header>
+<header-laptops></header-laptops>
 
-<div class="card flex justify-content-center" *ngIf="Resultsnotfound">
-  <p-messages
-  [(value)]="msg"
-  [closable]="true"
-  />
-</div>
-<mat-paginator [length]="length" [pageSize]="pagesize" (page)="changePage($event)">
-
-</mat-paginator>
-
-
-<ng-container *ngIf="fetched">
-
-  <mat-card *ngFor="let cardata of paginatedData" >
-
-      <div class="orient-hor">
-      <img [defaultImage]="defaultImage" lazyLoad={{cardata.thumbnail}} alt=""  (click)="navigateTospecificcar(cardata.slug)">
-      
-      
-      
-          <mat-card-title>{{cardata.name}}</mat-card-title>
-         <mat-card style="display: flex; flex-direction: row; text-align: center; margin-top: 20px; ">
-          <button  mat-raised-button>{{cardata.year_of_manufacture}}</button>
-          <!-- button rendering am doin here -->
-          <mat-card   [ngSwitch]="validateButton(cardata.availability)">
-          <button mat-raised-button *ngSwitchCase=true style="background-color: rgb(104,211,145);">available</button>
-          <button mat-raised-button *ngSwitchCase=false style="background-color: rgb(252,129,129);">{{cardata.availability}}</button>
-          </mat-card>
-       
-         </mat-card>
-        
-      <mat-divider></mat-divider>
-          <mat-card-subtitle>
-              {{cardata.description}}
-          </mat-card-subtitle>
-         <mat-divider></mat-divider>
-      
-          <mat-card-subtitle>
-              KSH:{{formatPrice(cardata.price)}}
-           </mat-card-subtitle>
-           
-           <button mat-raised-button style="background-color: rgb(104,211,145) ;">Car in Show Room</button>
-       <i class="pi pi-bookmark-fill" [matTooltip]="Addcard" (click)="visible =true"></i>
-       <i class="pi pi-arrow-right-arrow-left" matTooltip="Add car to compare list"></i>
-      <mat-divider></mat-divider>
-<p-scrollTop/>
-      <div class="card flex justify-content-center">
-     
-        <p-dialog header="Save car to favs" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
-            <span class="p-text-secondary block mb-5">Save This Car To your car collection</span>
-            <mat-form-field class="flex align-items-center gap-3 mb-3">
-                <label for="username" class="font-semibold w-6rem">Enter phone Number</label>
-                <input matInput id="username" class="flex-auto" autocomplete="off" [(ngModel)] ="phoneNo"/>
-            </mat-form-field> 
-           <div class="flex justify-content-end gap-2">
-                <p-button label="Cancel" severity="secondary" (click)="visible = false" />
-                <p-button label="Save Car to favourites" (onClick)="implementSave(cardata.slug)" />
-            </div>
-        </p-dialog>
-
-<div class="card" *ngIf="Savesuccess">
-  <p-messages [(value)] = "successmsg" [closable]="true"/>
-</div>
-<div class="card" *ngIf="Errorsave">
-  <p-messages [(value)] = "errormsg" [closable]="true"/>
-</div>
-
+<div class="menu">
+  <div class="menu-side">
+    <side-bar></side-bar>
     </div>
-      </div>
-      
+  <mat-card>
+  <div class="card flex justify-content-center" *ngIf="Resultsnotfound">
+    <p-messages
+    [(value)]="msg"
+    [closable]="true"
+    />
+  </div>
+
+
+  <mat-paginator [length]="length" [pageSize]="pagesize" (page)="changePage($event)">
+  </mat-paginator>
+  <div *ngIf="fetched" class="results-filter">
+  <mat-card *ngFor="let cardata of paginatedData" >
+  <div class="orient-hor">
+  <img [defaultImage]="defaultImage" lazyLoad={{cardata.thumbnail}} alt=""  (click)="navigateTospecificcar(cardata.slug)">
+        <mat-card-title>{{cardata.name}} {{cardata.year_of_manufacture}}</mat-card-title>
+        
          
-      
-         
-      </mat-card>
-
-
-</ng-container>
-
-
-
-<div class="card" *ngIf="!fetched">
-  <p-progressBar mode="indeterminate" [style]="{'height': '6px'}" />
+        <mat-card-subtitle>
+                {{cardata.description}}
+            </mat-card-subtitle>
+          
+        
+            <mat-card-subtitle>
+                KSH:{{formatPrice(cardata.price)}}
+             </mat-card-subtitle>
+             <button mat-raised-button class="btn-grad">
+              Add Car to wishlist
+              </button>
+  <p-scrollTop/>
 </div>
-
-
-
-<mat-paginator [length]="length" [pageSize]="pagesize" (page)="changePage($event)">
-</mat-paginator>
-
-
-<footer></footer>
-</mat-card>    
+</mat-card>
+  
+  
+  </div>
+  
+  
+  
+  <div class="card" *ngIf="!fetched">
+    <p-progressBar mode="indeterminate" [style]="{'height': '6px'}" />
+  </div>
+  
+</mat-card>   
+</div> 

@@ -1,5 +1,9 @@
 <header-laptops></header-laptops>
-<mat-card>
+<div class="card" *ngIf="!fetched">
+  <p-progressBar mode="indeterminate" [style]="{'height': '6px'}" />
+</div>
+
+<mat-card *ngIf="fetched">
  <div class="card flex justify-content-center">
   <p-breadcrumb 
       class="max-w-full" 
@@ -9,10 +13,12 @@
 <div class="container">
 <div class="item">
 <img src={{carData.thumbnail}} alt="">
-<mat-card-subtitle>
-Total Landing Costs {{formatPrice(carData.price)}} All taxes included
-
-</mat-card-subtitle>
+<mat-card-title>
+  Total Landing Costs {{formatPrice(carData.price)}} (All taxes included)
+  </mat-card-title>
+  <mat-card-subtitle>
+    Annual Insuarance Fees {{formatPrice(carData.annual_insurance)}}
+    </mat-card-subtitle>
 </div>
 
 <div class="item">
@@ -30,12 +36,16 @@ Total Landing Costs {{formatPrice(carData.price)}} All taxes included
       [showIndicators]="true" 
       [autoPlay]="true"
       [circular]="true"
+      
       [showThumbnails]="false" 
       [responsiveOptions]="responsiveOptions" 
       [containerStyle]="{ 'max-width': '640px' }">
-          <ng-template pTemplate="item" let-item>
-              <img [src]="item.image" style="width: 100%; display: block;" />
-          </ng-template>
+           <ng-template pTemplate="item" let-item>
+        <img [src]="item.image" style="width:100%" />
+    </ng-template>
+    <ng-template pTemplate="thumbnail" let-item>
+        <img [src]="item.thumbnail" />
+    </ng-template>
   </p-galleria>
 </div>
 
@@ -252,17 +262,11 @@ Total Landing Costs {{formatPrice(carData.price)}} All taxes included
           <mat-card-subtitle>
               {{cardata.description}}
           </mat-card-subtitle>
-         <mat-divider></mat-divider>
-      
           <mat-card-subtitle>
               KSH:{{formatPrice(cardata.price)}}
            </mat-card-subtitle>
-           
            <button mat-raised-button style="background-color: rgb(104,211,145) ;">Car in Show Room</button>
-      <mat-icon style="cursor: pointer;" [matTooltip]="Savecartofavs">
-          bookmark
-      </mat-icon>
-      <mat-divider></mat-divider>
+  
       </div>
       
       
