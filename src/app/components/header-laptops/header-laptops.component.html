@@ -2,7 +2,7 @@
 <mat-card-content>
 <mat-list>
 <mat-list-item>
-<img src="../../../assets/naylamotors.webp" mat-card-md-image alt="">
+<img src="../../../assets/naylamotors.webp" mat-card-lg-image alt="" (click)="goHome()">
 </mat-list-item>
 <mat-list-item style="height:max-content;">
 
@@ -28,8 +28,8 @@
 <mat-list-item>Sell</mat-list-item>
 <mat-list-item>About</mat-list-item>
 <mat-list-item>Contact us</mat-list-item>
-<mat-list-item>
-Wish list (0)
+<mat-list-item (click)="goWish()">
+Wish list ({{carsWishList}})
 </mat-list-item>
 <mat-list-item>
 <mat-icon>nightlight</mat-icon>

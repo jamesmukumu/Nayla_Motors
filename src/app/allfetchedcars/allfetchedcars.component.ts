@@ -1,6 +1,8 @@
 import { Component,OnInit } from '@angular/core';
 import { FindService } from './fetchcar.service';
 import  {Router} from "@angular/router"
+import {Store} from "@ngrx/store"
+import { addToWishList } from '../redux/actions.wishList';
 
 interface PageEvent{
 length:number
@@ -60,6 +62,8 @@ fetched:boolean = false
 Savecartofavs:string = "Save Car to favourites"
 //
 
+
+
 validateButton(btnAvailability:string){
 if(btnAvailability == this.possibleButtons){
 return true
@@ -74,11 +78,13 @@ console.log("the car price",priceStringform)
 return priceStringform
 }
 
-constructor(private router:Router,private Finder:FindService){}
+constructor(private router:Router,private Finder:FindService,private store:Store){}
 
 
 
-
+SaveToWish(slug:string){
+this.store.dispatch(addToWishList({carSlug:slug}))
+}
 navigateTospecificcar(vectorSearch:string){
 console.log("this is the vector",vectorSearch)
 this.router.navigate(["/car",vectorSearch])

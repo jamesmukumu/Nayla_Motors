@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
+import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
+
 
 
 interface Vehichle {
@@ -21,7 +24,7 @@ Tree_Name: string;
   templateUrl: './header-laptops.component.html',
   styleUrl: './header-laptops.component.css'
 })
-export class HeaderLaptopsComponent {
+export class HeaderLaptopsComponent implements OnInit {
   private _transformer = (node: Vehichle, level: number): FlatNode => {
     return {
       expandable: !!node.Tree_Children && node.Tree_Children.length > 0,
@@ -43,7 +46,6 @@ export class HeaderLaptopsComponent {
     node => node.Tree_Children
   );
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-
   hasChild = (_: number, node: FlatNode) => node.expandable;
   vehichle: Vehichle[] = [
     {
@@ -75,9 +77,25 @@ export class HeaderLaptopsComponent {
       ]
     }
   ];
-  
+  carsWishList:number = 0
 
-constructor(){
+
+ngOnInit(){
+this.store.subscribe((data:any)=>{
+this.carsWishList = data.wishlist.length
+})
+}
+
+
+goHome(){
+this.router.navigate(["/"])
+}
+
+
+goWish(){
+  this.router.navigate(["/wishlist"])
+  }
+constructor(private store:Store,private router:Router){
 this.dataSource.data = this.vehichle
 }
 

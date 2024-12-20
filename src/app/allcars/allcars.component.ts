@@ -1,26 +1,21 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,inject } from '@angular/core';
 import { AllcarsService } from './allcars.service';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { saveCartocomparision } from '../redux/action.savecartocompare';
+import { addToWishList } from '../redux/actions.wishList';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessageService } from 'primeng/api';
-
-
 @Component({
   selector: 'allcars',
   templateUrl: './allcars.component.html',
   styleUrl: './allcars.component.css',
-  providers:[MessageService,AllcarsService]
+  providers:[AllcarsService,MessageService]
 })
 export class AllcarsComponent implements OnInit {
 data:any[] = []
+readonly snack = inject(MatSnackBar)
 possibleButtons:string = 'available'
 fetched:boolean = false 
-Savecartofavs:string = "Save Car to favourites"
-carSave$:Observable<any>
-
-
 defaultImage:string = "../../assets/naylamotors.webp"
 validateButton(btnAvailability:string){
 if(btnAvailability == this.possibleButtons){
@@ -36,10 +31,7 @@ priceStringform = priceStringform.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 return priceStringform
 }
 
-constructor(private cars:AllcarsService,private router:Router,private store:Store<{"comparisions":any}>,private msg:MessageService){
-this.carSave$ = this.store.select("comparisions")
-
-}
+constructor(private cars:AllcarsService,private router:Router,private store:Store){}
 
 
 async fetchCars (){
@@ -49,24 +41,22 @@ if(this.data.length > 0){
   this.fetched = true
 }
 }
-   
+SaveToWish(slug:string){
+this.snack.open("Cars added to wishlist","Wishlist",{
+horizontalPosition:"left",
+verticalPosition:"top"
+})
+this.store.dispatch(addToWishList({carSlug:slug}))
+}
 ngOnInit(){
 this.fetchCars()
 
 
 }
 
-addCarslugtolist(slug:string){
- this.store.dispatch(saveCartocomparision({slug}))
- this.carSave$.subscribe((data=>{
-  localStorage.setItem("comparisions",data)
-    this.msg.add({severity:"success",detail:"Car Added Success fully to compare list"})
- }))
-}
 
 
 navigateTospecificcar(vectorSearch:string){
-console.log("this is the vector",vectorSearch)
 this.router.navigate(["/car",vectorSearch])
 }
 

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FiltercarsService } from './search.sevice';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
+import {Store} from "@ngrx/store"
+import { addToWishList } from '../redux/actions.wishList';
 interface PageEvent {
   length: number;
   pageIndex: number;
@@ -17,6 +19,7 @@ interface PageEvent {
 })
 
 export class SearchfilterComponent implements OnInit {
+  readonly snack = inject(MatSnackBar)
   defaultImage:string = "../../assets/naylamotors.webp"
   phoneNo: string = "";
   maxPrice: string = "";
@@ -51,7 +54,7 @@ export class SearchfilterComponent implements OnInit {
     "detail": "Car has already been saved to favourites"
   }];
 
-  constructor(private myroute: ActivatedRoute, public Route: Router, private carFetch: FiltercarsService) {
+  constructor(private store:Store,private myroute: ActivatedRoute, public Route: Router, private carFetch: FiltercarsService) {
     console.log(this.myroute.snapshot.queryParams);
     this.maxPrice = this.myroute.snapshot.queryParams["maximumPrice"];
     this.minPrice = this.myroute.snapshot.queryParams["minimumPrice"];
@@ -59,6 +62,13 @@ export class SearchfilterComponent implements OnInit {
     this.currency = this.myroute.snapshot.queryParams["currency"];
   }
 
+  SaveToWish(slug:string){
+    this.snack.open("Cars added to wishlist","Wishlist",{
+    horizontalPosition:"left",
+    verticalPosition:"top"
+    })
+    this.store.dispatch(addToWishList({carSlug:slug}))
+    }
   changePage(event: PageEvent) {
     this.first = event.pageIndex * event.pageSize;
     this.last = Math.min(this.first + event.pageSize, event.length);

@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
+import {MatDialogModule} from "@angular/material/dialog"
 import {RouterModule} from '@angular/router';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
@@ -46,9 +47,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { RelatedcarComponent } from './relatedcar/relatedcar.component';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { saveCarReducer } from './redux/reducer.savecar';
+import { StoreModule,ActionReducer,ActionReducerMap,MetaReducer } from '@ngrx/store';
 import {ToastModule} from 'primeng/toast';
 import { HeaderLaptopsComponent } from './components/header-laptops/header-laptops.component'
 import {MatListModule} from "@angular/material/list";
@@ -56,7 +55,27 @@ import { SideBarComponent } from './components/side-bar/side-bar.component'
 import {MatExpansionModule} from '@angular/material/expansion'
 import {MatBadgeModule} from "@angular/material/badge"
 import { MatTableModule } from '@angular/material/table';
+import {MatSnackBarModule} from '@angular/material/snack-bar'
+import { localStorageSync } from 'ngrx-store-localstorage';
+import { wishListReducer } from './redux/reducer.wishlist';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { PopUpComponent } from './components/pop-up/pop-up.component';
 
+  
+const reducers:ActionReducerMap<any> = {
+wishlist:wishListReducer
+}
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  return (state, action) => {
+    if (typeof window !== 'undefined') {
+      return localStorageSync({ keys: ['wishlist'], rehydrate: true })(reducer)(state, action);
+    }
+    return reducer(state, action);
+  };
+}
+
+
+const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 
 @NgModule({   
   declarations:[
@@ -75,6 +94,8 @@ import { MatTableModule } from '@angular/material/table';
     RelatedcarComponent,
     HeaderLaptopsComponent,
     SideBarComponent,
+    WishlistComponent,
+    PopUpComponent,
     
   ],
   imports: [
@@ -87,6 +108,9 @@ import { MatTableModule } from '@angular/material/table';
     MatBadgeModule,
     ScrollTopModule,
     ToastModule,
+    MatDialogModule,
+    MatSnackBarModule,
+   StoreModule.forRoot(reducers,{metaReducers}),
     MatExpansionModule,
     MatTableModule,
     MatStepperModule,
@@ -122,16 +146,10 @@ import { MatTableModule } from '@angular/material/table';
     {path:"relatedcar/:carSlug",component:RelatedcarComponent},
     {path:"filtered/cars",component:SearchfilterComponent},
    {path:"myliked/cars",component:MyfavcarsComponent},
-   {path:"sell/car",component:SellcarComponent}
+   {path:"sell/car",component:SellcarComponent},
+   {path:"wishlist", component:WishlistComponent}
     ]),
-    StoreModule.forRoot({"comparisions":saveCarReducer}, {}),
-    StoreDevtoolsModule.instrument({
-    maxAge:25,
-    logOnly:!isDevMode(),
-    traceLimit:25,
-    connectInZone:true,
-    autoPause:true
-    })
+   
   ],
   providers: [
     provideClientHydration(),

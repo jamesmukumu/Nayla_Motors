@@ -1,16 +1,16 @@
-<p-toast/>
-
+<header-laptops></header-laptops>
 <div class="menu">
 <div class="menu-side">
 <side-bar></side-bar>
 </div>
 
+
+
 <div *ngIf="fetched" class="cars-display">
-<mat-card *ngFor="let cardata of data" >
+<mat-card *ngFor="let cardata of carData" >
 <div class="orient-hor">
 <img [defaultImage]="defaultImage" lazyLoad={{cardata.thumbnail}} alt=""  (click)="navigateTospecificcar(cardata.slug)">
 <mat-card-title>{{cardata.name}} {{cardata.year_of_manufacture}}</mat-card-title>
-
 <mat-card-subtitle>
 {{cardata.description}}
 </mat-card-subtitle>
@@ -19,7 +19,7 @@ KSH:{{formatPrice(cardata.price)}}
 </mat-card-subtitle>
 
 <button mat-raised-button class="btn-grad" (click)="SaveToWish(cardata.slug)">
-Add Car to wishlist
+Eject from wishlist
 </button>
 </div>
 </mat-card>
