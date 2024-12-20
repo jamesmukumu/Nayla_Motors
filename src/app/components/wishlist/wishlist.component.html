@@ -6,7 +6,7 @@
 
 
 
-<div *ngIf="fetched" class="cars-display">
+<div *ngIf="fetched" class="results-filter">
 <mat-card *ngFor="let cardata of carData" >
 <div class="orient-hor">
 <img [defaultImage]="defaultImage" lazyLoad={{cardata.thumbnail}} alt=""  (click)="navigateTospecificcar(cardata.slug)">

@@ -78,7 +78,11 @@ export class HeaderLaptopsComponent implements OnInit {
     }
   ];
   carsWishList:number = 0
+toggleSideNav:boolean = false
 
+toggler(){
+this.toggleSideNav = true
+}
 
 ngOnInit(){
 this.store.subscribe((data:any)=>{

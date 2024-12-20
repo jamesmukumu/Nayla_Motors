@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import {MatDialogModule} from "@angular/material/dialog"
 import {RouterModule} from '@angular/router';
+
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 import {MatCardModule,MatCardImage} from '@angular/material/card';
 import { FooterComponent } from './footer/footer.component';
 import { LandingComponent } from './landing/landing.component'
+import {MatSidenavModule} from "@angular/material/sidenav"
 import {MatButton} from '@angular/material/button';
 import { FilterbysearchComponent } from './filterbysearch/filterbysearch.component'
 import { FormsModule } from '@angular/forms';
@@ -107,6 +109,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     MatCardImage,
     MatBadgeModule,
     ScrollTopModule,
+    MatSidenavModule,
     ToastModule,
     MatDialogModule,
     MatSnackBarModule,
@@ -121,7 +124,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
    AccordionModule,
     MatButton,
     HttpClientModule,
-    FileUploadModule,
+ FileUploadModule,
     MessagesModule,
     TableModule,
     MatPaginatorModule,

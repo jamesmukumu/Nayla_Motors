@@ -5,7 +5,9 @@ mat-card{
     flex-direction: row;
     background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
-
+.actions{
+display: none;
+}
 mat-card-content{
 width: 100%;
 }
@@ -17,3 +19,41 @@ mat-card-content mat-list{
  mat-list mat-list-item{
 cursor: pointer;
 }  
+
+
+
+
+@media(max-width:900px){
+mat-list{
+visibility: hidden;
+display: none;
+}
+mat-card{
+  display: none;
+}
+.actions{
+    position: relative;
+    max-width: 100%;
+    min-width: 100vw;
+  height: 92.9px;
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    visibility: visible;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+ul,li{
+  padding-top: 15px;
+  letter-spacing: 1.55px;
+  list-style: none;
+  text-decoration: none;
+}
+
+.actions div{
+position: absolute;
+right: 0;
+}
+.actions div mat-icon{
+margin-left: 9.55px;
+}
+}
