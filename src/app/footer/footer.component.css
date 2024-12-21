@@ -21,6 +21,11 @@ mat-card img{
 width: 50%;
 height: 67%;       
 }
+.socials{
+gap: 15.55px;
+display: flex;
+flex-direction: row;
+}
 
 @media(max-width:800px){
 .container{
