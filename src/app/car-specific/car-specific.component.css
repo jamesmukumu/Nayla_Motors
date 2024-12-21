@@ -1,12 +1,7 @@
-*{
-margin: 0;
-padding: 0;
+*,html{
+margin: 0px;
+padding: 0px;
 }
-html{
-margin: 0;
-padding: 0;
-}
-
 
 .btn-grad {background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%)}
 .btn-grad {
@@ -42,14 +37,6 @@ height: 500px;
 }
 
 
-*{
-    margin: 0;
-    padding: 0;
-    }
-    html{
-    margin: 0;
-    padding: 0;
-    }
     .orient-hor{
     margin-top: 10px;
     }
@@ -69,11 +56,7 @@ height: 500px;
     text-align: center;
     }
     
-    @media(max-width:801px){
-    .orient-hor img{
-    width: 100%;
-    }
-    }
+   
 
 @media(max-width:800px){
 .container{
@@ -81,8 +64,14 @@ display: flex;
 flex-wrap: wrap;
 flex-direction: column;
 }
+.card{
+width: 100%;
+}
+p-galleria{
+width: 100%;
+}
 .item{
-    width: 100%;
+  width: 100%;
 }
 .item img{
 width: 100%;
