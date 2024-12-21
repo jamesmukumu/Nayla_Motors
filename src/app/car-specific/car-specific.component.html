@@ -173,64 +173,66 @@
 
 
 
-<div  class="card flex justify-content-center" >
-    <p-sidebar [(visible)]="sidebarVisible" position="right" [fullScreen]="true">
-       <mat-card-title>Common Features</mat-card-title>
-      <div class="specs">
-       <mat-card>
-        <mat-card-subtitle *ngFor="let carf of interiorFeatures" style="padding-top: 20px;">
-          {{carf}}
-          <mat-divider></mat-divider>
-         </mat-card-subtitle>
-        </mat-card>
-        <mat-card>
-          <mat-card-subtitle *ngFor="let carf of interiorResults" style="padding-top: 20px;">
-            <mat-icon style="color: red;" *ngIf="carf == false">
-              close
-            </mat-icon>
-            <mat-icon *ngIf="carf == true" style="color: green;">
-              check
-            </mat-icon>
-            
-             <p *ngIf="carf != true && carf != false">{{carf}}</p>
-            
-            <mat-divider></mat-divider>
-           </mat-card-subtitle>
-          </mat-card>
-      
-      
+<div >
+  <p-sidebar [(visible)]="sidebarVisible" position="right" [fullScreen]="true">
+    <mat-card-title>Common Features</mat-card-title>
+   <div >
+   <div  class="specs" *ngFor="let interior of interiorFeatures;let i = index" style="padding-top: 20px;">
+    <mat-list>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        {{interior}}
+      </mat-list-item>
+    </mat-list>
+     
+   <mat-list>
+    <mat-divider></mat-divider>
+  <mat-list-item>
+   <mat-icon style="color: red;" *ngIf="interiorResults[i] == false">
+      close
+    </mat-icon>
+    <mat-icon *ngIf="interiorResults[i] == true" style="color: green;">
+      check
+    </mat-icon>
+    
+     <p *ngIf="interiorResults[i] != true && interiorResults[i] != false">{{interiorResults[i]}}</p>
+    
+  </mat-list-item>
+   </mat-list>
       </div>
-      
-    </p-sidebar>
+   </div>  
+   
+ </p-sidebar>
     
 </div>
 
-<div  class="card flex justify-content-center" >
+<div >
   <p-sidebar [(visible)]="sidebarSafety" position="right" [fullScreen]="true">
     <mat-card-title>Safety Features</mat-card-title>
-   <div class="specs">
-    <mat-card>
-     <mat-card-subtitle *ngFor="let carf of safetyFeatures" style="padding-top: 20px;">
-       {{carf}}
-       <mat-divider></mat-divider>
-      </mat-card-subtitle>
-     </mat-card>
-     <mat-card>
-       <mat-card-subtitle *ngFor="let carf of safetyResults" style="padding-top: 20px;">
-         <mat-icon style="color: red;" *ngIf="carf == false">
-           close
-         </mat-icon>
-         <mat-icon *ngIf="carf == true" style="color: green;">
-           check
-         </mat-icon>
-         
-          <p *ngIf="carf != true && carf != false">{{carf}}</p>
-         
-         <mat-divider></mat-divider>
-        </mat-card-subtitle>
-       </mat-card>
-   
-   
+   <div >
+   <div  class="specs" *ngFor="let safety of safetyFeatures;let i = index" style="padding-top: 20px;">
+    <mat-list>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        {{safety}}
+      </mat-list-item>
+    </mat-list>
+     
+   <mat-list>
+    <mat-divider></mat-divider>
+  <mat-list-item>
+   <mat-icon style="color: red;" *ngIf="safetyResults[i] == false">
+      close
+    </mat-icon>
+    <mat-icon *ngIf="safetyResults[i] == true" style="color: green;">
+      check
+    </mat-icon>
+    
+     <p *ngIf="safetyResults[i] != true && safetyResults[i] != false">{{safetyResults[i]}}</p>
+    
+  </mat-list-item>
+   </mat-list>
+      </div>
    </div>  
    
  </p-sidebar>
@@ -245,9 +247,9 @@
   <mat-card *ngFor="let cardata of relatedCars" >
 
       <div class="orient-hor">
-     <mat-card>
+     
       <img src={{cardata.thumbnail}} alt=""  (click)="navigateRelatedcar(cardata.slug)">
-      </mat-card>
+      
       
           <mat-card-title>{{cardata.name}}</mat-card-title>
          <mat-card style="display: flex; flex-direction: row; text-align: center; margin-top: 20px; ">
