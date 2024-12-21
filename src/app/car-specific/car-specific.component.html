@@ -12,7 +12,9 @@
 </div>
 <div class="container">
 <div class="item">
-<img src={{carData.thumbnail}} alt="">
+<mat-card>
+  <img src={{carData.thumbnail}} alt="">
+</mat-card>
 <mat-card-title>
   Total Landing Costs {{formatPrice(carData.price)}} (All taxes included)
   </mat-card-title>
@@ -243,9 +245,9 @@
   <mat-card *ngFor="let cardata of relatedCars" >
 
       <div class="orient-hor">
+     <mat-card>
       <img src={{cardata.thumbnail}} alt=""  (click)="navigateRelatedcar(cardata.slug)">
-      
-      
+      </mat-card>
       
           <mat-card-title>{{cardata.name}}</mat-card-title>
          <mat-card style="display: flex; flex-direction: row; text-align: center; margin-top: 20px; ">

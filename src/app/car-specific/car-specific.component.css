@@ -67,13 +67,16 @@ flex-direction: column;
 .card{
 width: 100%;
 }
+.orient-hor{
+width: 100%;
+}
 p-galleria{
 width: 100%;
 }
-.item{
+.item mat-card{
   width: 100%;
 }
-.item img{
+.item mat-card img{
 width: 100%;
 height: 300px;
 }
