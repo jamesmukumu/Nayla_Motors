@@ -7,3 +7,4 @@ export var RemoveFromWish =  createAction(
 "removeFromWishList",
 props<{"carSlug":string}>()
 )
+// handle state management
