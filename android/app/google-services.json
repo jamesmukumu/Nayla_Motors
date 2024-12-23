@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1033487578485",
+    "project_id": "naylamotors",
+    "storage_bucket": "naylamotors.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033487578485:android:ef286d0895649fb4208f3c",
+        "android_client_info": {
+          "package_name": "nayla.com.nayla_motor_car"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRLqabzLAucLti_vLJax1UbXtcbhibQFc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
