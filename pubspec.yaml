@@ -41,6 +41,7 @@ dependencies:
   awesome_notifications: ^0.10.0
   firebase_core: ^3.9.0
   firebase_messaging: ^15.1.6
+  http: ^1.2.2
 
 
 dev_dependencies:
@@ -68,6 +69,46 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
      - lib/assets/naylamotors.webp
+     - lib/assets/bentley.jpeg
+     - lib/assets/lexus.png
+     - lib/assets/chevrolet.jpeg
+     - lib/assets/audi.png
+     - lib/assets/bmw.jpeg
+     - lib/assets/honda.jpeg
+     - lib/assets/land_rover.jpeg
+     - lib/assets/mazda.png
+     - lib/assets/mercedes_benz.jpeg
+     - lib/assets/mit.png
+     - lib/assets/subaru.jpeg
+     - lib/assets/suzuki.png
+     - lib/assets/toyota.png
+     - lib/assets/volks.jpeg
+     - lib/assets/Citreon.png
+     - lib/assets/dodge.jpeg
+     - lib/assets/ebike.jpeg
+     - lib/assets/FAW.png
+     - lib/assets/ferarri.jpeg
+     - lib/assets/Ford.jpeg
+     - lib/assets/Hino.png
+     - lib/assets/hyundai.jpeg
+     - lib/assets/isuzu.png
+     - lib/assets/jaguar.jpeg
+     - lib/assets/jeep.jpeg
+     - lib/assets/kawasaki.png
+     - lib/assets/kia.png
+     - lib/assets/rolls.jpeg
+     - lib/assets/smart.png
+     - lib/assets/Lambo.jpeg
+     - lib/assets/lay.jpeg
+     - lib/assets/mini.png
+     - lib/assets/Nissan.jpeg
+     - lib/assets/peugeout.png
+     - lib/assets/porsche.png
+     - lib/assets/Renault.jpeg
+     - lib/assets/Romeo.jpeg
+     - lib/assets/Skygo.png
+     - lib/assets/Tata.png
+     - lib/assets/Volvo.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
