@@ -48,13 +48,20 @@ Future<void> refresh()async{
         children: [
           Expanded(
             flex: 5,
-            child: Container(
-              width: double.infinity,
-              child: Image(
-                fit: BoxFit.cover,
-                image: carInfo["thumbnail"]!.isNotEmpty
-                    ? NetworkImage(carInfo['thumbnail'])
-                    : AssetImage("lib/assets/naylamotors.webp") as ImageProvider,
+            child:  InkWell(
+              onTap: (){
+                Navigator.pushNamed(context,"/car",arguments: {
+                  "carSlug":carInfo["slug"]
+                });
+              },
+              child: Container(
+                width: double.infinity,
+                child: Image(
+                  fit: BoxFit.cover,
+                  image: carInfo["thumbnail"]!.isNotEmpty
+                      ? NetworkImage(carInfo['thumbnail'])
+                      : AssetImage("lib/assets/naylamotors.webp") as ImageProvider,
+                ),
               ),
             ),
           ),

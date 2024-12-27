@@ -9,10 +9,36 @@ try{
   
 }catch(err){
   print(err);
-}
+}}
+
+  Future<http.Response?> FetchCar(String Slug)async{
+    try{
+      var resp = await Client.get(Uri.parse(baseUrl + "/fetch/specific/car").replace(
+        queryParameters: {
+          "searchVector":Slug
+        }
+      ));
+      return resp;
+    }catch(err){
+      print(err);
+    }
+    
+  }
+  Future<http.Response?> FetchCarImages(String Slug)async{
+    try{
+      var resp = await Client.get(Uri.parse(baseUrl + "/fetch/car/images").replace(
+          queryParameters: {
+            "slug":Slug
+          }
+      ));
+      return resp;
+    }catch(err){
+      print(err);
+    }
 
   }
-
+  
+  
 
 
 
