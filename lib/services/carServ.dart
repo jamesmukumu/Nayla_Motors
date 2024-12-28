@@ -35,9 +35,20 @@ try{
     }catch(err){
       print(err);
     }
-
   }
-  
+
+  Future<http.Response?> FetchCarBrands(String categorySlug)async{
+    try{
+      var resp = await Client.get(Uri.parse(baseUrl + "/fetch/car/brand").replace(
+          queryParameters: {
+            "carName":categorySlug
+          }
+      ));
+      return resp;
+    }catch(err){
+      print(err);
+    }
+  }
   
 
 

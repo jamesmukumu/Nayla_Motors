@@ -57,6 +57,10 @@ Future<void> refresh()async{
               child: Container(
                 width: double.infinity,
                 child: Image(
+
+                  errorBuilder: (ctx,i,stack){
+                    return Image(fit: BoxFit.cover,image: AssetImage('lib/assets/naylamotors.webp'));
+                  },
                   fit: BoxFit.cover,
                   image: carInfo["thumbnail"]!.isNotEmpty
                       ? NetworkImage(carInfo['thumbnail'])

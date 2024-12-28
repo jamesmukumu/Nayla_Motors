@@ -102,7 +102,6 @@ CarService car = CarService();
 
 }
 
-
 Future<void> launchUrll()async{
   await launchUrl(Uri.parse("https://naylamotors.vercel.app/car/${carData['slug']}"));
 }
@@ -153,10 +152,11 @@ Widget carSafety(int idx,dynamic interiorFtrs){
               RichText(
                 text: TextSpan(
                   style: TextStyle(color: Colors.black),
-                  text: "Total Landing Costs KES ${carData['price']} (All Taxes Included)",
+                  text: "Total Landing Costs KES ${carData['price'].toString().replaceAll(RegExp(r'\B(?=(\d{3})+(?!\d))'), ',')} (All Taxes Included)",
                 ),
               ),
-              Text("Annual Insurance Fee KES  ${carData['annual_insurance']}"),
+              SizedBox(height: 10.0,),
+              Text("Annual Insurance Fee KES  ${carData['annual_insurance'].toString().replaceAll(RegExp(r'\B(?=(\d{3})+(?!\d))'), ',')}"),
               Text(
                 "${carData['name']} ${carData['year_of_manufacture']}",
                 style: TextStyle(
@@ -213,7 +213,7 @@ Widget carSafety(int idx,dynamic interiorFtrs){
                              ),),
                InkWell(
                  onTap:launchUrll,
-                 child: Text("View in web",style: TextStyle(
+                 child: Text("More details about ${carData['name']}",style: TextStyle(
                   color: Colors.blue[400],
                   letterSpacing: 1.55
                                ),),
@@ -221,134 +221,24 @@ Widget carSafety(int idx,dynamic interiorFtrs){
               Flexible(
                 child: Text("${carData['description']}"),
               ),
-             SizedBox(height: 20.0,),
-              Expanded(
-                child: ListView(
-                  children: [
-                    Row(
-                      children: [
-                        Text("Year of Manufacture:"),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(carData['year_of_manufacture'].toString()),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Row(
-                      children: [
-                        Text("Location:"),
-                        VerticalDivider(),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(carData["current_location"]),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Row(
-                      children: [
-                        Text("Estimated Arrival Days:"),
-                        VerticalDivider(),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(carData["estimated_arrival_days"].toString()),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Row(
-                      children: [
-                        Text("Drive:"),
-                        VerticalDivider(),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(carData["drive"]),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Row(
-                      children: [
-                        Text("Mileage:"),
-                        VerticalDivider(),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text("${carData["mileage"]} KM"),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Row(
-                      children: [
-                        Text("Engine Size:"),
-                        VerticalDivider(),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(carData["engine_specifications"]['engine_size'].toString()),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Text("Horse Power:"),
-                        VerticalDivider(),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text("${carData["engine_specifications"]['horse_power']} HP"),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Row(
-                      children: [
-                        Text("Transmission:"),
-                        VerticalDivider(),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(carData["engine_specifications"]['transmission']),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Row(
-                      children: [
-                        Text("Aspiration:"),
-                        VerticalDivider(),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(carData["engine_specifications"]['aspiration']),
-                        ),
-                      ],
-                    ),
-                    Divider(),
-                    Row(
-                      children: [
-                        Text("Acceleration (0-100 KPH):"),
-                        VerticalDivider(),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text("${carData["engine_specifications"]['acceleration']} Seconds"),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
 
-              SizedBox(height: 50.0,),
+
+              SizedBox(height: 10.0,),
               Expanded(
+                flex: 3,
                 child: SizedBox(
+                  height: double.infinity,
                   width: double.infinity,
                   child: CarouselSlider(
                     carouselController: buttonCarouselController,
                     items: carImages.map((img) {
                       return Builder(
                         builder: (ctx) {
-                          return SizedBox(
+                          return  SizedBox(
                             width: double.infinity,
-                            height: 900,
+                            height:double.infinity,
                             child: Image(
+                              height: double.infinity,
                               fit: BoxFit.cover,
                               image: NetworkImage(img['image']),
                               errorBuilder: (ctx, obj, stackTrace) =>

@@ -3,6 +3,7 @@ import 'package:nayla_motor_car/widgets/car.dart';
 import 'package:nayla_motor_car/widgets/landing_page.dart';
 import 'package:nayla_motor_car/widgets/home.dart';
 import 'package:nayla_motor_car/widgets/categories.dart';
+import 'package:nayla_motor_car/pages/categories.dart';
 
 
 void main() {
@@ -11,7 +12,8 @@ void main() {
       initialRoute: "/",
       routes: {
         "/":(context)=>Home(),
-        "/car":(context)=>Car()
+        "/car":(context)=>Car(),
+        "/category":(context)=>Categ()
       },
       theme: ThemeData(
 

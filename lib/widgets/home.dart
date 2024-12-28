@@ -84,12 +84,35 @@ Row(
        ),
       appBar: AppBar(
         backgroundColor: Colors.brown.shade400,
-        title: Text("Home",style: TextStyle(
-          letterSpacing: 1.55,
-          color: Colors.white
-        ),),
-        centerTitle: true,
+       title: Container(
+         height: 40, // Adjust height to align properly
+         child: Form(
+           child: TextField(
+             decoration: InputDecoration(
+               contentPadding: EdgeInsets.symmetric(vertical: 8.0),
+               filled: true,
+               fillColor: Colors.white,
+               focusColor: Colors.white,
+               focusedBorder: OutlineInputBorder(
+                 borderRadius: BorderRadius.horizontal(),
+                 borderSide: BorderSide(color: Colors.white),
+               ),
+               border: OutlineInputBorder(
+                 borderRadius: BorderRadius.horizontal(),
+                 borderSide: BorderSide(color: Colors.white),
+               ),
+               suffixIcon: Icon(Icons.search, color: Colors.grey),
+               labelStyle: TextStyle(color: Colors.grey),
+               hintText: "Search for any car eg,Toyota Hilux",
+               hintStyle: TextStyle(color: Colors.grey),
+             ),
+           ),
+         ),
+       ),
       ),
+
+    
+
 bottomNavigationBar: BottomNav(changeItem: changeNav, currentIdx: initialIdx),
     );
   }
