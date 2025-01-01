@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { CarService } from '../../car-specific/fetchcar.service';
 import { CarsService } from '../../services/cars.service';
 import {MatTableDataSource} from "@angular/material/table"
 import { Router } from '@angular/router';
-
+import { FormControl } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
+import {Observable} from "rxjs"
+import { map,startWith } from 'rxjs';
+
+
 interface Brand{
   Brandname:string
   Brandimage:string
@@ -14,7 +18,8 @@ interface Brand{
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.css'
 })
-export class SideBarComponent {
+export class SideBarComponent  implements OnInit{
+myFormControl = new FormControl()
 carSlugSearch:string = ''   
 carsFetched:any
 carCount?:number
@@ -22,12 +27,13 @@ rowsDisplayInfo = ["name","thumbnail","price"]
 filtering:boolean = false
 dataSource:any
 fetched:boolean = false
-lowEnd:number = 0
-highEnd:number = 0
-startYr:number = 0
-endYr:number = 0
-startMileage:number = 0
-endMileage:number  = 0
+lowEnd?:number 
+highEnd?:number
+startYr?:number 
+endYr?:number 
+startMileage?:number 
+endMileage?:number 
+filteredCar!:Observable<Brand[]> 
 
 Brands:Brand[] = [
   {
@@ -252,4 +258,17 @@ if(data.length  > 0 ){
 
 }
 constructor(private cars:CarsService,private router:Router,private cdr:ChangeDetectorRef){}   
+
+private _filter(value: string): Brand[] {
+  const filterValue = value.toLowerCase();
+
+return this.Brands.filter(option => option.Brandname.toLowerCase().includes(filterValue));
+    }
+ngOnInit(){
+this.filteredCar = this.myFormControl.valueChanges.pipe(
+  startWith(""),
+  map((val)=>this._filter(val || ""))
+)
+
+}
 }

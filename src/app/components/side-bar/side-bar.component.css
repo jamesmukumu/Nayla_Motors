@@ -88,4 +88,10 @@ margin: 0;
 mat-card-footer button{
   margin-left: 0%;
   }
+  mat-accordion{
+    max-height: fit-content;
+  }
+  mat-card{
+    height: fit-content;
+  }
 }

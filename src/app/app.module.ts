@@ -51,6 +51,7 @@ import { RelatedcarComponent } from './relatedcar/relatedcar.component';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { StoreModule,ActionReducer,ActionReducerMap,MetaReducer } from '@ngrx/store';
 import {ToastModule} from 'primeng/toast';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderLaptopsComponent } from './components/header-laptops/header-laptops.component'
 import {MatListModule} from "@angular/material/list";
 import { SideBarComponent } from './components/side-bar/side-bar.component'
@@ -62,7 +63,7 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import { wishListReducer } from './redux/reducer.wishlist';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { PopUpComponent } from './components/pop-up/pop-up.component';
-
+import {MatAutocompleteModule} from "@angular/material/autocomplete"
   
 const reducers:ActionReducerMap<any> = {
 wishlist:wishListReducer
@@ -101,6 +102,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     
   ],
   imports: [
+    
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,   
@@ -111,6 +113,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     ScrollTopModule,
     MatSidenavModule,
     ToastModule,
+    MatAutocompleteModule,
     MatDialogModule,
     MatSnackBarModule,
    StoreModule.forRoot(reducers,{metaReducers}),
@@ -130,6 +133,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     MatPaginatorModule,
     MatIconModule,
     MatCheckboxModule,
+    ReactiveFormsModule,
     FormsModule,
     BreadcrumbModule,
     ProgressBarModule,
