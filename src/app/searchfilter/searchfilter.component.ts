@@ -4,6 +4,9 @@ import { FiltercarsService } from './search.sevice';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {Store} from "@ngrx/store"
 import { addToWishList } from '../redux/actions.wishList';
+import { GeneralFilter,CarsService } from '../services/cars.service';
+
+
 interface PageEvent {
   length: number;
   pageIndex: number;
@@ -54,7 +57,7 @@ export class SearchfilterComponent implements OnInit {
     "detail": "Car has already been saved to favourites"
   }];
 
-  constructor(private store:Store,private myroute: ActivatedRoute, public Route: Router, private carFetch: FiltercarsService) {
+  constructor(private Car:CarsService,private store:Store,private myroute: ActivatedRoute, public Route: Router, private carFetch: FiltercarsService) {
     console.log(this.myroute.snapshot.queryParams);
     this.maxPrice = this.myroute.snapshot.queryParams["maximumPrice"];
     this.minPrice = this.myroute.snapshot.queryParams["minimumPrice"];
@@ -75,30 +78,24 @@ export class SearchfilterComponent implements OnInit {
     this.paginatedData = this.showCarspagewise(this.first, this.last, this.data);
   }
 
-  async implementSave(carVector: string) {
-    var someData = await this.carFetch.Savecartofavs(this.phoneNo, carVector);
-    this.visible = false;
-    if (someData.msg === "saved") {
-      this.Savesuccess = true;
-    } else if (someData.msg === "car has already been saved") {
-      this.Errorsave = true;
-    }
-  }
+
 
   async ngOnInit() {
-    if (this.myroute.snapshot.queryParams["filterBy"] == "advanced search") {
-      this.data = await this.carFetch.Fetchcars(this.minPrice, this.maxPrice, this.brand, this.currency);
-      if (this.data === "Results not found") {
-        this.Resultsnotfound = true;
-        return;
-      }
-      this.length = this.data.length;
-      this.fetched = true;
-      this.paginatedData = this.showCarspagewise(0, this.pagesize, this.data);
-    } else if (this.myroute.snapshot.queryParams["filterBy"] == "pricewise") {
-      this.minPrice = this.myroute.snapshot.queryParams["minimumPrice"];
-      this.maxPrice = this.myroute.snapshot.queryParams["maximumPrice"];
-      var someData = await this.carFetch.Fetchcarbasedonprices(this.minPrice, this.maxPrice);
+  if (this.myroute.snapshot.queryParams["filterBy"] == "General") {
+      this.minPrice = this.myroute.snapshot.queryParams["startPrice"];
+      this.maxPrice = this.myroute.snapshot.queryParams["endPrice"];
+      var load:GeneralFilter = {
+        start_price:parseInt(this.minPrice),
+        end_price:parseInt(this.maxPrice),
+        start_mileage:parseInt(this.myroute.snapshot.queryParams["startMileage"]),
+        end_mileage:parseInt(this.myroute.snapshot.queryParams["endMileage"]),
+        brand_name:this.myroute.snapshot.queryParams["choosenCar"],
+        start_yom:parseInt(this.myroute.snapshot.queryParams["startYOM"]),
+        end_yom:parseInt(this.myroute.snapshot.queryParams["endYOM"]),
+        source:this.myroute.snapshot.queryParams["source"]
+}
+
+      var someData = await this.Car.FilterGen(load)
       this.data = someData.data;
       this.length = someData.count;
       if (this.data === "Results not found") {
@@ -107,38 +104,7 @@ export class SearchfilterComponent implements OnInit {
       }
       this.fetched = true;
       this.paginatedData = this.showCarspagewise(0, this.pagesize, this.data);
-    }else if (this.myroute.snapshot.queryParams["filterBy"] == "yearwise") {
-   var someData = await this.carFetch.FetchcarYearly(this.myroute.snapshot.queryParams["startYear"],this.myroute.snapshot.queryParams["endYear"]);
-      this.data = someData.data;
-      this.length = someData.count;
-      if (this.data === "Results not found") {
-        this.Resultsnotfound = true;
-        return;
-      }
-      this.fetched = true;
-      this.paginatedData = this.showCarspagewise(0, this.pagesize, this.data);
-    } else if (this.myroute.snapshot.queryParams["filterBy"] == "mileage") {
-      var someData = await this.carFetch.FetchMileage(this.myroute.snapshot.queryParams["startMileage"],this.myroute.snapshot.queryParams["endMileage"]);
-         this.data = someData.data;
-         this.length = someData.count;
-         if (this.data === "Results not found") {
-           this.Resultsnotfound = true;
-           return;
-         }
-         this.fetched = true;
-         this.paginatedData = this.showCarspagewise(0, this.pagesize, this.data);
-       }  else if (this.myroute.snapshot.queryParams["filterBy"] == "manualSearch") {
-      this.queryParam = this.myroute.snapshot.queryParams["carQuery"];
-      var someData = await this.carFetch.Fetchcarbasedonkeyword(this.queryParam);
-      this.data = someData.data;
-      this.length = someData.count;
-      if (someData === "Results not found") {
-        this.Resultsnotfound = true;
-        return;
-      }
-      this.fetched = true;
-      this.paginatedData = this.showCarspagewise(0, this.pagesize, this.data);
-    } else if (this.myroute.snapshot.queryParams["filterBy"] == "brandSearch") {
+    }  else if (this.myroute.snapshot.queryParams["filterBy"] == "brandSearch") {
       this.queryParam = this.myroute.snapshot.queryParams["carBrand"];
       var someData = await this.carFetch.Fetchaccoundbrandwise(this.queryParam);
       this.data = someData.data;
@@ -149,12 +115,6 @@ export class SearchfilterComponent implements OnInit {
       }
       this.fetched = true;
       this.paginatedData = this.showCarspagewise(0, this.pagesize, this.data);
-    }else if(this.myroute.snapshot.queryParams["importedcars"] === "true"){
-    var someData = await this.carFetch.Fetchimportedcars()
-    this.data = someData.data
-    this.length = someData.count
-    this.fetched = true;
-    this.paginatedData = this.showCarspagewise(0, this.pagesize, this.data);
     }
   }
 

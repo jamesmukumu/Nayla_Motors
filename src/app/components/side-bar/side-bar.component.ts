@@ -7,6 +7,7 @@ import { FormControl } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
 import {Observable} from "rxjs"
 import { map,startWith } from 'rxjs';
+import e from 'express';
 
 
 interface Brand{
@@ -20,7 +21,8 @@ interface Brand{
 })
 export class SideBarComponent  implements OnInit{
 myFormControl = new FormControl()
-carSlugSearch:string = ''   
+carSlugSearch:string = '' 
+default:string = 'Kenyan Used'  
 carsFetched:any
 carCount?:number
 rowsDisplayInfo = ["name","thumbnail","price"]
@@ -34,7 +36,7 @@ endYr?:number
 startMileage?:number 
 endMileage?:number 
 filteredCar!:Observable<Brand[]> 
-
+carNameSelected?:string;
 Brands:Brand[] = [
   {
   Brandname:"Audi",
@@ -220,16 +222,33 @@ filterbyPrice(lowPrice:number,maxPrice:number){
       })
       
       }
-    filterbyMileage(){
-      this.cdr.detectChanges()
-     this.router.navigate(["filtered/cars"],{
-      queryParams:{
-      'startMileage':this.startMileage,
-      'endMileage':this.endMileage,
-      "filterBy":"mileage"
-      }
-      })
-      }
+  
+choosenCar(event:any){
+var {value} = event.option
+this.carNameSelected = value
+}
+navigateFilter(){
+this.router.navigate([
+  "/filtered/cars",
+  
+],
+{
+  queryParams:{
+    "filterBy":"General",
+    "startPrice":this.lowEnd,
+    "endPrice":this.highEnd,
+    "choosenCar":this.carNameSelected,
+    "startMileage":this.startMileage,
+    "endMileage":this.endMileage,
+    "startYOM":this.startYr,
+    "endYOM":this.endYr,
+    "source":this.default
+  }
+}
+)
+}
+
+
   
 formatPrice(price:number){
   var priceStringform:string = price.toString()

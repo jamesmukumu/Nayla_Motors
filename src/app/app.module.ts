@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import {MatDialogModule} from "@angular/material/dialog"
 import {RouterModule} from '@angular/router';
-
+import {MatSelectModule} from "@angular/material/select"
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 import {MatCardModule,MatCardImage} from '@angular/material/card';
@@ -113,6 +113,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     ScrollTopModule,
     MatSidenavModule,
     ToastModule,
+    MatSelectModule,
     MatAutocompleteModule,
     MatDialogModule,
     MatSnackBarModule,
