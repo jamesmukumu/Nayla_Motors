@@ -50,6 +50,20 @@ try{
     }
   }
   
+  Future<http.Response?> FilterNameWise(String searchSlug)async{
+    try{
+      var resp = await Client.get(Uri.parse(baseUrl + "/filter/cars/namewise").replace(
+        queryParameters: {
+          "carFilter":searchSlug
+      }
+      ));
+      return resp;
+    }catch(err){
+      print(err);
+    }
+    
+    
+  }
 
 
 

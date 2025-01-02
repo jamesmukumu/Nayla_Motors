@@ -13,7 +13,30 @@ class CategoriesComp extends StatefulWidget {
 }
 
 class _CategoriesCompState extends State<CategoriesComp> {
-int selectedCarCategories = 0 ;
+  RangeValues filterValues = RangeValues(250000, 100000000);
+  TextEditingController startPrice = TextEditingController();
+  TextEditingController endPrice = TextEditingController();
+ List<String> allCars = [];
+
+  void validator(){
+
+  }
+
+  void populateCars() {
+    final carSet = <String>{};
+    for (int i = 0; i < categories.length; i++) {
+      for (int j = 0; j < categories[i].childrenCars.length; j++) {
+        carSet.add(categories[i].childrenCars[j].carName);
+      }
+    }
+    setState(() {
+      allCars = carSet.toList();
+      selectedFilterCar = allCars.isNotEmpty ? allCars[0] : ''; // Ensure valid default value
+    });
+  }
+
+
+  int selectedCarCategories = 0 ;
   List<CarCatalog> categories = [
     CarCatalog(CatalogName: "Saloons", childrenCars: [
       CarBranches(appearanceName: "Citreon", carName: "Citreon", carImage: "lib/assets/Citreon.png"),
@@ -82,95 +105,323 @@ int selectedCarCategories = 0 ;
     ]
     )
   ];
-
+Set <String>_choosenVals = {};
+String selectedFilterCar = 'Hino';
   @override
+
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    startPrice.addListener(validator);
+    endPrice.addListener(validator);
+    populateCars();
+  }
   @override
   Widget build(BuildContext context) {
-    return Row(
+    RangeLabels labelsRange = RangeLabels(filterValues.start.toString(),this.filterValues.end.toString());
+    return     Stack(
       children: [
-        Container(
-          padding: EdgeInsets.all(10.0),
-          width: 130.55,
-          color: Colors.grey[200],
-          child: ListView.builder(
-            itemCount: categories.length,
-            itemBuilder: (ctx, idx) {
-              return Column(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        selectedCarCategories = idx;
-                      });
-                    },
-                    child: Stack(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          color: Colors.transparent,
-                          child: Row(
-                            children: [
-                              selectedCarCategories == idx
-                                  ? Container(
-                                width: 4,
-                                height: 20,
-                                color: Colors.brown,
-                              )
-                                  : SizedBox(width: 4),
-                              SizedBox(width: 8),
-                              Expanded(
-                                child: Text(
-                                  categories[idx].CatalogName,
-                                  style: TextStyle(
-                                    color: selectedCarCategories == idx
-                                        ? Colors.brown
-                                        : Colors.black,
+        Row(
+          children: [
+            Container(
+              padding: EdgeInsets.all(10.0),
+              width: 130.55,
+              color: Colors.grey[200],
+              child: ListView.builder(
+                itemCount: categories.length,
+                itemBuilder: (ctx, idx) {
+                  return Column(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            selectedCarCategories = idx;
+                          });
+                        },
+                        child: Stack(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.symmetric(vertical: 10),
+                              color: Colors.transparent,
+                              child: Row(
+                                children: [
+                                  selectedCarCategories == idx
+                                      ? Container(
+                                    width: 4,
+                                    height: 20,
+                                    color: Colors.brown,
+                                  )
+                                      : SizedBox(width: 4),
+                                  SizedBox(width: 8),
+                                  Expanded(
+                                    child: Text(
+                                      categories[idx].CatalogName,
+                                      style: TextStyle(
+                                        color: selectedCarCategories == idx
+                                            ? Colors.brown
+                                            : Colors.black,
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                  Divider(height: 1, color: Colors.grey),
-                ],
-              );
-            },
-          ),
-        ),
-          Flexible(
-          child: GridView.builder(
-            itemCount: categories[selectedCarCategories].childrenCars.length,
-            gridDelegate:
-            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-            itemBuilder: (cyx, count) {
-              final carCatalog =
-              categories[selectedCarCategories].childrenCars[count];
-              return Column(
-                children: [
-                  Flexible(
-                    child:  InkWell(
-                      child: Image(
-                        height: 150.00,
-                        image: AssetImage(carCatalog.carImage),
                       ),
-                      onTap: (){
-                        Navigator.of(context).pushNamed("/category",arguments: {
-                          "category":categories[selectedCarCategories].childrenCars[count].carName
-                        });
-                      },
-                    ),
-                  ),
-                  Text(carCatalog.appearanceName),
-                ],
-              );
-            },
-          ),
+                      Divider(height: 1, color: Colors.grey),
+                    ],
+                  );
+                },
+              ),
+            ),
+              Flexible(
+              child: GridView.builder(
+                itemCount: categories[selectedCarCategories].childrenCars.length,
+                gridDelegate:
+                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                itemBuilder: (cyx, count) {
+                  final carCatalog =
+                  categories[selectedCarCategories].childrenCars[count];
+                  return Column(
+                    children: [
+                      Flexible(
+                        child:  InkWell(
+                          child: Image(
+                            height: 150.00,
+                            image: AssetImage(carCatalog.carImage),
+                          ),
+                          onTap: (){
+                            Navigator.of(context).pushNamed("/category",arguments: {
+                              "category":categories[selectedCarCategories].childrenCars[count].carName
+                            });
+                          },
+                        ),
+                      ),
+                      Text(carCatalog.appearanceName),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ],
         ),
+
+       Positioned(
+         bottom: 0.00000,
+         child: SegmentedButton<String>(
+           style: ButtonStyle(
+             textStyle: MaterialStateProperty.all(TextStyle(
+               color: Colors.white
+             )),
+             backgroundColor: MaterialStateProperty.all(Colors.brown[400])
+           ),
+             emptySelectionAllowed: true,
+             segments:[
+           ButtonSegment(value: "Filter",icon: IconButton(onPressed: (){
+          showModalBottomSheet(context: context, builder: (ctx){
+            return Mode(startPrice: startPrice, endPrice: endPrice, allCars: allCars, filterValues: filterValues, labelsRange: labelsRange, selectedFilterCar: selectedFilterCar);
+          });
+
+           }, icon: Icon(Icons.filter_alt,color: Colors.white,),),label: Text("Filter",style: TextStyle(
+             color: Colors.white
+           ),)),
+           ButtonSegment(value: "Sort",icon: IconButton(onPressed: (){}, icon: Icon(Icons.sort,color: Colors.white,)),label: Text("Sort",style: TextStyle(
+             color: Colors.white
+           ),))
+
+         ] , selected:_choosenVals ),
+       )
+
       ],
     );
   }
 
+}
+
+
+
+class Mode extends StatefulWidget {
+  Mode({super.key,required this.startPrice,required this.endPrice,required this.allCars,required this.filterValues,required this.labelsRange,required this.selectedFilterCar});
+TextEditingController startPrice;
+TextEditingController endPrice;
+List<String> allCars;
+RangeValues filterValues;
+RangeLabels labelsRange;
+String selectedFilterCar;
+String defaultMarketPlace = "Kenyan Used";
+  @override
+  State<Mode> createState() => _ModeState();
+}
+
+class _ModeState extends State<Mode> {
+  @override
+  Widget build(BuildContext context) {
+    return  SingleChildScrollView(
+      child: Form(child: Column(
+      
+        children: [
+          DropdownButton<String>(
+            hint: Text('Choose car to filter'),
+            menuWidth: double.infinity,
+            value: widget.selectedFilterCar.isNotEmpty ? widget.selectedFilterCar : null, // Avoid null error
+            items: widget.allCars.toSet().map((data) => DropdownMenuItem<String>(
+              value: data,
+              child: Text(data),
+            )).toList(),
+            onChanged: (newValue) {
+              setState(() {
+                widget.selectedFilterCar = newValue ?? '';
+              });
+            },
+          ),
+      
+          DropdownButton(
+            value: widget.defaultMarketPlace,
+              items: [
+            DropdownMenuItem(child: Text("Kenyan Used"),value: "Kenyan Used",),
+            DropdownMenuItem(child: Text("Foreign Used"),value: "Foreign Used",),
+          ], onChanged: (newVal){
+               setState(() {
+                 widget.defaultMarketPlace =  newVal!;
+               });
+          }),
+      
+      
+          Text("Filter Price wise"),
+          Center(
+            child: RangeSlider(activeColor: Colors.brown[400],inactiveColor: Colors.brown[400],max: 100000000,min: 250000,divisions: 5,values: widget.filterValues,labels: widget.labelsRange, onChanged:(newVal){
+              setState(() {
+                widget.filterValues = newVal;
+                widget.labelsRange = RangeLabels(newVal.start.toString(), newVal.end.toString());
+              });
+              widget.startPrice.text = newVal.start.toString();
+              widget.endPrice.text = newVal.end.toString();
+      
+            }),
+          ),
+          Row(
+            children: [
+              Flexible(
+                child: TextField(
+                  decoration: InputDecoration(
+                      label: Text("Start Price"),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+      
+                          )
+                      )
+                  ),
+                  controller: widget.startPrice,
+                  keyboardType: TextInputType.number,
+      
+                ),
+              ),
+              Flexible(
+                child: TextField(
+      
+                  decoration: InputDecoration(
+                      label: Text("Ending Price"),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+      
+                          )
+                      )
+                  ),
+                  controller: widget.endPrice,
+                  keyboardType: TextInputType.number,
+                ),
+              ),
+            ],
+          ),
+      
+      
+          Text("Filter By Year of Manufacture"),
+          Row(
+            children: [
+              Flexible(
+                child: TextField(
+                  decoration: InputDecoration(
+                      label: Text("Start YOM"),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+      
+                          )
+                      )
+                  ),
+      
+                  keyboardType: TextInputType.number,
+                  maxLength: 4,
+      
+                ),
+              ),
+              Flexible(
+                child: TextField(
+      
+                  decoration: InputDecoration(
+                      label: Text("End YOM"),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+      
+                          )
+                      )
+                  ),
+      
+                  keyboardType: TextInputType.number,
+                  maxLength: 4,
+                ),
+              ),
+            ],
+          ),
+      
+          Text("Filter By Mileage"),
+          Row(
+            children: [
+              Flexible(
+                child: TextField(
+                  decoration: InputDecoration(
+                      label: Text("Start Mileage"),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+      
+                          )
+                      )
+                  ),
+      
+                  keyboardType: TextInputType.number,
+      
+                ),
+              ),
+              Flexible(
+                child: TextField(
+      
+                  decoration: InputDecoration(
+                      label: Text("End Mileage"),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+      
+                          )
+                      )
+                  ),
+      
+                  keyboardType: TextInputType.number,
+                ),
+              ),
+            ],
+          ),
+      
+          TextButton.icon(icon: Icon(Icons.filter_alt,color: Colors.white,),style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.brown[400])
+          ),onPressed: (){}, label: Text('Filter',style: TextStyle(
+            color: Colors.white,
+            letterSpacing: 1.55
+          ),))
+        ],
+      
+      
+      )
+      
+      ),
+    );;
+  }
 }

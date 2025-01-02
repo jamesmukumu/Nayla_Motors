@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -34,9 +35,12 @@ class LandingSite extends StatefulWidget {
 }
 
 class _LandingSiteState extends State<LandingSite> {
+
+  final firebase = FirebaseMessaging.instance;
+
+
   Future<void> checkLocationPermission()async{
     final isLocationGranted = await Geolocator.checkPermission();
-    print("PErmission grant is $isLocationGranted");
     if(isLocationGranted == LocationPermission.denied){
       Geolocator.requestPermission();
     }else{
@@ -55,12 +59,21 @@ Future<void>Notifications()async{
 }
 
 
+Future<void> fetchDeviceToken()async{
+print("attempting fetch");
+   String? token = await firebase.getToken();
+   print("token is $token");
+}
+
 @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    fetchDeviceToken();
     checkLocationPermission();
     Notifications();
+
+
   }
 
   @override
