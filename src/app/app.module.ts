@@ -153,7 +153,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     {path:"car/:searchvector",component:CarSpecificComponent},
     {path:"relatedcar/:carSlug",component:RelatedcarComponent},
     {path:"filtered/cars",component:SearchfilterComponent},
-   {path:"myliked/cars",component:MyfavcarsComponent},
+ 
    {path:"sell/car",component:SellcarComponent},
    {path:"wishlist", component:WishlistComponent}
     ]),
