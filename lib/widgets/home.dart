@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:nayla_motor_car/pages/cars.dart';
+import 'package:nayla_motor_car/redux/reducers/carReducerClass.dart';
 import 'package:nayla_motor_car/services/carServ.dart';
 import 'package:nayla_motor_car/widgets/categories.dart';
 import 'dart:convert';
@@ -241,19 +243,25 @@ final ValueChanged<int> changeItem;
 
   @override
   Widget build(BuildContext context) {
-    return NavigationBar(
-   selectedIndex: currentIdx,
-      onDestinationSelected: (idx){
-      changeItem(idx);
-      },
-      indicatorColor: Colors.brown.shade200,
-        backgroundColor: Colors.white,
-        destinations: [
-      NavigationDestination(icon: Icon(Icons.home), label: "Home"),
-      NavigationDestination(icon: Icon(Icons.category), label: "Categories"),
-      NavigationDestination(icon: Icon(Icons.car_rental_sharp), label: "WishList"),
+    return  StoreConnector<CarRed,List<String>>(
+      converter: (state)=>state.state.carSlugs,
+      builder: (ctx,carsSlug){
+      return NavigationBar(
+          selectedIndex: currentIdx,
+          onDestinationSelected: (idx){
+            changeItem(idx);
+          },
+          indicatorColor: Colors.brown.shade200,
+          backgroundColor: Colors.white,
+          destinations: [
+            NavigationDestination(icon: Icon(Icons.home), label: "Home"),
+            NavigationDestination(icon: Icon(Icons.category), label: "Categories"),
+            NavigationDestination(icon: Badge.count(count: carsSlug.length,child: Icon(Icons.car_rental_sharp),), label: "WishList"),
 
-    ]);
+          ]);
+      },
+
+    );
   }
 }
 

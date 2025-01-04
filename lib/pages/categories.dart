@@ -1,8 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:nayla_motor_car/redux/reducers/carReducerClass.dart';
 import 'package:nayla_motor_car/services/carServ.dart';
 import 'package:nayla_motor_car/pages/cars.dart';
+import 'package:redux/redux.dart';
+import 'package:nayla_motor_car/redux/actions/addToWishList.dart';
 
  class Categ extends StatefulWidget {
   const Categ({super.key});
@@ -133,20 +137,30 @@ class _CategCompState extends State<CategComp> {
 
          Expanded(
            flex: 2,
-           child: Center(
-             child: TextButton(
-               style: ButtonStyle(
-                   backgroundColor: MaterialStateProperty.all(Colors.brown[400])
-               ),
-               onPressed: (){},
-               child: Text(
-                 "Wish List",
-                 style: TextStyle(
-                     fontWeight: FontWeight.w600,
-                     color: Colors.white
+           child:  StoreConnector<CarRed,VoidCallback>(
+             converter: (state){
+               return ()=>state.dispatch(AddWishList(carInfo['slug']));
+             },
+             builder: (ctx,cb){
+               return Center(
+                 child: TextButton(
+                   style: ButtonStyle(
+                       backgroundColor: MaterialStateProperty.all(Colors.brown[400])
+                   ),
+                   onPressed: (){
+                     cb();
+                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Car added to wish list')));
+                   },
+                   child: Text(
+                     "Wish List",
+                     style: TextStyle(
+                         fontWeight: FontWeight.w600,
+                         color: Colors.white
+                     ),
+                   ),
                  ),
-               ),
-             ),
+               );
+             },
            ),
          ),
        ],

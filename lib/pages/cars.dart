@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:nayla_motor_car/redux/reducers/carReducerClass.dart';
 import 'package:nayla_motor_car/services/carServ.dart';
 import 'dart:convert';
+import 'package:nayla_motor_car/redux/actions/addToWishList.dart';
+
 
 class Cars extends StatefulWidget {
   const Cars({super.key});
@@ -107,19 +111,27 @@ Future<void> refresh()async{
           Expanded(
             flex: 2,
             child: Center(
-              child: TextButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.brown[400])
-                ),
-                onPressed: (){},
-                child: Text(
-                  "Wish List",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white
+              child: StoreConnector<CarRed,VoidCallback>(builder: (ctx,CB){
+                return TextButton(
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.brown[400])
                   ),
-                ),
-              ),
+                  onPressed: (){
+                    CB();
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Car added to wish List")));
+
+                  },
+                  child: Text(
+                    "Wish List",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white
+                    ),
+                  ),
+                );
+              }, converter: (store){
+                return ()=> store.dispatch(AddWishList(carInfo['slug']));
+              })
             ),
           ),
         ],

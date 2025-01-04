@@ -1,4 +1,11 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
+import "package:nayla_motor_car/classes/carCatalog.dart";
+
+
+
+
 String baseUrl = 'https://carshop-1.onrender.com';
 class CarService{
   final Client = http.Client();
@@ -60,11 +67,31 @@ try{
       return resp;
     }catch(err){
       print(err);
-    }
-    
-    
-  }
+    }}
 
+
+
+  Future<http.Response?> FilterMulti(CarFilter filt)async{
+    print(filt);
+    try{
+      var resp = await Client.post(Uri.parse(baseUrl + "/filter"),body: json.encode({
+        "start_price":filt.start_price,
+        "end_price":filt.end_price,
+        "start_mileage":filt.start_mileage,
+        "end_mileage":filt.end_mileage,
+        "start_yom":filt.start_yom,
+        "end_yom":filt.end_yom,
+        "source":filt.source,
+        "brand_name":filt.brand_name
+      }),headers: {
+        "Content-Type":"application/json"
+      });
+      return resp;
+    }catch(err){
+print(err);
+    }
+
+  }
 
 
 }

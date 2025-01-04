@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:nayla_motor_car/classes/carCatalog.dart';
-
+import 'package:nayla_motor_car/classes/carCatalog.dart';
+import 'package:nayla_motor_car/services/carServ.dart';
 
 
 
@@ -16,6 +19,7 @@ class _CategoriesCompState extends State<CategoriesComp> {
   RangeValues filterValues = RangeValues(250000, 100000000);
   TextEditingController startPrice = TextEditingController();
   TextEditingController endPrice = TextEditingController();
+
  List<String> allCars = [];
 
   void validator(){
@@ -244,7 +248,13 @@ String selectedFilterCar = 'Hino';
 class Mode extends StatefulWidget {
   Mode({super.key,required this.startPrice,required this.endPrice,required this.allCars,required this.filterValues,required this.labelsRange,required this.selectedFilterCar});
 TextEditingController startPrice;
+Future<void> ?fetchingBasedFilter;
 TextEditingController endPrice;
+  TextEditingController startYOM = TextEditingController();
+  TextEditingController endYOM = TextEditingController();
+  TextEditingController startMileage = TextEditingController();
+  TextEditingController endMileage = TextEditingController();
+  CarService carServ = CarService();
 List<String> allCars;
 RangeValues filterValues;
 RangeLabels labelsRange;
@@ -341,6 +351,7 @@ class _ModeState extends State<Mode> {
             children: [
               Flexible(
                 child: TextField(
+                  controller: widget.startYOM,
                   decoration: InputDecoration(
                       label: Text("Start YOM"),
                       border: OutlineInputBorder(
@@ -357,7 +368,7 @@ class _ModeState extends State<Mode> {
               ),
               Flexible(
                 child: TextField(
-      
+                  controller: widget.endYOM,
                   decoration: InputDecoration(
                       label: Text("End YOM"),
                       border: OutlineInputBorder(
@@ -379,6 +390,7 @@ class _ModeState extends State<Mode> {
             children: [
               Flexible(
                 child: TextField(
+                  controller: widget.startMileage,
                   decoration: InputDecoration(
                       label: Text("Start Mileage"),
                       border: OutlineInputBorder(
@@ -394,7 +406,7 @@ class _ModeState extends State<Mode> {
               ),
               Flexible(
                 child: TextField(
-      
+      controller: widget.endMileage,
                   decoration: InputDecoration(
                       label: Text("End Mileage"),
                       border: OutlineInputBorder(
@@ -409,13 +421,83 @@ class _ModeState extends State<Mode> {
               ),
             ],
           ),
-      
-          TextButton.icon(icon: Icon(Icons.filter_alt,color: Colors.white,),style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.brown[400])
-          ),onPressed: (){}, label: Text('Filter',style: TextStyle(
-            color: Colors.white,
-            letterSpacing: 1.55
-          ),))
+          FutureBuilder(future: widget.fetchingBasedFilter, builder: (ctx,snap){
+            if(snap.connectionState == ConnectionState.done){
+            return TextButton(onPressed: (){}, child: Row(
+              children: [
+                Text("Filtering..."),
+                CircularProgressIndicator(),
+              ],
+            ));
+
+
+
+            }else{
+              return
+
+                TextButton.icon(
+                  icon: Icon(Icons.filter_alt, color: Colors.white),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.brown[400]),
+                  ),
+                  onPressed: () {
+                    try {
+                      CarFilter pay = CarFilter(
+                        brand_name: widget.selectedFilterCar,
+                        source: widget.defaultMarketPlace,
+                        start_price: widget.startPrice.text.isNotEmpty
+                            ? int.parse(widget.startPrice.text)
+                            : null,
+                        end_price: widget.endPrice.text.isNotEmpty
+                            ? int.parse(widget.endPrice.text)
+                            : null,
+                        start_yom: widget.startYOM.text.isNotEmpty
+                            ? int.parse(widget.startYOM.text)
+                            : null,
+                        end_yom: widget.endYOM.text.isNotEmpty
+                            ? int.parse(widget.endYOM.text)
+                            : null,
+                        start_mileage: widget.startMileage.text.isNotEmpty
+                            ? int.parse(widget.startMileage.text)
+                            : null,
+                        end_mileage: widget.endMileage.text.isNotEmpty
+                            ? int.parse(widget.endMileage.text)
+                            : null,
+                      );
+
+                      widget.fetchingBasedFilter = widget.carServ.FilterMulti(pay).then((data){
+                        print(data!.body);
+                        dynamic dataBody = json.decode(data!.body);
+                        if(dataBody['data'] == 'Results not found'){
+                          Navigator.pop(context);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Cars not found based on filter"),showCloseIcon: true,duration: Duration(seconds: 10),)
+                          );
+                        }else{
+                          String dataa = json.encode(dataBody['data']);
+                          Navigator.pushNamed(context, "/filter",arguments: {
+                            "data":dataa
+                          });
+                        }
+
+
+
+                      });
+
+                    } catch (e) {
+                      print('Error: $e');
+                    }
+                  },
+                  label: Text(
+                    'Filter',
+                    style: TextStyle(color: Colors.white, letterSpacing: 1.55),
+                  ),
+                );
+
+            }
+
+          })
+
         ],
       
       

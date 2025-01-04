@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
-
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart' as internet;
 
 class Landing extends StatelessWidget {
   const Landing({super.key});
@@ -58,6 +58,30 @@ Future<void>Notifications()async{
     }
 }
 
+Future<void> checkInternet()async{
+    final Connection = internet.InternetConnection();
+    print(await Connection.hasInternetAccess);
+    if(await Connection.hasInternetAccess){
+      Navigator.pushReplacementNamed(context, "/home");
+    }else{
+      showDialog(barrierDismissible: false,context: context, builder: (ctx){
+        return AlertDialog(
+          title: Text("Internet Connection Status"),
+          content: Text("Please make sure you have internet access before you procedd"),
+          actions: [
+            TextButton.icon(style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.brown[400])
+            ),onPressed: checkInternet, label: Text("Connect",style: TextStyle(
+              color: Colors.white,
+              letterSpacing: 1.55
+            ),))
+          ],
+        );
+      });
+    }
+
+}
+
 
 Future<void> fetchDeviceToken()async{
 print("attempting fetch");
@@ -72,7 +96,7 @@ print("attempting fetch");
     fetchDeviceToken();
     checkLocationPermission();
     Notifications();
-
+checkInternet();
 
   }
 
