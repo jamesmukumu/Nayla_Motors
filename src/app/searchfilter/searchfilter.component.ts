@@ -116,6 +116,18 @@ export class SearchfilterComponent implements OnInit {
       }
       this.fetched = true;
       this.paginatedData = this.showCarspagewise(0, this.pagesize, this.data);
+    }else if (this.myroute.snapshot.queryParams["filterBy"] == "brandSearch") {
+      this.minPrice = this.myroute.snapshot.queryParams["minimumPrice"];
+      this.maxPrice = this.myroute.snapshot.queryParams["maximumPrice"];
+      var someData = await this.carFetch.Fetchaccoundbrandwise(this.myroute.snapshot.queryParams['carBrand'])
+      this.data = someData.data;
+      this.length = someData.count;
+      if (someData === "Results not found") {
+        this.Resultsnotfound = true;
+        return;
+      }
+      this.fetched = true;
+      this.paginatedData = this.showCarspagewise(0, this.pagesize, this.data);
     }
   }
 
