@@ -13,9 +13,10 @@ import 'package:nayla_motor_car/redux/reducers/carReducerClass.dart';
 
 
 
-void main() {
+void main()async {
+
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp();
+ await Firebase.initializeApp();
   final Store<CarRed> naylaStore = Store(carsReducer, initialState:CarRed());
 
   runApp(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:nayla_motor_car/pages/cars.dart';
+import 'package:nayla_motor_car/pages/wishlist/wishlist.dart';
 import 'package:nayla_motor_car/redux/reducers/carReducerClass.dart';
 import 'package:nayla_motor_car/services/carServ.dart';
 import 'package:nayla_motor_car/widgets/categories.dart';
@@ -15,7 +16,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 bool isLocalVehichlesExpanded = false;
 bool isImported = false;
-List<Widget> menuItems = [Cars(),CategoriesComp()];
+List<Widget> menuItems = [Cars(),CategoriesComp(),Wish()];
 int initialIdx = 0;
 CarService car = CarService();
 List<dynamic> carData = [];
