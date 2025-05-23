@@ -1,288 +1,288 @@
 <header-laptops></header-laptops>
+<div class="card" *ngIf="!fetched">
+  <p-progressBar mode="indeterminate" [style]="{'height': '6px'}" />
+</div>
+
+<mat-card *ngIf="fetched">
+ <div class="card flex justify-content-center">
+  <p-breadcrumb 
+      class="max-w-full" 
+      [model]="items" 
+      [home]="home" />
+</div>
+<div class="container">
+<div class="item">
+<mat-card>
+  <img src={{carData.thumbnail}} alt="">
+</mat-card>
+<mat-card-title>
+  Total Landing Costs  KES {{formatPrice(carData.price)}} (All taxes included)
+  </mat-card-title>
+  <mat-card-title>
+    Annual Insuarance Fees KES {{formatPrice(carData.annual_insurance)}}
+    </mat-card-title>
+</div>
+
+<div class="item">
+<mat-card-title>{{carData.name}}</mat-card-title>
+<mat-card-subtitle>{{carData.description}}</mat-card-subtitle>
+<button matTooltip="See More car Descriptions"  mat-raised-button (click)="sidebarVisible =true" style="background-color: rgb(59,130,246);">Car Specification</button>
+<button matTooltip="See More Safety Specs"  mat-raised-button (click)="sidebarSafety =true" style="background-color: rgb(59,130,246); margin-left: 20px;">Car Safety</button>
+</div>
+
+
+
+<div class="card">
+  <p-galleria 
+       [value]="images"
+      [showIndicators]="true" 
+      [autoPlay]="true"
+      [circular]="true"
+      
+      [showThumbnails]="false" 
+      [responsiveOptions]="responsiveOptions" 
+      [containerStyle]="{ 'max-width': '100%' }">
+           <ng-template pTemplate="item" let-item>
+        <img [src]="item.image" style="width:100%" />
+    </ng-template>
+    <ng-template pTemplate="thumbnail" let-item>
+        <img [src]="item.thumbnail" />
+    </ng-template>
+  </p-galleria>
+</div>
+
+</div>
+
+<mat-card style="display: flex; flex-direction: row;">
+  <mat-card-subtitle style="color: black;">Year of Manufacture</mat-card-subtitle>
+<p-divider layout="vertical"></p-divider>
+  <mat-card-subtitle>{{carData.year_of_manufacture}}</mat-card-subtitle>
+
+  </mat-card>   
+<mat-divider></mat-divider>
+<mat-card style="display: flex; flex-direction: row;">
+  <mat-card-subtitle style="color: black;">Source</mat-card-subtitle>
+<p-divider layout="vertical"></p-divider>
+  <mat-card-subtitle>{{carData.source}}</mat-card-subtitle>
+
+  </mat-card>  
+  <mat-divider></mat-divider>
+<mat-card style="display: flex; flex-direction: row;">
+  <mat-card-subtitle style="color: black;">Location</mat-card-subtitle>
+<p-divider layout="vertical"></p-divider>
+  <mat-card-subtitle>{{carData.current_location}}</mat-card-subtitle>
+
+  </mat-card>
+<mat-divider></mat-divider>
+
+
+<mat-card style="display: flex; flex-direction: row;">
+  <mat-card-subtitle style="color: black;">Availabilty</mat-card-subtitle>
+<p-divider layout="vertical"></p-divider>
+  <mat-card-subtitle>{{carData.availability}}</mat-card-subtitle>
+
+  </mat-card>
+<mat-divider></mat-divider>
+
+
+<mat-card style="display: flex; flex-direction: row;">
+  <mat-card-subtitle style="color: black;">Estimated Arrival Days</mat-card-subtitle>
+<p-divider layout="vertical"></p-divider>
+  <mat-card-subtitle>{{carData.estimated_arrival_days}}</mat-card-subtitle>
+
+  </mat-card>
+<mat-divider></mat-divider>
+
+<mat-card style="display: flex; flex-direction: row;">
+  <mat-card-subtitle style="color: black;">Drive</mat-card-subtitle>
+<p-divider layout="vertical"></p-divider>
+  <mat-card-subtitle>{{carData.drive}}</mat-card-subtitle>
+
+  </mat-card>
+<mat-divider></mat-divider>
+
+
+<mat-card style="display: flex; flex-direction: row;">
+  <mat-card-subtitle style="color: black;">Mileage</mat-card-subtitle>
+<p-divider layout="vertical"></p-divider>
+  <mat-card-subtitle>{{carData.mileage}} KM</mat-card-subtitle>
+
+  </mat-card>
+<mat-divider></mat-divider>
+
+
+<mat-card style="display: flex; flex-direction: row;">
+  <mat-card-subtitle style="color: black;">Engine size</mat-card-subtitle>
+<p-divider layout="vertical"></p-divider>
+  <mat-card-subtitle>{{carData.engine_specifications.engine_size}} CC</mat-card-subtitle>
+
+  </mat-card>
+<mat-divider></mat-divider>
+
+
+<mat-card style="display: flex; flex-direction: row;">
+  <mat-card-subtitle style="color: black;">Fuel Type</mat-card-subtitle>
+<p-divider layout="vertical"></p-divider>
+  <mat-card-subtitle>{{carData.engine_specifications.fuel_type}}</mat-card-subtitle>
+
+  </mat-card>
+<mat-divider></mat-divider>
+
+
+<mat-card style="display: flex; flex-direction: row;">
+  <mat-card-subtitle style="color: black;">Horse Power</mat-card-subtitle>
+<p-divider layout="vertical"></p-divider>
+  <mat-card-subtitle>{{carData.engine_specifications.horse_power}} Hp</mat-card-subtitle>
+
+  </mat-card>
+<mat-divider></mat-divider>
+
+<mat-card style="display: flex; flex-direction: row;">
+  <mat-card-subtitle style="color: black;">Transmission</mat-card-subtitle>
+<p-divider layout="vertical"></p-divider>
+  <mat-card-subtitle>{{carData.engine_specifications.transmission}} Hp</mat-card-subtitle>
+
+  </mat-card>
+<mat-divider></mat-divider>
+
+
+<mat-card style="display: flex; flex-direction: row;">
+  <mat-card-subtitle style="color: black;">Torque</mat-card-subtitle>
+<p-divider layout="vertical"></p-divider>
+  <mat-card-subtitle>{{carData.engine_specifications.torque}}Nm</mat-card-subtitle>
+
+  </mat-card>
+<mat-divider></mat-divider>
+
+<mat-card style="display: flex; flex-direction: row;">
+  <mat-card-subtitle style="color: black;">Aspiration</mat-card-subtitle>
+<p-divider layout="vertical"></p-divider>
+  <mat-card-subtitle>{{carData.engine_specifications.aspiration}}</mat-card-subtitle>
+
+  </mat-card>
+<mat-divider></mat-divider>
+
+<mat-card style="display: flex; flex-direction: row;">
+  <mat-card-subtitle style="color: black;">Acceleration (0 - 100) kph</mat-card-subtitle>
+<p-divider layout="vertical"></p-divider>
+  <mat-card-subtitle>{{carData.engine_specifications.acceleration}}seconds</mat-card-subtitle>
+
+  </mat-card>
+
+  <p-scrollTop/>
+<mat-divider></mat-divider>
+
+</mat-card>
+
+
+
+<div >
+  <p-sidebar [(visible)]="sidebarVisible" position="right" [fullScreen]="true">
+    <mat-card-title>Common Features</mat-card-title>
+   <div >
+   <div  class="specs" *ngFor="let interior of interiorFeatures;let i = index" style="padding-top: 20px;">
+    <mat-list>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        {{interior}}
+      </mat-list-item>
+    </mat-list>
+     
+   <mat-list>
+    <mat-divider></mat-divider>
+  <mat-list-item>
+   <mat-icon style="color: red;" *ngIf="interiorResults[i] == false">
+      close
+    </mat-icon>
+    <mat-icon *ngIf="interiorResults[i] == true" style="color: green;">
+      check
+    </mat-icon>
+    
+     <p *ngIf="interiorResults[i] != true && interiorResults[i] != false">{{interiorResults[i]}}</p>
+    
+  </mat-list-item>
+   </mat-list>
+      </div>
+   </div>  
+   
+ </p-sidebar>
+    
+</div>
+
+<div >
+  <p-sidebar [(visible)]="sidebarSafety" position="right" [fullScreen]="true">
+    <mat-card-title>Safety Features</mat-card-title>
+   <div >
+   <div  class="specs" *ngFor="let safety of safetyFeatures;let i = index" style="padding-top: 20px;">
+    <mat-list>
+      <mat-divider></mat-divider>
+      <mat-list-item>
+        {{safety}}
+      </mat-list-item>
+    </mat-list>
+     
+   <mat-list>
+    <mat-divider></mat-divider>
+  <mat-list-item>
+   <mat-icon style="color: red;" *ngIf="safetyResults[i] == false">
+      close
+    </mat-icon>
+    <mat-icon *ngIf="safetyResults[i] == true" style="color: green;">
+      check
+    </mat-icon>
+    
+     <p *ngIf="safetyResults[i] != true && safetyResults[i] != false">{{safetyResults[i]}}</p>
+    
+  </mat-list-item>
+   </mat-list>
+      </div>
+   </div>  
+   
+ </p-sidebar>
+
+  <i class="pi pi-phone" matTooltip="Call Us"(click)="callUs()"></i>
+ 
+ <i class="pi pi-whatsapp" style="margin-left: 20px; color: forestgreen;" (click)="whatsups()" matTooltip="Whatsapp us"></i>
+</div>
+
+<mat-card-title>Similar Cars</mat-card-title>
+<ng-container *ngIf="fetched">
+  <div class="related-cars-grid">
+    <mat-card *ngFor="let cardata of relatedCars" class="car-card">
+      <div class="orient-hor">
+        <img src={{cardata.thumbnail}} alt="" (click)="navigateRelatedcar(cardata.slug)">
+        
+        <mat-card-title>{{cardata.name}}</mat-card-title>
+        
+        <mat-card style="display: flex; flex-direction: row; text-align: center; margin-top: 20px;">
+          <button mat-raised-button>{{cardata.year_of_manufacture}}</button>
+          
+          <div [ngSwitch]="validateButton(cardata.availability)">
+            <button mat-raised-button *ngSwitchCase="true" style="background-color: rgb(104,211,145);">available</button>
+            <button mat-raised-button *ngSwitchCase="false" style="background-color: rgb(252,129,129);">{{cardata.availability}}</button>
+          </div>
+        </mat-card>
+        
+        <mat-divider></mat-divider>
+        <div>
+          <mat-card-subtitle class="related-description">
+            {{cardata.description}}
+          </mat-card-subtitle>
+          <b style="padding-top: 20px;">
+            KSH:{{formatPrice(cardata.price)}}
+          </b>
+        </div>
+
+      </div>
+    </mat-card>
+  </div>
+</ng-container>
+
+
 
 <div class="card" *ngIf="!fetched">
   <p-progressBar mode="indeterminate" [style]="{'height': '6px'}" />
-  </div>
-<mat-card *ngIf="fetched">
-<div class="card flex justify-content-center">
-      <p-breadcrumb 
-          class="max-w-full" 
-          [model]="items" 
-          [home]="home" />
-    </div>
-    <div class="container">
-    <div class="item">
-    <img src={{carData.thumbnail}} alt="">
-    <mat-card-title>
-    Total Landing Costs {{formatPrice(carData.price)}} (All taxes included)
-    </mat-card-title>
-    <mat-card-subtitle>
-      Annual Insuarance Fees {{formatPrice(carData.annual_insurance)}}
-      </mat-card-subtitle>
-    </div>
-    
-    <div class="item">
-    <mat-card-title>{{carData.name}}</mat-card-title>
-    <mat-card-subtitle>{{carData.description}}</mat-card-subtitle>
-    <button matTooltip="See More car Descriptions"  mat-raised-button (click)="sidebarVisible =true" style="background-color: rgb(59,130,246);">Car Specification</button>
-    <button matTooltip="See More Safety Specs"  mat-raised-button (click)="sidebarSafety =true" style="background-color: rgb(59,130,246); margin-left: 20px;">Car Safety</button>
-    </div>
-    
-    
-    
-    <div class="card">
-      <p-galleria 
-           [value]="images"
-          [showIndicators]="true" 
-          [autoPlay]="true"
-          [circular]="true"
-          [showThumbnails]="false" 
-          [responsiveOptions]="responsiveOptions" 
-          [containerStyle]="{ 'max-width': '640px' }">
-              <ng-template pTemplate="item" let-item>
-                  <img [src]="item.image" style="width: 100%; display: block;" />
-              </ng-template>
-      </p-galleria>
-    </div>
-    
-    </div>
-    
-    <mat-card style="display: flex; flex-direction: row;">
-      <mat-card-subtitle style="color: black;">Year of Manufacture</mat-card-subtitle>
-    <p-divider layout="vertical"></p-divider>
-      <mat-card-subtitle>{{carData.year_of_manufacture}}</mat-card-subtitle>
-    
-      </mat-card>   
-    <mat-divider></mat-divider>
-     
-    
-    <mat-card style="display: flex; flex-direction: row;">
-      <mat-card-subtitle style="color: black;">Location</mat-card-subtitle>
-    <p-divider layout="vertical"></p-divider>
-      <mat-card-subtitle>{{carData.current_location}}</mat-card-subtitle>
-    
-      </mat-card>
-    <mat-divider></mat-divider>
-    
-    
-    <mat-card style="display: flex; flex-direction: row;">
-      <mat-card-subtitle style="color: black;">Availabilty</mat-card-subtitle>
-    <p-divider layout="vertical"></p-divider>
-      <mat-card-subtitle>{{carData.availability}}</mat-card-subtitle>
-    
-      </mat-card>
-    <mat-divider></mat-divider>
-    
-    
-    <mat-card style="display: flex; flex-direction: row;">
-      <mat-card-subtitle style="color: black;">Estimated Arrival Days</mat-card-subtitle>
-    <p-divider layout="vertical"></p-divider>
-      <mat-card-subtitle>{{carData.estimated_arrival_days}}</mat-card-subtitle>
-    
-      </mat-card>
-    <mat-divider></mat-divider>
-    
-    <mat-card style="display: flex; flex-direction: row;">
-      <mat-card-subtitle style="color: black;">Drive</mat-card-subtitle>
-    <p-divider layout="vertical"></p-divider>
-      <mat-card-subtitle>{{carData.drive}}</mat-card-subtitle>
-    
-      </mat-card>
-    <mat-divider></mat-divider>
-    
-    
-    <mat-card style="display: flex; flex-direction: row;">
-      <mat-card-subtitle style="color: black;">Mileage</mat-card-subtitle>
-    <p-divider layout="vertical"></p-divider>
-      <mat-card-subtitle>{{carData.mileage}} KM</mat-card-subtitle>
-    
-      </mat-card>
-    <mat-divider></mat-divider>
-    
-    
-    <mat-card style="display: flex; flex-direction: row;">
-      <mat-card-subtitle style="color: black;">Engine size</mat-card-subtitle>
-    <p-divider layout="vertical"></p-divider>
-      <mat-card-subtitle>{{carData.engine_specifications.engine_size}} CC</mat-card-subtitle>
-    
-      </mat-card>
-    <mat-divider></mat-divider>
-    
-    
-    <mat-card style="display: flex; flex-direction: row;">
-      <mat-card-subtitle style="color: black;">Fuel Type</mat-card-subtitle>
-    <p-divider layout="vertical"></p-divider>
-      <mat-card-subtitle>{{carData.engine_specifications.fuel_type}}</mat-card-subtitle>
-    
-      </mat-card>
-    <mat-divider></mat-divider>
-    
-    
-    <mat-card style="display: flex; flex-direction: row;">
-      <mat-card-subtitle style="color: black;">Horse Power</mat-card-subtitle>
-    <p-divider layout="vertical"></p-divider>
-      <mat-card-subtitle>{{carData.engine_specifications.horse_power}} Hp</mat-card-subtitle>
-    
-      </mat-card>
-    <mat-divider></mat-divider>
-    
-    <mat-card style="display: flex; flex-direction: row;">
-      <mat-card-subtitle style="color: black;">Transmission</mat-card-subtitle>
-    <p-divider layout="vertical"></p-divider>
-      <mat-card-subtitle>{{carData.engine_specifications.transmission}} Hp</mat-card-subtitle>
-    
-      </mat-card>
-    <mat-divider></mat-divider>
-    
-    
-    <mat-card style="display: flex; flex-direction: row;">
-      <mat-card-subtitle style="color: black;">Torque</mat-card-subtitle>
-    <p-divider layout="vertical"></p-divider>
-      <mat-card-subtitle>{{carData.engine_specifications.torque}}Nm</mat-card-subtitle>
-    
-      </mat-card>
-    <mat-divider></mat-divider>
-    
-    <mat-card style="display: flex; flex-direction: row;">
-      <mat-card-subtitle style="color: black;">Aspiration</mat-card-subtitle>
-    <p-divider layout="vertical"></p-divider>
-      <mat-card-subtitle>{{carData.engine_specifications.aspiration}}</mat-card-subtitle>
-    
-      </mat-card>
-    <mat-divider></mat-divider>
-    
-    <mat-card style="display: flex; flex-direction: row;">
-      <mat-card-subtitle style="color: black;">Acceleration (0 - 100) kph</mat-card-subtitle>
-    <p-divider layout="vertical"></p-divider>
-      <mat-card-subtitle>{{carData.engine_specifications.acceleration}}seconds</mat-card-subtitle>
-    
-      </mat-card>
-    
-      <p-scrollTop/>
-    <mat-divider></mat-divider>
-    
-    
-    
-    </mat-card>
-    
-    
-    
-    <div  class="card flex justify-content-center" >
-        <p-sidebar [(visible)]="sidebarVisible" position="right" [fullScreen]="true">
-           <mat-card-title>Common Features</mat-card-title>
-          <div class="specs">
-           <mat-card>
-            <mat-card-subtitle *ngFor="let carf of interiorFeatures" style="padding-top: 20px;">
-              {{carf}}
-              <mat-divider></mat-divider>
-             </mat-card-subtitle>
-            </mat-card>
-            <mat-card>
-              <mat-card-subtitle *ngFor="let carf of interiorResults" style="padding-top: 20px;">
-                <mat-icon style="color: red;" *ngIf="carf == false">
-                  close
-                </mat-icon>
-                <mat-icon *ngIf="carf == true" style="color: green;">
-                  check
-                </mat-icon>
-                
-                 <p *ngIf="carf != true && carf != false">{{carf}}</p>
-                
-                <mat-divider></mat-divider>
-               </mat-card-subtitle>
-              </mat-card>
-          
-          
-          </div>
-          
-        </p-sidebar>
-        
-    </div>
-    
-    <div  class="card flex justify-content-center" >
-      <p-sidebar [(visible)]="sidebarSafety" position="right" [fullScreen]="true">
-        <mat-card-title>Safety Features</mat-card-title>
-       <div class="specs">
-        <mat-card>
-         <mat-card-subtitle *ngFor="let carf of safetyFeatures" style="padding-top: 20px;">
-           {{carf}}
-           <mat-divider></mat-divider>
-          </mat-card-subtitle>
-         </mat-card>
-         <mat-card>
-           <mat-card-subtitle *ngFor="let carf of safetyResults" style="padding-top: 20px;">
-             <mat-icon style="color: red;" *ngIf="carf == false">
-               close
-             </mat-icon>
-             <mat-icon *ngIf="carf == true" style="color: green;">
-               check
-             </mat-icon>
-             
-              <p *ngIf="carf != true && carf != false">{{carf}}</p>
-             
-             <mat-divider></mat-divider>
-            </mat-card-subtitle>
-           </mat-card>
-       
-       
-       </div>  
-       
-     </p-sidebar>
-    <p-scrollTop/>
-      <i class="pi pi-phone" matTooltip="Call Us"(click)="callUs()"></i>
-     
-     <i class="pi pi-whatsapp" style="margin-left: 20px; color: forestgreen;" (click)="whatsups()" matTooltip="Whatsapp us"></i>
-    </div>
-    <mat-card-title>Similar Cars</mat-card-title>
-    <ng-container *ngIf="fetched">
-    
-      <mat-card *ngFor="let cardata of relatedCars" >
-    
-          <div class="orient-hor">
-          <img src={{cardata.thumbnail}} alt=""  (click)="navigateRelatedcar(cardata.slug)">
-          
-          
-          
-              <mat-card-title>{{cardata.name}}</mat-card-title>
-             <mat-card style="display: flex; flex-direction: row; text-align: center; margin-top: 20px; ">
-              <button  mat-raised-button>{{cardata.year_of_manufacture}}</button>
-            
-              <mat-card   [ngSwitch]="validateButton(cardata.availability)">
-              <button mat-raised-button *ngSwitchCase=true style="background-color: rgb(104,211,145);">available</button>
-              <button mat-raised-button *ngSwitchCase=false style="background-color: rgb(252,129,129);">{{cardata.availability}}</button>
-              </mat-card>
-           
-             </mat-card>
-            
-          <mat-divider></mat-divider>
-              <mat-card-subtitle>
-                  {{cardata.description}}
-              </mat-card-subtitle>
-             <mat-divider></mat-divider>
-          
-              <mat-card-subtitle>
-                  KSH:{{formatPrice(cardata.price)}}
-               </mat-card-subtitle>
-               
-               <button mat-raised-button style="background-color: rgb(104,211,145) ;">Car in Show Room</button>
-        
-          <mat-divider></mat-divider>
-          </div>
-          
-          
-          
-             
-          </mat-card>
-    
-    
-    </ng-container>
-    
-    
-    
-    <div class="card" *ngIf="!fetched">
-      <p-progressBar mode="indeterminate" [style]="{'height': '6px'}" />
-    </div>
-    
-    <footer></footer>
-    
-    
+</div>
+
+<footer></footer>
+

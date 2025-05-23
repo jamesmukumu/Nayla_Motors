@@ -14,13 +14,14 @@
 <mat-card-subtitle>
 {{cardata.description}}
 </mat-card-subtitle>
-<mat-card-subtitle>
+<b>
 KSH:{{formatPrice(cardata.price)}}
-</mat-card-subtitle>
+</b>
 
-<button mat-raised-button class="btn-grad" (click)="SaveToWish(cardata.slug)">
-Add Car to wishlist
-</button>
+
+<button  class="button-1" role="button">Add to Wishlist</button>
+
+
 </div>
 </mat-card>
 </div>

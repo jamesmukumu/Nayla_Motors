@@ -1,41 +1,33 @@
-<mat-card class="card">
-
-    <div class="container" >
-        <mat-card class="item">
-        <img src="../../assets/naylamotors.webp" mat-card-md-image alt="">
-        <mat-card-content>
-        <mat-card-subtitle>
-        &copy;{{Currentyr}} {{Companyname}} All Rights Reserved
-        </mat-card-subtitle>
-        </mat-card-content>
-<div class="socials">    
-    <img src="../../assets/instagram.png" style="height: 20px;width: 20px;"   alt="">
-<img src="../../assets/twitter.png" style="height: 20px;width: 20px;"   alt="">
-
-</div>
+<mat-card class="footer-card">
+    <div class="footer-container">
+        <mat-card class="footer-item logo-section">
+            <img src="../../assets/naylamotors.webp" class="footer-logo" alt="Nayla Motors Logo">
+            <mat-card-content class="footer-content">
+                <mat-card-subtitle class="copyright">
+                    &copy;{{Currentyr}} {{Companyname}} All Rights Reserved
+                </mat-card-subtitle>
+            </mat-card-content>
+            <div class="socials">    
+                <a href="#" class="social-icon"><img src="../../assets/instagram.png" alt="Instagram"></a>
+                <a href="#" class="social-icon"><img src="../../assets/twitter.png" alt="Twitter"></a>
+            </div>
         </mat-card>
         
-        
-        <mat-card class="item">
-        <mat-card-header>Company</mat-card-header>
-            <mat-card-content>
-             <mat-card-subtitle>About</mat-card-subtitle>
-             <mat-card-subtitle>Sell Car</mat-card-subtitle>
-             
+        <mat-card class="footer-item">
+            <mat-card-header class="footer-header">Company</mat-card-header>
+            <mat-card-content class="footer-links">
+                <a mat-card-subtitle class="footer-link">About</a>
+                <a mat-card-subtitle class="footer-link">Sell Car</a>
             </mat-card-content>
-            </mat-card>
+        </mat-card>
         
-            <mat-card class="item">
-                <mat-card-header>Location</mat-card-header>
-                    <mat-card-content>
-                     <p>PJ Motors</p>
-                     <p>Southern Bypass</p>
-                    <a href="tel:0759857032" style="text-decoration: none;">Phone Number</a>
-                    </mat-card-content>
-                    </mat-card>
-                   
-        </div>
-        
-        
-        
+        <mat-card class="footer-item">
+            <mat-card-header class="footer-header">Location</mat-card-header>
+            <mat-card-content class="footer-links">
+                <p class="footer-text">PJ Motors</p>
+                <p class="footer-text">Southern Bypass</p>
+                <a href="tel:0759857032" class="footer-link">Phone Number</a>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </mat-card>

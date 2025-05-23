@@ -5,6 +5,10 @@ mat-card{
     flex-direction: row;
     background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
+img{
+height: 50px;
+width: 50px;
+}
 .actions{
 display: none;
 }
@@ -23,7 +27,7 @@ cursor: pointer;
 
 
 
-@media(max-width:900px){
+@media(max-width:768px){
 mat-list{
 visibility: hidden;
 display: none;

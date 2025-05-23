@@ -36,7 +36,7 @@ constructor(private cars:AllcarsService,private router:Router,private store:Stor
 
 async fetchCars (){
 this.data = await this.cars.fetchCardata()
-console.log(this.data)
+
 if(this.data.length > 0){
   this.fetched = true
 }

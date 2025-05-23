@@ -30,13 +30,12 @@ firstFetchedalready:boolean = false
 defaultImage:string = "https://res.cloudinary.com/dasrniwpk/image/upload/v1717157566/WhatsApp_Image_2024-05-31_at_2.59.52_PM_g5l1z8.jpg"
 changePage(event: PageEvent){
   this.firstFetchedalready = false
-  console.log("pre data",this.data)
+
   this.first = event.pageIndex * event.pageSize 
   this.last = Math.min(this.first + event.pageSize, event.length)
-  console.log(`First item index: ${this.first}`);
-  console.log(`Last item index: ${this.last}`);
+
    this.paginatedData = this.showCarspagewise(this.first ,this.last,this.data)
-   console.log("updated data is",this.paginatedData)
+
 }
 
 

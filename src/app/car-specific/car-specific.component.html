@@ -16,11 +16,11 @@
   <img src={{carData.thumbnail}} alt="">
 </mat-card>
 <mat-card-title>
-  Total Landing Costs {{formatPrice(carData.price)}} (All taxes included)
+  Total Landing Costs  KES {{formatPrice(carData.price)}} (All taxes included)
   </mat-card-title>
-  <mat-card-subtitle>
-    Annual Insuarance Fees {{formatPrice(carData.annual_insurance)}}
-    </mat-card-subtitle>
+  <mat-card-title>
+    Annual Insuarance Fees KES {{formatPrice(carData.annual_insurance)}}
+    </mat-card-title>
 </div>
 
 <div class="item">
@@ -172,8 +172,6 @@
   <p-scrollTop/>
 <mat-divider></mat-divider>
 
-
-<button mat-flat-button class="btn-grad" (click)="SaveToWish(carData.slug)" >Add  to Wishlist</button>
 </mat-card>
 
 
@@ -246,46 +244,39 @@
  
  <i class="pi pi-whatsapp" style="margin-left: 20px; color: forestgreen;" (click)="whatsups()" matTooltip="Whatsapp us"></i>
 </div>
+
 <mat-card-title>Similar Cars</mat-card-title>
 <ng-container *ngIf="fetched">
-
-  <mat-card *ngFor="let cardata of relatedCars" >
-
+  <div class="related-cars-grid">
+    <mat-card *ngFor="let cardata of relatedCars" class="car-card">
       <div class="orient-hor">
-     
-      <img src={{cardata.thumbnail}} alt=""  (click)="navigateRelatedcar(cardata.slug)">
-      
-      
-          <mat-card-title>{{cardata.name}}</mat-card-title>
-         <mat-card style="display: flex; flex-direction: row; text-align: center; margin-top: 20px; ">
-          <button  mat-raised-button>{{cardata.year_of_manufacture}}</button>
-         
-          <mat-card   [ngSwitch]="validateButton(cardata.availability)">
-          <button mat-raised-button *ngSwitchCase=true style="background-color: rgb(104,211,145);">available</button>
-          <button mat-raised-button *ngSwitchCase=false style="background-color: rgb(252,129,129);">{{cardata.availability}}</button>
-  
-        </mat-card>
-       
-         </mat-card>
+        <img src={{cardata.thumbnail}} alt="" (click)="navigateRelatedcar(cardata.slug)">
         
-      <mat-divider></mat-divider>
-          <mat-card-subtitle>
-              {{cardata.description}}
+        <mat-card-title>{{cardata.name}}</mat-card-title>
+        
+        <mat-card style="display: flex; flex-direction: row; text-align: center; margin-top: 20px;">
+          <button mat-raised-button>{{cardata.year_of_manufacture}}</button>
+          
+          <div [ngSwitch]="validateButton(cardata.availability)">
+            <button mat-raised-button *ngSwitchCase="true" style="background-color: rgb(104,211,145);">available</button>
+            <button mat-raised-button *ngSwitchCase="false" style="background-color: rgb(252,129,129);">{{cardata.availability}}</button>
+          </div>
+        </mat-card>
+        
+        <mat-divider></mat-divider>
+        <div>
+          <mat-card-subtitle class="related-description">
+            {{cardata.description}}
           </mat-card-subtitle>
-          <mat-card-subtitle>
-              KSH:{{formatPrice(cardata.price)}}
-           </mat-card-subtitle>
-           <button mat-raised-button style="background-color: rgb(104,211,145) ;">Car in Show Room</button>
-           <button mat-raised-button style="background-color:orange;"  (click)="SaveToWish(carData.slug)">Add to wishlist</button>
+          <b style="padding-top: 20px;">
+            KSH:{{formatPrice(cardata.price)}}
+          </b>
+        </div>
 
+        <button mat-raised-button style="color:black;background-color:#cfd8e7;margin-top: 20px;" (click)="SaveToWish(cardata.slug)">Add to wishlist</button>
       </div>
-      
-      
-      
-         
-      </mat-card>
-
-
+    </mat-card>
+  </div>
 </ng-container>
 
 

@@ -27,12 +27,14 @@
             </mat-card-subtitle>
           
         
-            <mat-card-subtitle>
-                KSH:{{formatPrice(cardata.price)}}
-             </mat-card-subtitle>
-             <button mat-raised-button class="btn-grad" (click)="SaveToWish(cardata.slug)">
-              Add Car to wishlist
-              </button>
+           <div style="display: flex;flex-direction: column;">
+            <b>
+              KSH:{{formatPrice(cardata.price)}}
+           </b>
+           <button  role="button" class="button-1" (click)="SaveToWish(cardata.slug)">
+            Add Car to wishlist
+            </button>
+           </div>
   <p-scrollTop/>
 </div>
 </mat-card>

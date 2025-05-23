@@ -7,10 +7,7 @@ html{
 margin: 0;
 padding:0;
 }
-img{
-width: 200px;
-height: 200px;
-}
+
 div{
 display: flex;
 align-items: center;
@@ -37,7 +34,7 @@ top: 0;
 font-size: 20px;
 cursor: pointer;
 }
-@media(max-width:799px){
+@media(max-width:768px){
 .divVertical{
 display: flex;
 flex-direction: column;

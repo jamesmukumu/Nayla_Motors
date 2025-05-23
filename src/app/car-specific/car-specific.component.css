@@ -41,9 +41,18 @@ width: 500px;
 height: 500px;
 }
 
+.related-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal; 
+}
 
     .orient-hor{
     margin-top: 10px;
+    cursor: pointer;
     }
     
     .orient-hor img{
@@ -61,7 +70,37 @@ height: 500px;
     text-align: center;
     }
     
-   
+    .related-cars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Creates 4 equal columns */
+      gap: 20px; /* Adds space between cards */
+      padding: 20px;
+    }
+    
+    .car-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    /* Optional: Responsive adjustments */
+    @media (max-width: 1200px) {
+      .related-cars-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .related-cars-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .related-cars-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
 @media(max-width:800px){
 .container{
