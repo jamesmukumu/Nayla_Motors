@@ -26,8 +26,8 @@
 <div class="item">
 <mat-card-title>{{carData.name}}</mat-card-title>
 <mat-card-subtitle>{{carData.description}}</mat-card-subtitle>
-<button matTooltip="See More car Descriptions"  mat-raised-button (click)="sidebarVisible =true" style="background-color: rgb(59,130,246);">Car Specification</button>
-<button matTooltip="See More Safety Specs"  mat-raised-button (click)="sidebarSafety =true" style="background-color: rgb(59,130,246); margin-left: 20px;">Car Safety</button>
+<button matTooltip="See More car Descriptions"  mat-raised-button (click)="sidebarVisible =true" style="background-color: #00478f;margin-top: 20px;color: white;">Car Specification</button>
+<button matTooltip="See More Safety Specs"  mat-raised-button (click)="sidebarSafety =true" style="background-color: #00478f; margin-left: 20px;margin-top: 20px;color: white;">Car Safety</button>
 </div>
 
 
@@ -38,6 +38,9 @@
       [showIndicators]="true" 
       [autoPlay]="true"
       [circular]="true"
+      
+      
+      
       
       [showThumbnails]="false" 
       [responsiveOptions]="responsiveOptions" 
