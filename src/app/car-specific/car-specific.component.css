@@ -5,7 +5,6 @@ padding: 0px;
 
 .btn-grad {background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%)}
 .btn-grad {
-
    text-align: center;
    text-transform: uppercase;
    transition: 0.5s;
@@ -17,7 +16,7 @@ padding: 0px;
  }
 
  .btn-grad:hover {
-   background-position: right center; /* change the direction of the change here */
+   background-position: right center; 
    color: #fff;
    text-decoration: none;
  }
@@ -25,6 +24,7 @@ padding: 0px;
 width: 100%;
 display: flex;
 flex-direction: row;
+
 }
 .specs{
   min-width: 100vw;
@@ -33,6 +33,93 @@ display: flex;
 flex-direction: row; 
 gap: 20px;   
 }
+/* From Uiverse.io by david-mohseni */ 
+.wrapper {
+  display: inline-flex;
+  list-style: none;
+  height: 120px;
+  width: 100%;
+  padding-top: 40px;
+  font-family: "Poppins", sans-serif;
+  justify-content: center;
+}
+
+.wrapper .icon {
+  position: relative;
+  background: #fff;
+  border-radius: 50%;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip {
+  position: absolute;
+  top: 0;
+  font-size: 14px;
+  background: #fff;
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: #fff;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .icon:hover .tooltip {
+  top: -45px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .facebook:hover,
+.wrapper .facebook:hover .tooltip,
+.wrapper .facebook:hover .tooltip::before {
+  background: #1877f2;
+  color: #fff;
+}
+
+.wrapper .twitter:hover,
+.wrapper .twitter:hover .tooltip,
+.wrapper .twitter:hover .tooltip::before {
+  background: #1da1f2;
+  color: #fff;
+}
+
+.wrapper .instagram:hover,
+.wrapper .instagram:hover .tooltip,
+.wrapper .instagram:hover .tooltip::before {
+  background: #e4405f;
+  color: #fff;
+}
+
 .specs mat-list{
   width: max-content;
 }
@@ -50,30 +137,32 @@ height: 500px;
   white-space: normal; 
 }
 
-    .orient-hor{
-    margin-top: 10px;
-    cursor: pointer;
-    }
+.orient-hor{
+margin-top: 10px;
+cursor: pointer;
+}
     
-    .orient-hor img{
-    width: 400px;
-    height: 400px;
-    }
-    .green-color{
-    background-color: green;
-    }
-    .container{
-    text-align: center;
-    }
-    
+.orient-hor img{
+width: 400px;
+height: 400px;
+}
+.container{
+text-align: center;
+}
+
+     .infos-car{
+    margin-left: 5px;
+     }
     mat-card{
+    width: 100%;
+    max-width: 100vw;
     text-align: center;
     }
     
     .related-cars-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* Creates 4 equal columns */
-      gap: 20px; /* Adds space between cards */
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 20px; 
       padding: 20px;
     }
     
@@ -82,8 +171,8 @@ height: 500px;
       flex-direction: column;
       height: 100%;
     }
-    
-    /* Optional: Responsive adjustments */
+
+
     @media (max-width: 1200px) {
       .related-cars-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -138,5 +227,12 @@ font-weight: bolder;
 }
 mat-card{
 width: 100%;
+}
+}
+
+
+@media(max-width:768px){
+.item mat-card img,.card img {
+padding: 15px;
 }
 }

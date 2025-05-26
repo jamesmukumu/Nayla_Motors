@@ -10,6 +10,7 @@ import {MatSelectModule} from "@angular/material/select"
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 import {MatCardModule,MatCardImage} from '@angular/material/card';
+import { NgxGalleryModule } from 'ngx-gallery';
 import { FooterComponent } from './footer/footer.component';
 import { LandingComponent } from './landing/landing.component'
 import {MatSidenavModule} from "@angular/material/sidenav"
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatInputModule} from '@angular/material/input';
 import { AccordionModule } from 'primeng/accordion';
+import { CarouselComponent, CarouselInnerComponent, CarouselItemComponent } from '@coreui/angular'
 import { FileUploadModule } from 'primeng/fileupload';
 import { FilterbybrandComponent } from './filterbybrand/filterbybrand.component';
 import { AllcarsComponent } from './allcars/allcars.component';
@@ -64,7 +66,8 @@ import { wishListReducer } from './redux/reducer.wishlist';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { PopUpComponent } from './components/pop-up/pop-up.component';
 import {MatAutocompleteModule} from "@angular/material/autocomplete"
-  
+import { NgImageSliderModule } from 'ng-image-slider'; 
+
 const reducers:ActionReducerMap<any> = {
 wishlist:wishListReducer
 }
@@ -84,6 +87,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
   declarations:[
     AppComponent,
     HeaderComponent,
+    
     FooterComponent,
     LandingComponent,
     FilterbysearchComponent,
@@ -110,6 +114,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     MatDividerModule,   
     MatCardImage,
     MatBadgeModule,
+   NgImageSliderModule,
     ScrollTopModule,
     MatSidenavModule,
     ToastModule,

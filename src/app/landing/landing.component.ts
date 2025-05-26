@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import {Router} from '@angular/router'
+import {Title} from "@angular/platform-browser"
 @Component({
   selector: 'landing',
   templateUrl: './landing.component.html',
