@@ -67,7 +67,7 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { PopUpComponent } from './components/pop-up/pop-up.component';
 import {MatAutocompleteModule} from "@angular/material/autocomplete"
 import { NgImageSliderModule } from 'ng-image-slider'; 
-
+import {GalleryModule} from "ng-gallery"
 const reducers:ActionReducerMap<any> = {
 wishlist:wishListReducer
 }
@@ -109,6 +109,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     
     BrowserModule,
     BrowserAnimationsModule,
+    GalleryModule,
     AppRoutingModule,   
     MatCardModule, 
     MatDividerModule,   

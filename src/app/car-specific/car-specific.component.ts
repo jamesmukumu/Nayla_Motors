@@ -6,6 +6,7 @@ import {Store} from '@ngrx/store'
 import { addToWishList } from '../redux/actions.wishList';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {Title} from "@angular/platform-browser"
+import { ImageItem } from 'ng-gallery';
 interface Image {
 	image:string
   id:number
@@ -34,7 +35,7 @@ carData:any
 possibleButtons:string = 'available'
 carName:any = ""
 relatedCars:any[] = []
-images: Image[] = [];
+images: any[] = [];
 interiorFeatures:any[] =[]
 interiorResults:any[] = []
 fetched:boolean = false
@@ -64,17 +65,23 @@ var carserve = new CarService()
 
 
 
+
+
+
+
 route.paramMap.subscribe(async(rt)=>{
 var routeName = rt.get("searchvector")
 this.carName = routeName
-console.log(routeName)
+
 var data = await carserve.fetchCarbasedonvector(routeName)
 this.carData = data.data
 this.titler.setTitle(`${this.carData.name}|Nayla Motors Car Dealership`)
 this.relatedCars = data.relatedcars
-this.fetched = true
+
 var someData = await carserve.Fetchcarimagesfromkairo(routeName)
 this.images =   someData.pageProps.vehicle.vehicle_images
+
+this.fetched = true
 this.interiorFeatures = Object.keys(this.carData.interior_features)
 this.interiorResults = Object.values(this.carData.interior_features)
 
@@ -112,7 +119,7 @@ SaveToWish(slug:string){
 formatPrice(price:number){
 var priceStringform:string = price.toString()
 priceStringform = priceStringform.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-console.log("the car price",priceStringform)
+
 return priceStringform
 }
 

@@ -28,6 +28,7 @@
 <mat-card-subtitle>{{carData.description}}</mat-card-subtitle>
 <button  mat-raised-button (click)="sidebarVisible =true" style="background-color: #00478f;margin-top: 20px;color: white;">Car Specification</button>
 <button  mat-raised-button (click)="sidebarSafety =true" style="background-color: #00478f; margin-left: 20px;margin-top: 20px;color: white;">Car Safety</button>
+<button  mat-raised-button (click)="SaveToWish(carData.slug)" style="background-color: #00478f; margin-left: 20px;margin-top: 20px;color: white;">Wishlist</button>
 </div>
 
 
@@ -313,7 +314,7 @@
           </b>
         </div>
 
-        <button mat-raised-button style="color:black;background-color:#cfd8e7;margin-top: 20px;" (click)="SaveToWish(cardata.slug)">Add to wishlist</button>
+        <button mat-raised-button style="color:black;background-color:#cfd8e7;margin-top: 20px;" (click)="SaveToWish(cardata.slug)"   >Add to wishlist</button>
       </div>
     </mat-card>
   </div>
